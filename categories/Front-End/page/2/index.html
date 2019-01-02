@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 633 个字)
+                    4 分钟 读完 (大约 634 个字)
                 </span>
                 
             </div>
@@ -177,28 +177,16 @@
 <p>你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。</p>
 </blockquote>
 <p>本文主要就Eject方式进行探索</p>
-<h2 id="使用create-react-app创建项目"><a href="#使用create-react-app创建项目" class="headerlink" title="使用create-react-app创建项目"></a>使用create-react-app创建项目</h2><blockquote>
-<p>参考：<a href="https://zhaozhiming.github.io/blog/2018/01/08/create-react-app-override-webpack-config/" target="_blank" rel="noopener">如何扩展 Create React App 的 Webpack 配置</a> 的Eject方式</p>
-</blockquote>
-<p>首先使用create-react-app创建一个项目<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> create-react-app antd-test</span><br></pre></td></tr></table></figure></p>
-<p>创建完项目后，进入项目目录，执行 yarn run eject 或 npm run eject</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run eject</span><br></pre></td></tr></table></figure>
-<p>执行后会出现提示，该操作不可逆，选择y继续<br><img src="https://user-gold-cdn.xitu.io/2018/7/27/164daedc8a220b7e?w=1326&amp;h=84&amp;f=png&amp;s=37081" alt=""></p>
-<p>成功eject后会暴露webpack的配置,package.json增加了很多的依赖</p>
-<h2 id="安装antd"><a href="#安装antd" class="headerlink" title="安装antd"></a>安装antd</h2><p>使用 cnpm 安装 antd<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install antd</span><br></pre></td></tr></table></figure></p>
-<p>修改<figure class="highlight plain hljs"><figcaption><span>，引入 antd 的按钮组件。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import Button from &apos;antd/lib/button&apos;;</span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">        &lt;Button type=&quot;primary&quot;&gt;Button&lt;/Button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure></p>
-<p>执行npm install 安装依赖，并启动项目</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install</span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure>
-<p>启动之后发现button并没有样式，需要引入antd的css文件</p>
-<p>修改 <figure class="highlight plain hljs"><figcaption><span>```antd/dist/antd.css```。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">@import &apos;~antd/dist/antd.css&apos;;</span><br><span class="line"></span><br><span class="line">.App &#123;</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<h2 id="使用-babel-plugin-import-按需引入-antd-样式"><a href="#使用-babel-plugin-import-按需引入-antd-样式" class="headerlink" title="使用 babel-plugin-import 按需引入 antd 样式"></a>使用 babel-plugin-import 按需引入 antd 样式</h2><p>在文件顶部引入 <figure class="highlight plain hljs"><figcaption><span>antd 组件的样式（对前端性能是个隐患）。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 是一个用于按需加载组件代码和样式的 babel 插件（[原理](http://ant-design.gitee.io/docs/react/getting-started-cn#%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD)）</span><br><span class="line">```bash</span><br><span class="line">$ cnpm install babel-plugin-import --save-dev</span><br></pre></td></tr></table></figure></p>
-<p>修改<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```diff</span><br><span class="line">...</span><br><span class="line">- import Button from &apos;antd/lib/button&apos;;</span><br><span class="line">+ import &#123; Button &#125; from &apos;antd&apos;;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>然后移除前面在 <figure class="highlight plain hljs"><figcaption><span>里全量添加的 ```@import '~antd/dist/antd.css';``` </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">此时发现按钮样式不生效了，最简单的方式是修改```package.json```文件里的babel配置, 增加babel-plugin-import的配置</span><br><span class="line"></span><br><span class="line">```diff</span><br><span class="line">...</span><br><span class="line">  &quot;babel&quot;: &#123;</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">      &quot;react-app&quot;</span><br><span class="line">-    ]</span><br><span class="line">+    ],</span><br><span class="line">+   &quot;plugins&quot;: [</span><br><span class="line">+      [&quot;import&quot;, &#123; &quot;libraryName&quot;: &quot;antd&quot;, &quot;libraryDirectory&quot;: &quot;es&quot;, &quot;style&quot;: &quot;css&quot; &#125;]</span><br><span class="line">+    ]</span><br><span class="line">  &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>重新执行<code>npm start</code>，样式重新生效</p>
-<p>至此使用Eject方式按需引入antd的方式已经探索完毕。</p>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2018/07/29/create_react_app_antd_eject/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>

@@ -7,19 +7,19 @@
 
 
 
-    <meta name="description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索 使用crea">
+    <meta name="description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索">
 <meta name="keywords" content="React,Create React App,Webpack,Ant Design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Eject 方式在 create-react-app 中使用 Ant Design of React">
 <meta property="og:url" content="https://ivocin.github.io/2018/07/29/create_react_app_antd_eject/index.html">
 <meta property="og:site_name" content="清秋的博客">
-<meta property="og:description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索 使用crea">
+<meta property="og:description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/27/164daedc8a220b7e?w=1326&h=84&f=png&s=37081">
-<meta property="og:updated_time" content="2019-01-02T02:32:35.266Z">
+<meta property="og:updated_time" content="2019-01-02T02:49:04.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Eject 方式在 create-react-app 中使用 Ant Design of React">
-<meta name="twitter:description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索 使用crea">
+<meta name="twitter:description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/7/27/164daedc8a220b7e?w=1326&h=84&f=png&s=37081">
 
 
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 633 个字)
+                    4 分钟 读完 (大约 634 个字)
                 </span>
                 
             </div>
@@ -168,6 +168,7 @@
 <p>你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。</p>
 </blockquote>
 <p>本文主要就Eject方式进行探索</p>
+<a id="more"></a>
 <h2 id="使用create-react-app创建项目"><a href="#使用create-react-app创建项目" class="headerlink" title="使用create-react-app创建项目"></a>使用create-react-app创建项目</h2><blockquote>
 <p>参考：<a href="https://zhaozhiming.github.io/blog/2018/01/08/create-react-app-override-webpack-config/" target="_blank" rel="noopener">如何扩展 Create React App 的 Webpack 配置</a> 的Eject方式</p>
 </blockquote>

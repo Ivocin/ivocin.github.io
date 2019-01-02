@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/4/166de3b483fdf642?w=700&h=230&f=png&s=13899">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/4/166de3b48981cb76?w=700&h=318&f=png&s=32092">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/11/4/166de3b486e799e2?w=700&h=323&f=png&s=20944">
-<meta property="og:updated_time" content="2019-01-01T15:31:13.601Z">
+<meta property="og:updated_time" content="2019-01-02T02:49:39.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[译] Google 工程师提升网页性能的新策略：空闲执行，紧急优先">
 <meta name="twitter:description" content="原文地址：Idle Until Urgent 原文作者：PHILIP WALTON 译文出自：掘金翻译计划 本文永久链接：https://github.com/xitu/gold-miner/blob/master/TODO1/idle-until-urgent.md 译者：Ivocin 校对者：xilihuasi，新舰同学 Xekin 本文掘金地址：[译] Google 工程师提升网页性能的">
@@ -162,7 +162,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    1 小时 读完 (大约 8650 个字)
+                    1 小时 读完 (大约 8651 个字)
                 </span>
                 
             </div>
@@ -186,6 +186,7 @@
 </ul>
 </blockquote>
 <p>几周前，我开始查看我网站的一些性能指标。具体来说，我想看看我的网站在最新的性能指标 —— <a href="https://developers.google.com/web/updates/2018/05/first-input-delay" target="_blank" rel="noopener">首次输入延迟</a> （FID）上的表现如何。 我的网站只是一个博客（并没有运行很多的 JavaScript），所以我原本预期会得到相当不错的结果。</p>
+<a id="more"></a>
 <p>用户一般对于小于 100 毫秒的输入延迟<a href="https://developers.google.com/web/fundamentals/performance/rail#ux" target="_blank" rel="noopener">没有感知</a>，因此我们推荐的性能目标（以及我希望在我的分析中看到的数字）是对于 99％ 的页面加载，FID 小于 100 毫秒。</p>
 <p>令我惊讶的是，我网站 99% 的页面的 FID 在 254 毫秒以内。我是个完美主义者，尽管结果不算很糟糕，但我却无法对这个结果置之不理。我一定得把它搞定！</p>
 <p>简而言之，在不删除网站的任何功能的情况下，我把 99% 页面的 FID 降到了 100 毫秒以内。但我相信读者朋友们更感兴趣的是：</p>

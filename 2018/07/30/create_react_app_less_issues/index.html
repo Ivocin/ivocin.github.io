@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/30/164e9101d1d2de15?w=864&h=278&f=png&s=28656">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/30/164e9bf3778c7404?w=1014&h=42&f=png&s=16764">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/30/164ea5f9dee817e3?w=152&h=90&f=png&s=5628">
-<meta property="og:updated_time" content="2019-01-02T02:37:51.703Z">
+<meta property="og:updated_time" content="2019-01-02T02:49:13.441Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="create-react-app 创建项目有关 less 的若干问题">
 <meta name="twitter:description" content="在上篇文章使用Eject方式在 create-react-app 中使用 Ant Design of React中， 使用create-react-app创建了React项目，并使用Eject方式暴露出了Webpack的配置，并成功按需引入了antd。本文主要内容：解决create-react-app创建项目后less不生效的问题；antd按需引入less源文件，以及遇到的bezierEasin">
@@ -156,7 +156,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1705 个字)
+                    11 分钟 读完 (大约 1706 个字)
                 </span>
                 
             </div>
@@ -171,6 +171,7 @@
             <blockquote>
 <p>在上篇文章<a href="https://juejin.im/post/5b5ad7ace51d4533d2044471" target="_blank" rel="noopener">使用Eject方式在 create-react-app 中使用 Ant Design of React</a>中， 使用<code>create-react-app</code>创建了<code>React</code>项目，并使用<code>Eject</code>方式暴露出了<code>Webpack</code>的配置，并成功按需引入了<code>antd</code>。本文主要内容：解决<code>create-react-app</code>创建项目后<code>less</code>不生效的问题；<code>antd</code>按需引入<code>less</code>源文件，以及遇到的<code>bezierEasing.less</code>文件报错问题；<code>antd</code>本地字体的配置方法；<code>less</code>使用<code>css module</code>的配置。</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="直接引入less样式不生效"><a href="#直接引入less样式不生效" class="headerlink" title="直接引入less样式不生效"></a>直接引入<code>less</code>样式不生效</h2><p>创建<code>test.less</code>，并在<code>App.js</code>中引入<br><figure class="highlight less hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.test</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// App.js</span></span><br><span class="line">...</span><br><span class="line"><span class="hljs-keyword">import</span> <span class="hljs-string">'./test.less'</span></span><br><span class="line">...</span><br><span class="line"> &lt;div className=<span class="hljs-string">"test"</span>&gt;test&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp"> &lt;Button type="primary"&gt;Button&lt;/</span>Button&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>发现test的颜色并没有生效</p>

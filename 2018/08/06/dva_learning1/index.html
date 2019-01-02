@@ -7,23 +7,23 @@
 
 
 
-    <meta name="description" content="前置知识 dva roadhog umi dva知识地图 使用 umi 改进 dva 项目开发  umi + dva，完成用户管理的 CURD 应用 本文主要是在 dva 作者 @sorrycc 的例子 umi + dva，完成用户管理的 CURD 应用基础上进行的一些自己的学习记录。关于评论区的小伙伴说的照抄 @sorrycc 大神的github文章的问题，这里回应下，没错，本文 90% 以上的">
+    <meta name="description" content="前置知识 dva roadhog umi dva知识地图 使用 umi 改进 dva 项目开发">
 <meta name="keywords" content="JavaScript,React,Dva,Umi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DvaJS 的学习之路 1 - dva+umi 官网例子学习">
 <meta property="og:url" content="https://ivocin.github.io/2018/08/06/dva_learning1/index.html">
 <meta property="og:site_name" content="清秋的博客">
-<meta property="og:description" content="前置知识 dva roadhog umi dva知识地图 使用 umi 改进 dva 项目开发  umi + dva，完成用户管理的 CURD 应用 本文主要是在 dva 作者 @sorrycc 的例子 umi + dva，完成用户管理的 CURD 应用基础上进行的一些自己的学习记录。关于评论区的小伙伴说的照抄 @sorrycc 大神的github文章的问题，这里回应下，没错，本文 90% 以上的">
+<meta property="og:description" content="前置知识 dva roadhog umi dva知识地图 使用 umi 改进 dva 项目开发">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba56ab61f6?w=1232&h=1464&f=png&s=377953">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5eaec66d?w=1232&h=1088&f=png&s=191503">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5a551995?w=1272&h=784&f=png&s=165496">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba6116d62a?w=1856&h=538&f=png&s=85440">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba530e9eea?w=1842&h=650&f=png&s=99868">
-<meta property="og:updated_time" content="2019-01-02T02:22:33.659Z">
+<meta property="og:updated_time" content="2019-01-02T02:49:20.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DvaJS 的学习之路 1 - dva+umi 官网例子学习">
-<meta name="twitter:description" content="前置知识 dva roadhog umi dva知识地图 使用 umi 改进 dva 项目开发  umi + dva，完成用户管理的 CURD 应用 本文主要是在 dva 作者 @sorrycc 的例子 umi + dva，完成用户管理的 CURD 应用基础上进行的一些自己的学习记录。关于评论区的小伙伴说的照抄 @sorrycc 大神的github文章的问题，这里回应下，没错，本文 90% 以上的">
+<meta name="twitter:description" content="前置知识 dva roadhog umi dva知识地图 使用 umi 改进 dva 项目开发">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba56ab61f6?w=1232&h=1464&f=png&s=377953">
 
 
@@ -155,7 +155,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    19 分钟 读完 (大约 2820 个字)
+                    19 分钟 读完 (大约 2821 个字)
                 </span>
                 
             </div>
@@ -174,6 +174,7 @@
 <li><a href="https://dvajs.com/knowledgemap/" target="_blank" rel="noopener">dva知识地图</a></li>
 <li><a href="https://github.com/sorrycc/blog/issues/66" target="_blank" rel="noopener">使用 umi 改进 dva 项目开发</a></li>
 </ul>
+<a id="more"></a>
 <h2 id="umi-dva，完成用户管理的-CURD-应用"><a href="#umi-dva，完成用户管理的-CURD-应用" class="headerlink" title="umi + dva，完成用户管理的 CURD 应用"></a>umi + dva，完成用户管理的 CURD 应用</h2><blockquote>
 <p>本文主要是在 dva 作者 <a href="https://github.com/sorrycc" target="_blank" rel="noopener">@sorrycc</a> 的例子 <a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">umi + dva，完成用户管理的 CURD 应用</a><br>基础上进行的一些自己的学习记录。<br>关于评论区的小伙伴说的照抄 <a href="https://github.com/sorrycc" target="_blank" rel="noopener">@sorrycc</a> 大神的github文章的问题，这里回应下，没错，本文 90% 以上的文字都出自 <a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">umi + dva，完成用户管理的 CURD 应用</a> 这篇文章，而且作者和文章出处一开始就交代清楚了，写这个文章的目的是记录一下自己跟着教程 step by step 完成这个应用的过程，并不是教程，期望教程的小伙伴， <a href="https://github.com/sorrycc" target="_blank" rel="noopener">@sorrycc</a> 大大在 <a href="https://dvajs.com/" target="_blank" rel="noopener">dva</a> 官网上提供了很多丰富的例子，可以参考。</p>
 </blockquote>

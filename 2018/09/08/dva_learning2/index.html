@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5a551995?w=1272&h=784&f=png&s=165496">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf771e9c?w=1486&h=754&f=png&s=108587">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba530e9eea?w=1842&h=650&f=png&s=99868">
-<meta property="og:updated_time" content="2019-01-02T02:19:44.316Z">
+<meta property="og:updated_time" content="2019-01-02T02:49:27.842Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用">
 <meta name="twitter:description" content="前言最近一个月来使用 dva 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 umi 终于迎来了 2.0 版本，具体介绍可以查看 发布 umi 2.0，可插拔的企业级 react 应用框架。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看漂亮的实力派  Ant Design P">
@@ -158,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    19 分钟 读完 (大约 2816 个字)
+                    19 分钟 读完 (大约 2817 个字)
                 </span>
                 
             </div>
@@ -171,6 +171,7 @@
         </h1>
         <div class="content">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一个月来使用 <a href="https://dvajs.com/" target="_blank" rel="noopener">dva</a> 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 <a href="https://umijs.org/zh/" target="_blank" rel="noopener">umi</a> 终于迎来了 2.0 版本，具体介绍可以查看 <a href="https://github.com/sorrycc/blog/issues/74" target="_blank" rel="noopener">发布 umi 2.0，可插拔的企业级 react 应用框架</a>。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看<a href="https://www.yuque.com/ant-design/ant-design-pro/ant_design_pro_2.0_is_out" target="_blank" rel="noopener">漂亮的实力派  Ant Design Pro 2.0 正式发布</a>。今天终于有时间体验了 umi@2 ，想起我的 dva 学习之路的第一篇<a href="https://juejin.im/post/5b67fed36fb9a04f8856f817" target="_blank" rel="noopener">学习记录</a>是使用 <a href="mailto:umi@1.X" target="_blank" rel="noopener">umi@1.X</a> 构建的，刚好可以使用 umi 2.0 重新构建一下。本文是 dva 作者 <a href="https://github.com/sorrycc" target="_blank" rel="noopener">@sorrycc</a> 的 <a href="https://github.com/umijs/umi-dva-user-dashboard" target="_blank" rel="noopener">umi-dva-user-dashboard</a> 的 umi@2 版本实现，是 <a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">《umi + dva，完成用户管理的 CURD 应用》</a> 文章的 umi@2 版本改写。代码仓库： <a href="https://github.com/Ivocin/umi2-dva-user-dashboard" target="_blank" rel="noopener">umi2-dva-user-dashboard</a>。演示地址：<a href="https://ivocin.github.io/userdashboard/">demo</a>。</p>
+<a id="more"></a>
 <h2 id="Step-1-使用-create-umi-脚手架初始化项目"><a href="#Step-1-使用-create-umi-脚手架初始化项目" class="headerlink" title="Step 1. 使用 create-umi 脚手架初始化项目"></a>Step 1. 使用 create-umi 脚手架初始化项目</h2><p>详见 <a href="https://umijs.org/zh/guide/create-umi-app.html" target="_blank" rel="noopener">umi官网#通过脚手架创建项目</a></p>
 <p>使用 <a href="https://yarnpkg.com/en/docs/cli/create" target="_blank" rel="noopener"><code>yarn create</code></a> 命令：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir umi2-dva-user-dashboard &amp;&amp; cd umi2-dva-user-dashboard</span><br><span class="line">$ yarn create umi</span><br></pre></td></tr></table></figure></p>
 <p>看到社区有小伙伴问到如何使用 npm 创建 umi 项目，首先使用 npm 安装 create-umi :</p>
