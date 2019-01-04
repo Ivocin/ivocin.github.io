@@ -304,6 +304,29 @@ var _hmt = _hmt || [];
 </div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '2018/10/23/scrolling_and_attention/',
+		owner: 'Ivocin',
+		repo: 'BlogComment',
+		oauth: {
+			client_id: '590da0d5f4501eafaf21',
+			client_secret: '64bc865f757ffec352d5288ad500b6f4707cd8a7',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
