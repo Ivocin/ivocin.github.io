@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>2021 推荐给 React 开发者的 Visual Studio Code 插件及配置 - 清秋的博客</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="本文是在 React 工程的 VS Code 插件及配置 基础上编写的，当时写的时候是 2018 年，至今项目组使用 React 开发已经两年多了，是时候更新一波 Visual Studio Code 插件使用文档了。本文主要以实用为目的，本着不折腾的原则，只挑选平时开发 React 工程用的顺手的插件、主题和字体，也欢迎同学们推荐好用的效率神器。  一、Windows 安装 VS Code 的">
+<meta name="keywords" content="React,Tools,VS Code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021 推荐给 React 开发者的 Visual Studio Code 插件及配置">
+<meta property="og:url" content="https://ivocin.github.io/2021/02/08/vscode-recommend-to-react-developer-2021/index.html">
+<meta property="og:site_name" content="清秋的博客">
+<meta property="og:description" content="本文是在 React 工程的 VS Code 插件及配置 基础上编写的，当时写的时候是 2018 年，至今项目组使用 React 开发已经两年多了，是时候更新一波 Visual Studio Code 插件使用文档了。本文主要以实用为目的，本着不折腾的原则，只挑选平时开发 React 工程用的顺手的插件、主题和字体，也欢迎同学们推荐好用的效率神器。  一、Windows 安装 VS Code 的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/12c493b92bff479d8524956ed09d04c5~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8674337036e4f4c8054db87d13e0eb0~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/293555f4786a4e689e8c9fb0025f9f0e~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8495520debd4e7486d949bc797a4780~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d3e551fcd3ae4e15a0dc0d739c5e3e1c~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cb7bbd000a8a41c7b96e7836b3e13465~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d17de760d95b4304ac3d1fde034c3afa~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/17215185b1a24bbf9c17c320790be1ec~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9121d17e230b4e54ac89435e61f342ed~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/61f8f9989c9a41a997a140a013344f5e~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b28f8309684e4ea9b7ee8975a282b97b~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1b5fc1a8790942f9b543bec21c8cce16~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9c4ab2ee6256402ca43847de50c899fd~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a13fe9a4ffa946c0913faa125529a843~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1c8eeb25e48b46a58eb42b00b390808a~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/92ac3f8eea7b4bac91ea9313778a6cc2~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2592021313d74c07a0ee3956ece6c0fa~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a5089c38fbb64332932abbbf441c760d~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/52e43ef31e5c46c4ad69729bbc9ea711~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a4d4fc6e7fae42418f36d39ae8be575c~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4c1046b125d94a2691e0a3f1b51263bd~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac150382dfd3418ba45ad9b6c9e25f94~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a606893b41e74a42b977834e3537c01f~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cd308bae4a164b8eb68257dbfa620776~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:updated_time" content="2021-03-12T08:42:55.156Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2021 推荐给 React 开发者的 Visual Studio Code 插件及配置">
+<meta name="twitter:description" content="本文是在 React 工程的 VS Code 插件及配置 基础上编写的，当时写的时候是 2018 年，至今项目组使用 React 开发已经两年多了，是时候更新一波 Visual Studio Code 插件使用文档了。本文主要以实用为目的，本着不折腾的原则，只挑选平时开发 React 工程用的顺手的插件、主题和字体，也欢迎同学们推荐好用的效率神器。  一、Windows 安装 VS Code 的">
+<meta name="twitter:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/12c493b92bff479d8524956ed09d04c5~tplv-k3u1fbpfcp-watermark.image">
+
+
+
+
+
+<link rel="icon" href="/images/mylogo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?e84c7e175906c3ea9fb7d904d291b461";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/mylogo.png" alt="2021 推荐给 React 开发者的 Visual Studio Code 插件及配置" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">主页</a>
+                
+                <a class="navbar-item" href="/archives">文章</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ivocin">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-image">
+        <span class="image is-7by1">
+            <img class="thumbnail" src="/images/vscode2021.png" alt="2021 推荐给 React 开发者的 Visual Studio Code 插件及配置">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-02-08T03:12:25.000Z">2021-02-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/Tools/">Tools</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17 分钟 读完 (大约 2548 个字)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                2021 推荐给 React 开发者的 Visual Studio Code 插件及配置
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>本文是在 <a href="https://juejin.im/post/6844903649978630158" target="_blank" rel="noopener">React 工程的 VS Code 插件及配置</a> 基础上编写的，当时写的时候是 2018 年，至今项目组使用 React 开发已经两年多了，是时候更新一波 <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> 插件使用文档了。本文主要以实用为目的，本着不折腾的原则，只挑选平时开发 React 工程用的顺手的插件、主题和字体，也欢迎同学们推荐好用的效率神器。</p>
+</blockquote>
+<h2 id="一、Windows-安装-VS-Code-的小提示"><a href="#一、Windows-安装-VS-Code-的小提示" class="headerlink" title="一、Windows 安装 VS Code 的小提示"></a>一、Windows 安装 VS Code 的小提示</h2><p>在安装时推荐勾选下图两个标红的选项，这样安装成功后，鼠标单击右键文件夹或文件就可以直接使用 VS Code 打开了，非常方便。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/12c493b92bff479d8524956ed09d04c5~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8674337036e4f4c8054db87d13e0eb0~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<blockquote>
+<p>若安装时没有勾选这两个选项的同学，是不是只能重装 VS Code 才能使用这个功能呢？当然不是，可以参考这篇文章：<a href="https://mp.weixin.qq.com/s/DpPTOoeCUsqqQLSt1I5K2A" target="_blank" rel="noopener">将 VS Code 添加到右击菜单</a>，通过修改注册表的方式来实现。</p>
+</blockquote>
+<h2 id="二、VS-Code-插件的离线安装"><a href="#二、VS-Code-插件的离线安装" class="headerlink" title="二、VS Code 插件的离线安装"></a>二、VS Code 插件的离线安装</h2><p>由于在银行软开，平时开发只能在内网进行，需要考虑插件的离线安装。参考了<a href="https://blog.csdn.net/u012814856/article/details/80684376" target="_blank" rel="noopener">简单的 VSCode  插件离线安装方法</a>，发现官方已经很贴心的提供了在线下载插件的功能，总结下来一共 3 步：</p>
+<ul>
+<li>进入 <a href="https://marketplace.visualstudio.com/vscode" target="_blank" rel="noopener">Visual Studio Marketplace</a>，搜索需要的插件</li>
+<li>点击 Download Extension，下载下来的是 <code>.vsix</code> 格式文件</li>
+<li>可视化安装 VS Code 插件的方法：如图点击左侧 EXTENSION 菜单，点击 … 按钮，选择“从 VSIX 安装…” 即可安装。</li>
+</ul>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/293555f4786a4e689e8c9fb0025f9f0e~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<blockquote>
+<p>另外求助一个问题，就是如何下载匹配 VS Code 版本的离线插件。项目的开发环境在内网，导致 VS Code 的版本只能固定在某一个版本，但是插件市场提供的插件离线下载包都是对应的当前最新版本 VS Code 的，如何能够下载到指定版本 VS Code 的离线插件。</p>
+</blockquote>
+<blockquote>
+<p>2020-12-03 更新，找到了下载指定版本插件的方法，可以查看 Download Extension 请求的 url， 目前的是 <code>https://marketplace.visualstudio.com/_apis/public/gallery/publishers/${publisher_name}/vsextensions/${extension_name}/${version}/vspackage</code> 可以通过查看插件的 Changelog 下载指定的版本，但是插件版本与 VS Code 版本之间的关系目前只能是通过时间来对照查找，不知道有没有更方便的方法。</p>
+</blockquote>
+<h2 id="三、外观配置"><a href="#三、外观配置" class="headerlink" title="三、外观配置"></a>三、外观配置</h2><p>VS Code 默认的外观确实不怎么好看，这里推荐两套个人比较喜欢的主题。</p>
+<p>默认主题和字体预览：<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8495520debd4e7486d949bc797a4780~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<p>1、配色主题：</p>
+<ul>
+<li>下载量排名第一的 VS Code 主题插件：<a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme" target="_blank" rel="noopener">One Dark Pro</a></li>
+<li>个人喜欢的主题：<a href="https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme" target="_blank" rel="noopener">Material Theme</a>，选择 Material Theme Palenight High Contrast</li>
+</ul>
+<p>2、图标：<a href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme" target="_blank" rel="noopener">Material Icon Theme</a></p>
+<ul>
+<li>下载量排名第二的 Icon 插件，个人感觉比排名第一的 <a href="https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons" target="_blank" rel="noopener">vscode-icons</a> 更好看一些</li>
+</ul>
+<p>3、英文字体：<a href="https://github.com/tonsky/FiraCode/wiki/VS-Code-Instructions" target="_blank" rel="noopener">FiraCode</a></p>
+<ul>
+<li>安装详见：<a href="https://zhuanlan.zhihu.com/p/65362086" target="_blank" rel="noopener">Fira Code —— 专为编程而生的字体</a></li>
+<li>推荐一个在线测试各种编程字体的网站：<a href="https://app.programmingfonts.org/" target="_blank" rel="noopener">Programming Fonts</a></li>
+</ul>
+<p>4、中文字体：<a href="https://github.com/adobe-fonts/source-han-sans/blob/master/README-CN.md" target="_blank" rel="noopener">思源黑体</a></p>
+<ul>
+<li>安装详见：<a href="https://zhuanlan.zhihu.com/p/65362086" target="_blank" rel="noopener">Fira Code —— 专为编程而生的字体</a></li>
+</ul>
+<p>最终的配置如下：<br><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">"workbench.colorTheme"</span>: <span class="hljs-string">"Material Theme Palenight"</span>,</span><br><span class="line"><span class="hljs-string">"workbench.iconTheme"</span>: <span class="hljs-string">"material-icon-theme"</span>,</span><br><span class="line"><span class="hljs-string">"editor.fontFamily"</span>:  <span class="hljs-string">"'Fira Code','Source Han Sans CN'"</span>, <span class="hljs-comment">// 设置的字体类型为 Fira Code 和思源黑体</span></span><br><span class="line"><span class="hljs-string">"editor.fontLigatures"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 控制是否启用字体连字</span></span><br><span class="line"><span class="hljs-string">"editor.fontSize"</span>: <span class="hljs-number">16</span>, <span class="hljs-comment">// 字号</span></span><br><span class="line"><span class="hljs-string">"editor.lineHeight"</span>: <span class="hljs-number">24</span>, <span class="hljs-comment">// 行高</span></span><br><span class="line"><span class="hljs-string">"editor.fontWeight"</span>: <span class="hljs-string">"500"</span>,<span class="hljs-comment">// 字重</span></span><br><span class="line"><span class="hljs-string">"editor.minimap.enabled"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 不显示右侧预览地图</span></span><br><span class="line"><span class="hljs-string">"editor.renderIndentGuides"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 不显示缩进参考线</span></span><br><span class="line"><span class="hljs-string">"editor.rulers"</span>: [<span class="hljs-number">120</span>],<span class="hljs-comment">// 在一定数量的等宽字符后显示垂直标尺。输入多个值，显示多个标尺。若数组为空，则不绘制标尺。</span></span><br><span class="line"><span class="hljs-string">"editor.wordWrap"</span>: <span class="hljs-string">"on"</span>,<span class="hljs-comment">// 自动换行</span></span><br></pre></td></tr></table></figure></p>
+<p>One Dark Pro 预览：<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d3e551fcd3ae4e15a0dc0d739c5e3e1c~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<p>Material Theme Palenight High Contrast 预览：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cb7bbd000a8a41c7b96e7836b3e13465~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h2 id="四、实用插件"><a href="#四、实用插件" class="headerlink" title="四、实用插件"></a>四、实用插件</h2><ul>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans" target="_blank" rel="noopener">Chinese (Simplified) Language Pack for Visual Studio Code</a>： </p>
+<ul>
+<li>适用于 VS Code 的中文（简体）语言包</li>
+<li>英文好的同学可以不必安装本插件<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d17de760d95b4304ac3d1fde034c3afa~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint" target="_blank" rel="noopener">ESLint</a>:</p>
+<ul>
+<li>使用 ESLint 进行代码检查，本插件必备</li>
+<li>安装后可以看到在 node 上启动了一个 ESLint server<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/17215185b1a24bbf9c17c320790be1ec~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" rel="noopener">Prettier</a>:</p>
+<ul>
+<li>格式化插件，Opinionated 格式化工具的代表，少些纠结，按照它的约定来就行了</li>
+<li>支持语言： JavaScript、TypeScript、Flow、JSX、JSON、CSS、SCSS、Less、HTML、Vue、Angular、GraphQL、Markdown、YAML</li>
+<li>可以搭配 ESLint、StyleLint，详见<a href="https://prettier.io/" target="_blank" rel="noopener">官网文档</a><br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9121d17e230b4e54ac89435e61f342ed~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens" target="_blank" rel="noopener">GitLens</a>：</p>
+<ul>
+<li>增强了 VS Code 内置的 Git 功能</li>
+<li>使用 Git 托管的项目必备本插件<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/61f8f9989c9a41a997a140a013344f5e~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><p>[已经内置，不再需要安装该插件] <a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome" target="_blank" rel="noopener">Debugger for Chrome</a>：</p>
+<ul>
+<li>已经合并入 <a href="https://github.com/microsoft/vscode-js-debug" target="_blank" rel="noopener">vscode-js-debug</a></li>
+<li>从 VS Code 1.46 版本开始内置</li>
+</ul>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense" target="_blank" rel="noopener">Path Intellisense</a>：</p>
+<ul>
+<li>路径自动补全插件</li>
+<li>虽然 VS Code 自带了自动补全路径功能，html文件没有问题，但是在 JSX 里有些文件无法智能提示（比如 JSX 里面的 img 的 src ），本插件很好用，相对路径绝对路径都没有问题<br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b28f8309684e4ea9b7ee8975a282b97b~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=eriklynd.json-tools" target="_blank" rel="noopener">JSON Tools</a></p>
+<ul>
+<li>格式化JSON很方便，只需两个快捷键: 格式化JSON <code>Ctrl(Cmd)+Alt+M</code>, 压缩JSON <code>Alt+M</code><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1b5fc1a8790942f9b543bec21c8cce16~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion" target="_blank" rel="noopener">IntelliSense for CSS class names in HTML</a> </p>
+<ul>
+<li>CSS 智能提示插件</li>
+<li>本插件已经支持<code>className</code> 和 <code>class</code> (TypeScript React, JavaScript and JavaScript React language modes)</li>
+<li>暂不支持 css module 智能提示<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9c4ab2ee6256402ca43847de50c899fd~tplv-k3u1fbpfcp-watermark.image" alt=""><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a13fe9a4ffa946c0913faa125529a843~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=clinyong.vscode-css-modules" target="_blank" rel="noopener">CSS Modules</a>：</p>
+<ul>
+<li>CSS Module 智能提示</li>
+<li>本插件可以解决 IntelliSense for CSS class names in HTML 不支持 css module 智能提示的功能</li>
+<li>可以实现 css 自动补全、转到定义位置<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1c8eeb25e48b46a58eb42b00b390808a~tplv-k3u1fbpfcp-watermark.image" alt=""><br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/92ac3f8eea7b4bac91ea9313778a6cc2~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2" target="_blank" rel="noopener">Bracket Pair Colorizer 2</a>： </p>
+<ul>
+<li>括号颜色匹配插件,已经升级到了第 2 版，使用与 VS Code 一致的括号分析引擎，速度更快，准确性更高</li>
+<li>使用颜色来配对括号<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2592021313d74c07a0ee3956ece6c0fa~tplv-k3u1fbpfcp-watermark.image" alt=""><br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a5089c38fbb64332932abbbf441c760d~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><p><a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks" target="_blank" rel="noopener">Bookmarks</a>：</p>
+<ul>
+<li>将常用的位置添加到书签，可以极大提高效率</li>
+<li>快捷键： Ctrl + Alt + K   / Commond + Option + K<br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/52e43ef31e5c46c4ad69729bbc9ea711~tplv-k3u1fbpfcp-watermark.image" alt=""><br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a4d4fc6e7fae42418f36d39ae8be575c~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=adpyke.codesnap" target="_blank" rel="noopener">CodeSnap</a>：<ul>
+<li>简单快速生成漂亮的代码截图，非常推荐<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4c1046b125d94a2691e0a3f1b51263bd~tplv-k3u1fbpfcp-watermark.image" alt=""><br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac150382dfd3418ba45ad9b6c9e25f94~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode" target="_blank" rel="noopener">Tabnine Autocomplete AI</a>：<ul>
+<li>使用 AI 对代码进行自动补全和提示，用了一段时间，按照习惯补全代码还是很香的</li>
+<li>离线也能使用<br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a606893b41e74a42b977834e3537c01f~tplv-k3u1fbpfcp-watermark.image" alt=""><br><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cd308bae4a164b8eb68257dbfa620776~tplv-k3u1fbpfcp-watermark.image" alt=""></li>
+</ul>
+</li>
+</ul>
+<h2 id="五、关于格式化"><a href="#五、关于格式化" class="headerlink" title="五、关于格式化"></a>五、关于格式化</h2><p>ESLint + Prettier 应该是标配，具体配置会在下一篇文章。</p>
+<h2 id="六、Webpack-别名在-VS-Code-中无法跳转到对应文件"><a href="#六、Webpack-别名在-VS-Code-中无法跳转到对应文件" class="headerlink" title="六、Webpack 别名在 VS Code 中无法跳转到对应文件"></a>六、Webpack 别名在 VS Code 中无法跳转到对应文件</h2><p>在项目根目录创建 <code>jsconfig.json</code> 文件，比如在 webpack 配置了 <code>@src</code> 的别名，配置如下：</p>
+<figure class="highlight json hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="hljs-attr">"baseUrl"</span>: <span class="hljs-string">"."</span>,</span><br><span class="line">    <span class="hljs-attr">"paths"</span>: &#123;</span><br><span class="line">      <span class="hljs-attr">"@src/*"</span>: [<span class="hljs-string">"./src/*"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a href="https://juejin.im/post/6844903624162672648" target="_blank" rel="noopener">强大的 VS Code</a></li>
+<li><a href="https://blog.csdn.net/u012814856/article/details/80684376" target="_blank" rel="noopener">简单的 VSCode 插件离线安装方法</a> </li>
+<li><a href="https://zhuanlan.zhihu.com/p/65362086" target="_blank" rel="noopener">Fira Code —— 专为编程而生的字体</a></li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/React/">React</a>, <a class="has-link-grey -link" href="/tags/Tools/">Tools</a>, <a class="has-link-grey -link" href="/tags/VS-Code/">VS Code</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat.jpeg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/12/why-i-write-css-in-javascript/">
+                <span class="level-item">[译] 为什么我用 JavaScript 来编写 CSS</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: 'Mon Feb 08 2021 11:12:25 GMT+0800',
+		owner: 'Ivocin',
+		repo: 'BlogComment',
+		oauth: {
+			client_id: 'clinet',
+			client_secret: '64bc865f757ffec352d5288ad500b6f4707cd8a7',
+		},
+	})
+	gitment.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.jpg" alt="清秋">
+                    
+                    <p class="is-size-4 is-block">
+                        清秋
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        SDE @ CMBC
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Beijing, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        18
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        21
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/ivocin">
+                关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://juejin.im/user/58855de9128fe100683a3339/posts" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">掘金专栏</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">juejin.im</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/Designs-Arts/">
+            <span class="level-start">
+                <span class="level-item">Designs & Arts</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Designs-Arts/UX/">
+            <span class="level-start">
+                <span class="level-item">UX</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li></ul></li><li>
+        <a class="level is-marginless" href="/categories/Front-End/">
+            <span class="level-start">
+                <span class="level-item">Front-End</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">16</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/Front-End/CSS/">
+            <span class="level-start">
+                <span class="level-item">CSS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Front-End/JavaScript/">
+            <span class="level-start">
+                <span class="level-item">JavaScript</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Front-End/Performance/">
+            <span class="level-start">
+                <span class="level-item">Performance</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Front-End/React/">
+            <span class="level-start">
+                <span class="level-item">React</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">8</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Front-End/Tools/">
+            <span class="level-start">
+                <span class="level-item">Tools</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Front-End/Vue/">
+            <span class="level-start">
+                <span class="level-item">Vue</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li></ul></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Ant-Design/" style="font-size: 10px;">Ant Design</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Create-React-App/" style="font-size: 12px;">Create React App</a> <a href="/tags/Design/" style="font-size: 12px;">Design</a> <a href="/tags/Dva/" style="font-size: 12px;">Dva</a> <a href="/tags/Frontend/" style="font-size: 12px;">Frontend</a> <a href="/tags/Hooks/" style="font-size: 10px;">Hooks</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/React-Conf-2018/" style="font-size: 12px;">React Conf 2018</a> <a href="/tags/React-Hooks/" style="font-size: 14px;">React Hooks</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Translation/" style="font-size: 18px;">Translation</a> <a href="/tags/UX/" style="font-size: 12px;">UX</a> <a href="/tags/Umi/" style="font-size: 12px;">Umi</a> <a href="/tags/VS-Code/" style="font-size: 12px;">VS Code</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+            
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#一、Windows-安装-VS-Code-的小提示">
+        <span class="has-mr-6">1</span>
+        <span>一、Windows 安装 VS Code 的小提示</span>
+        </a></li><li>
+        <a class="is-flex" href="#二、VS-Code-插件的离线安装">
+        <span class="has-mr-6">2</span>
+        <span>二、VS Code 插件的离线安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#三、外观配置">
+        <span class="has-mr-6">3</span>
+        <span>三、外观配置</span>
+        </a></li><li>
+        <a class="is-flex" href="#四、实用插件">
+        <span class="has-mr-6">4</span>
+        <span>四、实用插件</span>
+        </a></li><li>
+        <a class="is-flex" href="#五、关于格式化">
+        <span class="has-mr-6">5</span>
+        <span>五、关于格式化</span>
+        </a></li><li>
+        <a class="is-flex" href="#六、Webpack-别名在-VS-Code-中无法跳转到对应文件">
+        <span class="has-mr-6">6</span>
+        <span>六、Webpack 别名在 VS Code 中无法跳转到对应文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#参考链接">
+        <span class="has-mr-6">7</span>
+        <span>参考链接</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+        
+            
+        
+            
+        
+            
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#一、Windows-安装-VS-Code-的小提示">
+        <span class="has-mr-6">1</span>
+        <span>一、Windows 安装 VS Code 的小提示</span>
+        </a></li><li>
+        <a class="is-flex" href="#二、VS-Code-插件的离线安装">
+        <span class="has-mr-6">2</span>
+        <span>二、VS Code 插件的离线安装</span>
+        </a></li><li>
+        <a class="is-flex" href="#三、外观配置">
+        <span class="has-mr-6">3</span>
+        <span>三、外观配置</span>
+        </a></li><li>
+        <a class="is-flex" href="#四、实用插件">
+        <span class="has-mr-6">4</span>
+        <span>四、实用插件</span>
+        </a></li><li>
+        <a class="is-flex" href="#五、关于格式化">
+        <span class="has-mr-6">5</span>
+        <span>五、关于格式化</span>
+        </a></li><li>
+        <a class="is-flex" href="#六、Webpack-别名在-VS-Code-中无法跳转到对应文件">
+        <span class="has-mr-6">6</span>
+        <span>六、Webpack 别名在 VS Code 中无法跳转到对应文件</span>
+        </a></li><li>
+        <a class="is-flex" href="#参考链接">
+        <span class="has-mr-6">7</span>
+        <span>参考链接</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+    
+        
+    
+        
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div style="text-align: center">
+
+            MIT Licensed | Copyright &copy; 2021 清秋&nbsp;
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
