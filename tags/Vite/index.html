@@ -2,7 +2,7 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: React - 清秋的博客</title>
+<title>标签: Vite - 清秋的博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -11,7 +11,7 @@
 <meta name="keywords" content="Front End, CS, Design, Translation, Art, PM">
 <meta property="og:type" content="website">
 <meta property="og:title" content="清秋的博客">
-<meta property="og:url" content="https://ivocin.github.io/categories/Front-End/React/index.html">
+<meta property="og:url" content="https://ivocin.github.io/tags/Vite/index.html">
 <meta property="og:site_name" content="清秋的博客">
 <meta property="og:description" content="Front End, CS, Design, Translation, Art, PM">
 <meta property="og:locale" content="zh-CN">
@@ -146,11 +146,8 @@ var _hmt = _hmt || [];
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li><a href="/categories/Front-End/">Front-End</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">React</a></li>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">Vite</a></li>
         </ul>
         </nav>
     </div>
@@ -159,8 +156,8 @@ var _hmt = _hmt || [];
     <div class="card">
     
     <div class="card-image">
-        <a href="/2018/11/28/React_today_and_tomorrow2/" class="image is-7by1">
-            <img class="thumbnail" src="/images/ReactLogo.png" alt="[译] React 的今天和明天（图文版） —— 第二部分">
+        <a href="/2021/02/08/vite2-practice/" class="image is-7by1">
+            <img class="thumbnail" src="/images/vite2p.png" alt="Vite 2 + React 实践">
         </a>
     </div>
     
@@ -168,17 +165,17 @@ var _hmt = _hmt || [];
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-28T02:00:00.000Z">2018-11-28</time>
+                <time class="level-item has-text-grey" datetime="2021-02-08T03:12:25.000Z">2021-02-08</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/React/">React</a>
+                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/Tools/">Tools</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 小时 读完 (大约 11808 个字)
+                    21 分钟 读完 (大约 3099 个字)
                 </span>
                 
             </div>
@@ -186,446 +183,107 @@ var _hmt = _hmt || [];
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/11/28/React_today_and_tomorrow2/">[译] React 的今天和明天（图文版） —— 第二部分</a>
+                <a class="has-link-black-ter" href="/2021/02/08/vite2-practice/">Vite 2 + React 实践</a>
             
         </h1>
         <div class="content">
-            <blockquote>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><a href="https://github.com/vitejs/vite" target="_blank" rel="noopener">Vite</a> 无疑是当前最火热的项目之一，随着春节后 2.0 版本的发布，越来越多开发者开始关注起了这个项目。这个号称<strong>下一代前端构建工具</strong>的给我们最大的印象的就是<strong>快</strong>。日常被缓慢的项目启动时间和 <code>HMR</code> 折磨，有了 <code>Vite</code> 之后，真的不要太爽。虽然 <code>Vite</code> 和框架无关，但应用较多的仍然是 <code>Vue</code> 工程，那么 <code>React</code> 工程是否能够顺利使用呢，这两周在工作之余，就开始了 <code>Vite 2.0</code> + <code>React</code> 的尝试。当然其中踩了比较多的坑，比如 <code>Antd</code> 的引入带来的一系列问题，别名怎么写，代理如何配置，集成 <code>ahooks</code> 等等，希望能够帮助到使用 <code>React</code> 又想使用 <code>Vite</code> 提升开发效率的同学，少走弯路。当然，我们还可以从实践的过程中直观了解到 <code>Vite</code> 的预打包原理以及性能真实的感受。</p>
+<p>本文源码地址在 <a href="https://github.com/Ivocin/vite-playgrounds/tree/main/vite-react" target="_blank" rel="noopener">vite-playgrounds</a> 中，如果阅读中发现问题，欢迎 pr。</p>
+<p>这段时间也参与了 <a href="https://cn.vitejs.dev/" target="_blank" rel="noopener">Vite 中文文档</a> 的翻译工作，欢迎有兴趣的同学前来优化和勘误。</p>
+<blockquote>
+<p>另外做个预告，春节期间花了时间参与了<a href="https://github.com/yyx990803" target="_blank" rel="noopener">尤大</a>在 Twitch 上做客 Open Source Friday 节目的直播视频 —— <a href="https://www.twitch.tv/videos/911252528" target="_blank" rel="noopener">Next generation frontend tooling with ViteJS ✨ Open Source Friday ✨</a> 的字幕翻译工作，在视频里有尤大关于 <code>Vite</code> 的各项功能的详细阐述、大神在线编码、在线 Debug、大佬 diss <code>webpack</code> 以及对 <code>Vite</code> 的哲学思考。视频总时长一个小时，假期复工后就没有太多精力投入了，估计下周会做好发出来，敬请期待。</p>
+</blockquote>
+<p>好了，现在和我一起，Step by Step 进入 <code>Vite 2</code> + <code>React</code> 实战之旅。</p>
+<h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init @vitejs/app</span><br></pre></td></tr></table></figure>
+<p>选择项目名和模板：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dcccaa249e614446b06a54c31eb06f53~tplv-k3u1fbpfcp-watermark.image" alt=""><br><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6b20e913019549fbb62b10cab1ae444b~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>安装依赖并启动：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> vite-react</span><br><span class="line">$ npm install</span><br><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c69d3f01254249c5aa02f3084d563da4~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>对比使用 <code>webpack</code> 搭建 <code>React</code> 环境可以看出，使用 <code>Vite</code> 后，添加 <code>Babel</code>、<code>React</code>、<code>webpack-dev-server</code> 的工作都可以省略了：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1d41b7a127e74d42b068bbe6db8ba9e1~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<h2 id="添加-Antd-爬坑记"><a href="#添加-Antd-爬坑记" class="headerlink" title="添加 Antd 爬坑记"></a>添加 Antd 爬坑记</h2><h3 id="样式爬坑记"><a href="#样式爬坑记" class="headerlink" title="样式爬坑记"></a>样式爬坑记</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install antd</span><br></pre></td></tr></table></figure>
+<p>在 <code>App.jsx</code> 中引入 <code>antd</code> ：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; DatePicker &#125; <span class="hljs-keyword">from</span> ‘antd’;</span><br></pre></td></tr></table></figure>
+<p>保存后，页面 <code>reload</code>，注意不是 <code>HMR</code>，此时 <code>Antd</code> 已经被引入：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/44018aa46a024caa8f0f5c65605adbc7~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>然后我们来添加 <code>DatePicker</code>，发现没有样式：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e81ba8bf7b4749c29fb5f6dc5c49101b~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>按照 antd 官网文档指引，引入 <code>CSS</code> 样式，稍微好了一些，但是仍然不正常：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/01c2d23283ff43db99a3d838d075411c~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>尝试引入 <code>Less</code>，直接报错：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/08a4ccc0514049bcab4e8852d46c2b26~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p><code>Vite</code> 内置支持 <code>Less</code>，但是使用需要用户手动安装 <code>Less</code>，详见官网文档：<a href="https://vitejs.dev/guide/features.html#css-pre-processors" target="_blank" rel="noopener">Features # CSS Pre-processors</a></p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -D less</span><br></pre></td></tr></table></figure>
+<p>安装完重新启动，又出现了新的错误：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/148261c8c7ad461fa10c6bf52da24be7~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>熟悉的味道，是 <code>Antd</code> 的报错没错了。错误信息里提示可以看这个 <a href="https://github.com/ant-design/ant-motion/issues/44" target="_blank" rel="noopener">Issue</a>，没看这个 Issue 有两年了，发现这个 Issue 越来越大了，因为期间 <code>less-loader</code> 升级又带来了新坑。解决方案总结起来就是在 <code>webpack</code> 的 <code>less-loader</code> 中开启 <code>javascriptEnabled</code>，详见这个 <a href="https://github.com/Ivocin/webpack-playgrounds/commit/3fb70ba9c857ca7cd7e356a5f2c4166b3f37c3c3#diff-cb5bbe1acca2b85cc0de0a2408425020a4770aa1e949f26fea00e4581570a9c8" target="_blank" rel="noopener">Commit</a></p>
+<p>那么在 <code>Vite</code> 中怎么做呢，<code>Vite</code> 也开放了 <code>CSS</code> 预处理器的配置，详见<a href="https://vitejs.dev/config/#css-preprocessoroptions" target="_blank" rel="noopener">官网文档</a> ，在 <code>vite.config.js</code> 文件中添加如下配置：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// vite.config.js</span></span><br><span class="line">...</span><br><span class="line">  css: &#123;</span><br><span class="line">    preprocessorOptions: &#123;</span><br><span class="line">      less: &#123;</span><br><span class="line">        javascriptEnabled: <span class="hljs-literal">true</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>终于，样式正常了：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9bde6d306c6c4089a6b8b5c602425f4a~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<h3 id="有关使用全量-Antd-包的警告分析"><a href="#有关使用全量-Antd-包的警告分析" class="headerlink" title="有关使用全量 Antd 包的警告分析"></a>有关使用全量 <code>Antd</code> 包的警告分析</h3><p>另外需要注意的一点是，打开调试窗口，又一个熟悉的警告又出现了，相信早期使用 <code>Antd</code> 开发的同学都不陌生：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1ccd8c931ff04f748f1938046f8f3577~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>原来的项目使用的是 <code>webpack</code>，在 <code>webpack@2</code> 之后，就支持 <code>ES</code> 模块的 <code>tree shaking</code> 了，这个警告不会出现。</p>
+<p>而在 <code>Vite</code> 中，我们可以查看<a href="https://vitejs.dev/guide/features.html#npm-dependency-resolving-and-pre-bundling" target="_blank" rel="noopener">官方文档</a>，<code>Vite</code> 会对 <code>npm</code> 依赖进行预构建并重写为合法的 <code>url</code>。在本项目中，<code>Vite</code> 将 <code>Antd</code> 预构建到 <code>/node_moduls/.vite</code> 文件夹，并且将 <code>url</code> 重写为 <code>/node_modules/.vite/antd.js?v=d2a18218</code>，因此会出现这个警告。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fd8fb231d58d4273852709502ff86151~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>不过不用担心，在生产包仍然会进行 <code>tree shaking</code>。而开发环境即使引入全量的 <code>Antd</code> 包，<code>Vite</code> 基于 <code>esbuild</code> 的预编译速度超快，而且之后浏览器会缓存住这个包，开发体验不降反升，这个警告就可以忽略了。</p>
+<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>再来试试改变主题是否有效：</p>
+<p>按照官网的指引，使用 <code>less</code> 的  <a href="http://lesscss.org/usage/#using-less-in-the-browser-modify-variables" target="_blank" rel="noopener"><code>modifyVar</code></a> 来覆盖 <code>less</code> 变量，从而达到改变主题的目的，<a href="https://ant.design/docs/react/customize-theme-cn" target="_blank" rel="noopener">定制主题 - Ant Design</a><br>和 <code>webpack</code> 配置在 <code>less-loader</code> 里不同， 在 <code>Vite</code> 中则简单很多，仍然在 <code>less</code> 的 <code>option</code> 里配置就可以了：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// vite.config.js</span></span><br><span class="line">...</span><br><span class="line">      less: &#123;</span><br><span class="line">        javascriptEnabled: <span class="hljs-literal">true</span>,</span><br><span class="line">        modifyVars: &#123;</span><br><span class="line">          <span class="hljs-string">"primary-color"</span>: <span class="hljs-string">"#1DA57A"</span>,</span><br><span class="line">          <span class="hljs-string">"link-color"</span>: <span class="hljs-string">"#1DA57A"</span>,</span><br><span class="line">          <span class="hljs-string">"border-radius-base"</span>: <span class="hljs-string">"2px"</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>可以看到样式生效了：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/583d0d44cc19419c8b1b5b3d781a3695~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>按照这个思路，我们修改为暗黑主题也比较简单了：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> &#123; defineConfig &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"vite"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> reactRefresh <span class="hljs-keyword">from</span> <span class="hljs-string">"@vitejs/plugin-react-refresh"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; getThemeVariables &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"antd/dist/theme"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// https://vitejs.dev/config/</span></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> defineConfig(&#123;</span><br><span class="line">  plugins: [reactRefresh()],</span><br><span class="line">  css: &#123;</span><br><span class="line">    preprocessorOptions: &#123;</span><br><span class="line">      less: &#123;</span><br><span class="line">        javascriptEnabled: <span class="hljs-literal">true</span>,</span><br><span class="line">        modifyVars: &#123;</span><br><span class="line">          ...getThemeVariables(&#123;</span><br><span class="line">            dark: <span class="hljs-literal">true</span>,</span><br><span class="line">          &#125;),</span><br><span class="line">          ...&#123;</span><br><span class="line">            <span class="hljs-string">"primary-color"</span>: <span class="hljs-string">"#1DA57A"</span>,</span><br><span class="line">            <span class="hljs-string">"link-color"</span>: <span class="hljs-string">"#1DA57A"</span>,</span><br><span class="line">            <span class="hljs-string">"border-radius-base"</span>: <span class="hljs-string">"2px"</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>没问题，暗黑主题生效：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99dcbc886f8e466ea06716b3b9cb6c57~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<h2 id="配置代理，能通过-RESTFul-的方式访问"><a href="#配置代理，能通过-RESTFul-的方式访问" class="headerlink" title="配置代理，能通过 RESTFul 的方式访问"></a>配置代理，能通过 RESTFul 的方式访问</h2><p>参考官网的 <a href="https://vitejs.dev/config/#server-proxy" target="_blank" rel="noopener">server.proxy 配置</a>，这里需要特别注意 <code>proxy</code> 的写法和我们之前使用的 <code>webpack-dev-server</code> 里面的 <code>proxy</code> 配置稍有不同，如下：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// vite.config.js</span></span><br><span class="line">  server: &#123;</span><br><span class="line">    proxy: &#123;</span><br><span class="line">      <span class="hljs-string">'/api'</span>: &#123;</span><br><span class="line">        target: <span class="hljs-string">'http://jsonplaceholder.typicode.com/'</span>,</span><br><span class="line">        changeOrigin: <span class="hljs-literal">true</span>,</span><br><span class="line">        rewrite: <span class="hljs-function">(<span class="hljs-params">path</span>) =&gt;</span> path.replace(<span class="hljs-regexp">/^\/api/</span>, <span class="hljs-string">''</span>),</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>此时我们访问 <a href="http://localhost:3000/api/users" target="_blank" rel="noopener">http://localhost:3000/api/users</a> ，就能访问到 jsonplaceholder.typicode.com/users 的数据了</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f3d799150adc49789d69141335d1a0e5~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<h2 id="集成-React-Router"><a href="#集成-React-Router" class="headerlink" title="集成 React Router"></a>集成 React Router</h2><p>下面我们来添加菜单和路由，首先引入 <code>React Router</code>：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i react-router-dom</span><br></pre></td></tr></table></figure>
+<p>新建 <code>index.jsx</code> 文件：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; BrowserRouter <span class="hljs-keyword">as</span> Router, Switch, Route, Link &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"react-router-dom"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">"./App"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Index</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;Router&gt;</span><br><span class="line">      &lt;Switch&gt;</span><br><span class="line">        &lt;Route path=<span class="hljs-string">"/app"</span>&gt;</span><br><span class="line">          &lt;App /&gt;</span><br><span class="line">        &lt;<span class="hljs-regexp">/Route&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>Switch&gt;</span><br><span class="line">    &lt;<span class="hljs-regexp">/Router&gt;</span></span><br><span class="line"><span class="hljs-regexp">  );</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>修改 <code>main.jsx</code> 文件，将 <code>App</code> 替换为 <code>Index</code>：</p>
+<figure class="highlight diff hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import React from 'react'</span><br><span class="line">import ReactDOM from 'react-dom'</span><br><span class="line">import './index.css'</span><br><span class="line"><span class="hljs-deletion">- import App from './App'</span></span><br><span class="line"><span class="hljs-addition">+ import Index from './index'</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;React.StrictMode&gt;</span><br><span class="line"><span class="hljs-deletion">-   &lt;App /&gt;</span></span><br><span class="line"><span class="hljs-addition">+   &lt;Index /&gt;</span></span><br><span class="line">  &lt;/React.StrictMode&gt;,</span><br><span class="line">  document.getElementById('root')</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>此时访问 <a href="http://localhost:3000/app" target="_blank" rel="noopener">http://localhost:3000/app</a> 可以访问到 <code>App</code> 页面，路由生效。</p>
+<p>我们再来增加一个菜单，新建 <code>Layout.jsx</code> 文件：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; Menu &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"antd"</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; Link &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">"react-router-dom"</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Layout</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> (</span><br><span class="line">    &lt;Menu selectedKeys=<span class="hljs-string">"App"</span> mode=<span class="hljs-string">"horizontal"</span>&gt;</span><br><span class="line">      &lt;Menu.Item key=<span class="hljs-string">"App"</span>&gt;</span><br><span class="line">        &lt;Link to=<span class="hljs-string">"/app"</span>&gt;App&lt;<span class="hljs-regexp">/Link&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>Menu.Item&gt;</span><br><span class="line">    &lt;<span class="hljs-regexp">/Menu&gt;</span></span><br><span class="line"><span class="hljs-regexp">  );</span></span><br><span class="line"><span class="hljs-regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>最后在 <code>index.jsx</code> 引入 <code>Layout</code> 文件，以上过程详见 <a href="https://github.com/Ivocin/vite-playgrounds/commit/728acc2133e1a542e37b1b4bf09f0bd18323c46c" target="_blank" rel="noopener">这个 Commit</a></p>
+<h2 id="注意别名的用法-——-breaking-change"><a href="#注意别名的用法-——-breaking-change" class="headerlink" title="注意别名的用法 —— breaking change"></a>注意别名的用法 —— breaking change</h2><p>注意 <code>Vite@2</code> 的 <code>UserConfig.alias</code> 已经过时，改为使用 <code>resolve.alias</code> 替代，写法也和 <code>Vite@1</code> 不一样，详见 <a href="https://vitejs.dev/config/#resolve-alias" target="_blank" rel="noopener">官网文档 - resolve-alias</a> 和 <a href="https://github.com/rollup/plugins/tree/master/packages/alias#regular-expression-aliases" target="_blank" rel="noopener">rollup plugins 文档</a></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// vite.config.js</span></span><br><span class="line">...</span><br><span class="line"><span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">"path"</span>;</span><br><span class="line">...</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: [</span><br><span class="line">      &#123;</span><br><span class="line">        find: <span class="hljs-regexp">/^~/</span>,</span><br><span class="line">        replacement: path.resolve(__dirname, <span class="hljs-string">"src"</span>),</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>然后我们调整文件结构，然后使用别名代替相对路径，详见 <a href="https://github.com/Ivocin/vite-playgrounds/commit/279e144ce9a26988989791f2616d3d9098f164b7" target="_blank" rel="noopener">这个<br>Commit</a></p>
+<h2 id="用户列表页面"><a href="#用户列表页面" class="headerlink" title="用户列表页面"></a>用户列表页面</h2><p>接下来我们开发一个模拟真实接口的用户列表 ，参考 <a href="https://juejin.cn/post/6844903672665604104" target="_blank" rel="noopener">umi@2 + dva，完成用户管理的 CURD 应用</a> 的步骤</p>
+<h3 id="新建-User-页面"><a href="#新建-User-页面" class="headerlink" title="新建 User 页面"></a>新建 User 页面</h3><p>添加 <code>User</code> 路由和页面，详见<a href="https://github.com/Ivocin/vite-playgrounds/commit/7dc0b05bb2f16eb6046af1dd0b54e95fb4d30363" target="_blank" rel="noopener">这个 Commit</a>。</p>
+<p>此时访问  <a href="http://localhost:3000/user" target="_blank" rel="noopener">http://localhost:3000/user</a>  就能看到新增的 <code>User</code> 页面了：<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4d624cf2225b4743898f3869cef9d791~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<h3 id="请求接口爬坑记"><a href="#请求接口爬坑记" class="headerlink" title="请求接口爬坑记"></a>请求接口爬坑记</h3><p>请求接口数据，这里使用 <a href="https://ahooks.js.org/zh-CN" target="_blank" rel="noopener">ahooks</a> 的 <a href="https://ahooks.js.org/zh-CN/hooks/async" target="_blank" rel="noopener"><code>use-request</code></a></p>
+<p>这里使用 <code>npm 7</code> 安装 会报错：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d945132eda8b43e38451fcf4889d7544~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>因为 <code>npm 7</code> 会自动安装 <code>peerDependency</code>，而 <code>ahooks</code> 的 <code>peerDependency</code> 是 <code>react@^16.8.6</code> ，导致与本项目的 <code>react@17</code> 版本冲突报错，这个问题已经在 <a href="https://github.com/alibaba/hooks/pull/871" target="_blank" rel="noopener">这个 pr</a>里修复了，但是目前还没有发包，暂时使用 <code>yarn</code> 绕过这个问题：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add @ahooksjs/use-request</span><br></pre></td></tr></table></figure>
+<p>现在就可以使用 <code>use-request</code> 请求 <code>/api/users</code> 获取用户信息了：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> &#123; data, error, loading &#125; = useRequest(<span class="hljs-string">'/api/users'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="展示数据"><a href="#展示数据" class="headerlink" title="展示数据"></a>展示数据</h3><p>接口请求的坑填好后，就可以展示用户信息了。我们来添加一个表格展示用户信息，详见 <a href="https://github.com/Ivocin/vite-playgrounds/commit/6979cbc55f818baccc01eb2842913f1e7cca0804" target="_blank" rel="noopener">这个 Commit</a>。</p>
+<p><code>use-request</code> 返回了 <code>loading</code>，再结合 <code>antd</code> <code>table</code> 组件的 <code>loading</code>，处理 <code>loading</code> 就很方便了：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5a561f6a96c40209c01b17d0fc10853~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>至此，模拟接口请求数据的页面就完成了。</p>
+<h3 id="关于分页的坑"><a href="#关于分页的坑" class="headerlink" title="关于分页的坑"></a>关于分页的坑</h3><p>由于我们接口采用模拟接口，分页信息在 <code>Response Headers</code> 里面，请求 <a href="http://jsonplaceholder.typicode.com/users?_page=1&amp;_limit=5" target="_blank" rel="noopener">http://jsonplaceholder.typicode.com/users?_page=1&amp;_limit=5</a> 可以看到：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bee567880dc74192a871589f114dd4d2~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>查看了 <code>ahooks</code> 的 <code>API</code>，发现并没有对 <code>Response Headers</code> 的处理功能，查看 <a href="https://github.com/alibaba/hooks/blob/3a7b7d550f388c4fd0d07f975c812b626d96d27a/packages/use-request/src/index.ts" target="_blank" rel="noopener">源码</a> 发现确实目前没有办法拿到 <code>Headers</code> 里的值：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ce22080b3ca345dbb77cc3ee97e25e82~tplv-k3u1fbpfcp-watermark.image" alt=""></p>
+<p>真实接口一般分页信息都会在 <code>Response Body</code> 中，分页数据就很容易处理了，这个坑就不费时间填了。</p>
+<h2 id="What-Else"><a href="#What-Else" class="headerlink" title="What Else"></a>What Else</h2><p>当然没有结束，不过剩下的过程就比较常规了，罗列如下：</p>
 <ul>
-<li>原视频地址：<a href="https://youtu.be/dpw9EHDh2bM" target="_blank" rel="noopener">React Today and Tomorrow and 90% Cleaner React with Hooks</a></li>
-<li>中英文字幕视频地址（B站）：<a href="https://www.bilibili.com/video/av37035438" target="_blank" rel="noopener">【React Conf 2018】React 的今天和明天中英文双字幕</a></li>
-<li>中英文字幕视频地址（爱奇艺）：<a href="http://www.iqiyi.com/w_19s2xeiycd.html" target="_blank" rel="noopener">React Today And Tomorrow Part II —— 中英双语字幕</a></li>
-<li>英文文稿地址：<a href="https://github.com/Ivocin/Traslation/blob/master/React%20Conf%202018/React%20Today%20and%20Tomorrow%20-%20Part%20II.md" target="_blank" rel="noopener">React Today and Tomorrow - Part II</a></li>
-<li>演讲者:  <a href="https://twitter.com/dan_abramov" target="_blank" rel="noopener">Dan Abramov</a></li>
-<li>英文字幕出自：YouTube 机器翻译</li>
-<li>英文校对、翻译：<a href="https://github.com/Ivocin" target="_blank" rel="noopener">Ivocin</a>, <a href="https://github.com/Augustwuli" target="_blank" rel="noopener">程序媛_小发</a></li>
-<li>排版：<a href="https://github.com/Ivocin" target="_blank" rel="noopener">Ivocin</a></li>
-<li>本文掘金地址：<a href="https://juejin.im/post/5bfccbf8f265da61407e97b5" target="_blank" rel="noopener">[译] React 的今天和明天（图文版） —— 第二部分</a></li>
+<li>集成 <code>Redux</code>，或者使用封装过的 <a href="https://dvajs.com/" target="_blank" rel="noopener">dva.js</a></li>
+<li>约定式路由</li>
+<li>还记得 <a href="https://github.com/ant-design/babel-plugin-import#readme" target="_blank" rel="noopener">babel-plugin-import</a> 吗，在 <code>Vite</code> 中，如果想样式按需加载，可以尝试使用这个插件：<a href="https://github.com/anncwb/vite-plugin-style-import" target="_blank" rel="noopener"><code>vite-plugin-style-import</code></a>，现在已经支持 <code>Vite 2</code> 了</li>
+<li>想使用 <code>TypeScript</code>，可以使用 <code>@vitejs/create-app</code> 的 <code>react-ts</code> 模板，然后按照本文的步骤配置即可</li>
+<li><code>Production Mode</code>、<code>SSR</code>，参照官网配置即可，遇到什么坑可以一起讨论</li>
 </ul>
-</blockquote>
-<blockquote>
-<p> 因为这个演讲 <a href="https://twitter.com/dan_abramov" target="_blank" rel="noopener">Dan</a> 的 Demo 部分比较多，建议如果时间充裕，可以观看视频。希望看本文视频的同学，可以查看我的这篇文章：<a href="https://juejin.im/post/5bfcbc83e51d450fb3263a35" target="_blank" rel="noopener">React Conf 2018 专题 —— React Today and Tomorrow Part II 视频中英双语字幕</a>。第一部分 <a href="https://mobile.twitter.com/sophiebits" target="_blank" rel="noopener">Sophie Alpert</a> 的演讲图文版地址：<a href="https://juejin.im/post/5be90d825188254b0917f180" target="_blank" rel="noopener">[译] React 的今天和明天（图文版） —— 第一部分</a></p>
-</blockquote>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/28/React_today_and_tomorrow2/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/11/27/React_today_and_tomorrow_video2/" class="image is-7by1">
-            <img class="thumbnail" src="/images/reactconf2018v1.png" alt="React Conf 2018 专题 —— React Today and Tomorrow Part II 视频中英双语字幕">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-27T02:00:00.000Z">2018-11-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/React/">React</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 分钟 读完 (大约 1706 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/27/React_today_and_tomorrow_video2/">React Conf 2018 专题 —— React Today and Tomorrow Part II 视频中英双语字幕</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>本文掘金地址：<a href="https://juejin.im/post/5bfcbc83e51d450fb3263a35" target="_blank" rel="noopener">React Conf 2018 专题 —— React Today and Tomorrow Part II 视频中英双语字幕</a><br>距离 <a href="https://conf.reactjs.org/" target="_blank" rel="noopener">React Conf 2018</a>  结束已经将近一个月了，距离上个 React Conf 2018 的<a href="http://www.iqiyi.com/w_19s383ms9d.html" target="_blank" rel="noopener">中英文双语视频</a>发布也有两周的时间了，这两周，一直在进行<a href="https://medium.com/@dan_abramov?source=post_header_lockup" target="_blank" rel="noopener">Dan Abramov</a>  的关于 React Hooks 提案部分演讲的字幕校对和翻译工作，感谢开源社区，这次加入了新的小伙伴 <a href="https://github.com/Augustwuli" target="_blank" rel="noopener">程序媛_小发</a> 一起完成了校对和翻译的工作，让这段视频可以更快的和大家见面。</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/27/React_today_and_tomorrow_video2/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/11/12/React_today_and_tomorrow1/" class="image is-7by1">
-            <img class="thumbnail" src="/images/ReactLogo.png" alt="[译] React 的今天和明天（图文版） —— 第一部分">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-12T02:00:00.000Z">2018-11-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/React/">React</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    23 分钟 读完 (大约 3501 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/12/React_today_and_tomorrow1/">[译] React 的今天和明天（图文版） —— 第一部分</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<ul>
-<li>原视频地址：<a href="https://youtu.be/dpw9EHDh2bM" target="_blank" rel="noopener">React Today and Tomorrow and 90% Cleaner React with Hooks</a></li>
-<li>中英文字幕视频地址（B站）：<a href="https://www.bilibili.com/video/av37035438" target="_blank" rel="noopener">【React Conf 2018】React 的今天和明天中英文双字幕</a></li>
-<li>中英文字幕视频地址（爱奇艺）：<a href="http://www.iqiyi.com/w_19s383ms9d.html" target="_blank" rel="noopener">React Today And Tomorrow Part I —— 中英双语字幕</a></li>
-<li>英文原文地址：<a href="https://github.com/Ivocin/Traslation/blob/master/React%20Conf%202018/React%20Today%20and%20Tomorrow%20-%20Part%20I.md" target="_blank" rel="noopener">React Today and Tomorrow - Part I</a></li>
-<li>中文译文（无图版）地址：<a href="https://github.com/Ivocin/Traslation/blob/master/React%20Conf%202018/React%E7%9A%84%E4%BB%8A%E5%A4%A9%E5%92%8C%E6%98%8E%E5%A4%A9%E2%80%94%E2%80%94%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86.md" target="_blank" rel="noopener">React 的今天和明天—— 第一部分 </a></li>
-<li>演讲者： <a href="https://mobile.twitter.com/sophiebits" target="_blank" rel="noopener">Sophie Alpert</a></li>
-<li>英文字幕出自：YouTube 机器翻译</li>
-<li>英文校对、翻译、排版：<a href="https://github.com/Ivocin" target="_blank" rel="noopener">Ivocin</a></li>
-<li>本文掘金地址：<a href="https://juejin.im/post/5be90d825188254b0917f180" target="_blank" rel="noopener">[译] React 的今天和明天（图文版） —— 第一部分</a></li>
-</ul>
-</blockquote>
-<blockquote>
-<p>2018年 11 月 30 日更新，第二部分已经更新：<a href="https://juejin.im/post/5bfccbf8f265da61407e97b5" target="_blank" rel="noopener">[译] React 的今天和明天（图文版） —— 第二部分 </a>。前两部分中英双语字幕视频已经发布：<a href="https://www.bilibili.com/video/av37035438" target="_blank" rel="noopener">【React Conf 2018】React 的今天和明天中英文双字幕</a>。</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/12/React_today_and_tomorrow1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-image">
-        <a href="/2018/11/12/React_today_and_tomorrow_video1/" class="image is-7by1">
-            <img class="thumbnail" src="/images/ReactLogo.png" alt="React Conf 2018 专题 —— React Today and Tomorrow Part I 视频中英双语字幕">
-        </a>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-12T00:00:00.000Z">2018-11-12</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/React/">React</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1032 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/12/React_today_and_tomorrow_video1/">React Conf 2018 专题 —— React Today and Tomorrow Part I 视频中英双语字幕</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>本文掘金地址：<a href="https://juejin.im/post/5be7ede4518825665f26da14" target="_blank" rel="noopener">React Conf 2018 专题 —— React Today and Tomorrow Part I 视频中英双语字幕</a><br>最近在 <a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a> 校对了一篇 <a href="https://medium.com/@dan_abramov?source=post_header_lockup" target="_blank" rel="noopener">Dan Abramov</a>  的关于 React Hooks 的文章，在 <a href="https://mobile.twitter.com/sophiebits" target="_blank" rel="noopener">Sophie Alpert</a> 和 Dan 在 <a href="https://conf.reactjs.org/" target="_blank" rel="noopener">React Conf 2018</a> 上对 Hooks 的提案之后， Hooks 非常火。想到由于原视频在 Youtube 上的原因导致大部分小伙伴没法观看，而且官方没有提供英文字幕，YouTube 里面的英文字幕是机器自动生成的，错误比较多也没有断句，所以想把 React Conf 2018 的视频中英文字幕配好供大家一起学习。我看B站上已经搬运了 React Conf 2018 的<a href="https://www.bilibili.com/video/av34803724/?spm_id_from=333.788.videocard.1" target="_blank" rel="noopener">全套视频</a>，大家可以去围观。</p>
-</blockquote>
-<blockquote>
-<p>2018年11月30日更新，小发已经把前两部分视频上传到 b 站上了，没广告特别好，视频地址：<a href="https://www.bilibili.com/video/av37035438" target="_blank" rel="noopener">【React Conf 2018】React 的今天和明天中英文双字幕</a></p>
-</blockquote>
-<p>视频地址：<a href="http://www.iqiyi.com/w_19s383ms9d.html" target="_blank" rel="noopener">React Today And Tomorrow Part I —— 中英双语字幕</a></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/12/React_today_and_tomorrow_video1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-09-08T02:46:25.000Z">2018-09-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/React/">React</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    19 分钟 读完 (大约 2817 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/09/08/dva_learning2/">DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一个月来使用 <a href="https://dvajs.com/" target="_blank" rel="noopener">dva</a> 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 <a href="https://umijs.org/zh/" target="_blank" rel="noopener">umi</a> 终于迎来了 2.0 版本，具体介绍可以查看 <a href="https://github.com/sorrycc/blog/issues/74" target="_blank" rel="noopener">发布 umi 2.0，可插拔的企业级 react 应用框架</a>。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看<a href="https://www.yuque.com/ant-design/ant-design-pro/ant_design_pro_2.0_is_out" target="_blank" rel="noopener">漂亮的实力派  Ant Design Pro 2.0 正式发布</a>。今天终于有时间体验了 umi@2 ，想起我的 dva 学习之路的第一篇<a href="https://juejin.im/post/5b67fed36fb9a04f8856f817" target="_blank" rel="noopener">学习记录</a>是使用 <a href="mailto:umi@1.X" target="_blank" rel="noopener">umi@1.X</a> 构建的，刚好可以使用 umi 2.0 重新构建一下。本文是 dva 作者 <a href="https://github.com/sorrycc" target="_blank" rel="noopener">@sorrycc</a> 的 <a href="https://github.com/umijs/umi-dva-user-dashboard" target="_blank" rel="noopener">umi-dva-user-dashboard</a> 的 umi@2 版本实现，是 <a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">《umi + dva，完成用户管理的 CURD 应用》</a> 文章的 umi@2 版本改写。代码仓库： <a href="https://github.com/Ivocin/umi2-dva-user-dashboard" target="_blank" rel="noopener">umi2-dva-user-dashboard</a>。演示地址：<a href="https://ivocin.github.io/userdashboard/">demo</a>。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/09/08/dva_learning2/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-08-06T02:46:25.000Z">2018-08-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/React/">React</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    19 分钟 读完 (大约 2821 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/08/06/dva_learning1/">DvaJS 的学习之路 1 - dva+umi 官网例子学习</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><ul>
-<li><a href="https://dvajs.com/" target="_blank" rel="noopener">dva</a></li>
-<li><a href="https://github.com/sorrycc/roadhog/blob/master/README_zh-cn.md" target="_blank" rel="noopener">roadhog</a></li>
-<li><a href="https://umijs.org/" target="_blank" rel="noopener">umi</a></li>
-<li><a href="https://dvajs.com/knowledgemap/" target="_blank" rel="noopener">dva知识地图</a></li>
-<li><a href="https://github.com/sorrycc/blog/issues/66" target="_blank" rel="noopener">使用 umi 改进 dva 项目开发</a></li>
-</ul>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/08/06/dva_learning1/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-07-30T02:46:25.000Z">2018-07-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/React/">React</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 分钟 读完 (大约 1706 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/07/30/create_react_app_less_issues/">create-react-app 创建项目有关 less 的若干问题</a>
-            
-        </h1>
-        <div class="content">
-            <blockquote>
-<p>在上篇文章<a href="https://juejin.im/post/5b5ad7ace51d4533d2044471" target="_blank" rel="noopener">使用Eject方式在 create-react-app 中使用 Ant Design of React</a>中， 使用<code>create-react-app</code>创建了<code>React</code>项目，并使用<code>Eject</code>方式暴露出了<code>Webpack</code>的配置，并成功按需引入了<code>antd</code>。本文主要内容：解决<code>create-react-app</code>创建项目后<code>less</code>不生效的问题；<code>antd</code>按需引入<code>less</code>源文件，以及遇到的<code>bezierEasing.less</code>文件报错问题；<code>antd</code>本地字体的配置方法；<code>less</code>使用<code>css module</code>的配置。</p>
-</blockquote>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/07/30/create_react_app_less_issues/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-07-29T02:46:25.000Z">2018-07-29</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/React/">React</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 634 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/07/29/create_react_app_antd_eject/">使用 Eject 方式在 create-react-app 中使用 Ant Design of React</a>
-            
-        </h1>
-        <div class="content">
-            <p>Ant Design 官网对 如何 <a href="https://github.com/timarney/react-app-rewired" target="_blank" rel="noopener">react-app-rewired</a> 的方式进行按需加载进行了说明，详见 <a href="http://ant-design.gitee.io/docs/react/use-with-create-react-app-cn" target="_blank" rel="noopener">在 create-react-app 中使用</a> 一文，文中有这样一段话 </p>
-<blockquote>
-<p>你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。</p>
-</blockquote>
-<p>本文主要就Eject方式进行探索</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/07/29/create_react_app_antd_eject/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
