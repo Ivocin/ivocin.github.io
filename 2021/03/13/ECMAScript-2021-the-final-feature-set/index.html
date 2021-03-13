@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>[译]ECMAScript 2021: 最终功能集确定 - 清秋的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="清秋的博客"><meta name="msapplication-TileImage" content="/images/mylogo.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="清秋的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="原文地址：ECMAScript 2021: the final feature set 原文作者：Axel Rauschmayer 本文永久链接：https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;Ivocin&amp;#x2F;Translation&amp;#x2F;Blogs&amp;#x2F;ECMAScript-2021-the-final-feature-set.md 翻译、校对：Ivocin   更新于 2021-03-09: 今天，ES2021"><meta property="og:type" content="blog"><meta property="og:title" content="[译]ECMAScript 2021: 最终功能集确定"><meta property="og:url" content="https://ivocin.github.io/2021/03/13/ECMAScript-2021-the-final-feature-set/"><meta property="og:site_name" content="清秋的博客"><meta property="og:description" content="原文地址：ECMAScript 2021: the final feature set 原文作者：Axel Rauschmayer 本文永久链接：https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;Ivocin&amp;#x2F;Translation&amp;#x2F;Blogs&amp;#x2F;ECMAScript-2021-the-final-feature-set.md 翻译、校对：Ivocin   更新于 2021-03-09: 今天，ES2021"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://ivocin.github.io/images/ecma2021.png"><meta property="article:published_time" content="2021-03-13T08:00:25.000Z"><meta property="article:modified_time" content="2021-03-13T15:50:52.885Z"><meta property="article:author" content="清秋"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="Translation"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/images/ecma2021.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ivocin.github.io/2021/03/13/ECMAScript-2021-the-final-feature-set/"},"headline":"[译]ECMAScript 2021: 最终功能集确定","image":["https://ivocin.github.io/images/ecma2021.png"],"datePublished":"2021-03-13T08:00:25.000Z","dateModified":"2021-03-13T15:50:52.885Z","author":{"@type":"Person","name":"清秋"},"description":"原文地址：ECMAScript 2021: the final feature set 原文作者：Axel Rauschmayer 本文永久链接：https:&#x2F;&#x2F;github.com&#x2F;Ivocin&#x2F;Translation&#x2F;Blogs&#x2F;ECMAScript-2021-the-final-feature-set.md 翻译、校对：Ivocin   更新于 2021-03-09: 今天，ES2021"}</script><link rel="canonical" href="https://ivocin.github.io/2021/03/13/ECMAScript-2021-the-final-feature-set/"><link rel="icon" href="/images/mylogo.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e84c7e175906c3ea9fb7d904d291b461";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/mylogo.png" alt="清秋的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">文章</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="http://github.com/ivocin"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/images/ecma2021.png" alt="[译]ECMAScript 2021: 最终功能集确定"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-03-13T08:00:25.000Z" title="2021/3/13下午4:00:25">2021-03-13</time>发表</span><span class="level-item"><time dateTime="2021-03-13T15:50:52.885Z" title="2021/3/13下午11:50:52">2021-03-13</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Front-End/">Front-End</a><span> / </span><a class="link-muted" href="/categories/Front-End/JavaScript/">JavaScript</a></span><span class="level-item">4 分钟读完 (大约639个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">[译]ECMAScript 2021: 最终功能集确定</h1><div class="content"><blockquote>
+<ul>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://2ality.com/2020/09/ecmascript-2021.html">ECMAScript 2021: the final feature set</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="http://dr-axel.de/">Axel Rauschmayer</a></li>
+<li>本文永久链接：<a target="_blank" rel="noopener" href="https://github.com/Ivocin/Translation/blob/master/Blogs/ECMAScript-2021-the-final-feature-set.md">https://github.com/Ivocin/Translation/Blogs/ECMAScript-2021-the-final-feature-set.md</a></li>
+<li>翻译、校对：<a target="_blank" rel="noopener" href="https://github.com/Ivocin/">Ivocin</a></li>
+</ul>
+</blockquote>
+<p><strong>更新于 2021-03-09:</strong> 今天，<a target="_blank" rel="noopener" href="https://github.com/tc39/ecma262/releases/tag/es2021-candidate-2021-03">ES2021 候选提案</a> 发布了其最终功能集的版本。如果它能够在今年 6 月的 ECMA 大会上通过，就会成为官方的标准。本文描述了有哪些新的内容。</p>
+<span id="more"></span>
+
+<h2 id="1、ECMAScript-2021-的编辑"><a href="#1、ECMAScript-2021-的编辑" class="headerlink" title="1、ECMAScript 2021 的编辑"></a>1、ECMAScript 2021 的编辑</h2><p>这个版本的编辑是：</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="https://twitter.com/ljharb">Jordan Harband</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://twitter.com/_shu">Shu-yu Guo</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://twitter.com/smooshMap">Michael Ficarra</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://twitter.com/bakkoting">Kevin Gibbons</a></li>
+</ul>
+<h2 id="2、关于-ECMAScript-的版本说明"><a href="#2、关于-ECMAScript-的版本说明" class="headerlink" title="2、关于 ECMAScript 的版本说明"></a>2、关于 ECMAScript 的版本说明</h2><p>注意，自从 <a target="_blank" rel="noopener" href="https://exploringjs.com/impatient-js/ch_history.html#tc39-process">TC39 进程</a>制定以来，ECMAScript 版本的重要性就降低了很多。现在真正重要的是提案处于哪个阶段：一旦提案到了第 4 阶段，那么它就可以使用了。但是即使这样，你仍然需要检查你的引擎是否支持该功能。</p>
+<h2 id="3、ES2021-功能（第-4-阶段提案）"><a href="#3、ES2021-功能（第-4-阶段提案）" class="headerlink" title="3、ES2021 功能（第 4 阶段提案）"></a>3、ES2021 功能（第 4 阶段提案）</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://exploringjs.com/impatient-js/ch_regexps.html#replace-replaceAll"><code>String.prototype.replaceAll</code></a> (Peter Marshall, Jakob Gruber, Mathias Bynens)</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://exploringjs.com/impatient-js/ch_promises.html#Promise.any"><code>Promise.any()</code></a> (Mathias Bynens, Kevin Gibbons, Sergey Rubanov)</p>
+</li>
+<li><p>WeakRefs (Dean Tribble, Mark Miller, Till Schneidereit, Sathya Gunasekaran, Daniel Ehrenberg) [<a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-weakrefs">proposal</a>]</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://exploringjs.com/impatient-js/ch_operators.html#logical-assignment-operators">Logical assignment operators</a> (Justin Ridgewell, Hemanth HM)</p>
+</li>
+<li><p>Underscores (<code>_</code>) as separators in <a target="_blank" rel="noopener" href="https://exploringjs.com/impatient-js/ch_numbers.html#numeric-separator-number-literals">number literals</a>  以及  <a target="_blank" rel="noopener" href="https://exploringjs.com/impatient-js/ch_bigints.html#numeric-separator-bigint-literals">bigint literals</a> (Sam Goto, Rick Waldron)</p>
+</li>
+</ul>
+<h2 id="4、常见问题"><a href="#4、常见问题" class="headerlink" title="4、常见问题"></a>4、常见问题</h2><h3 id="4-1-阶段的含义是什么？"><a href="#4-1-阶段的含义是什么？" class="headerlink" title="4.1 阶段的含义是什么？"></a>4.1 阶段的含义是什么？</h3><p>阶段是指 “TC39 进程“的成熟阶段。更多信息可以查看“JavaScript for impatient programmers” 中的<a target="_blank" rel="noopener" href="https://exploringjs.com/impatient-js/ch_history.html#tc39-process">“TC39 进程” 部分</a>。</p>
+<h3 id="4-2-我最喜欢的提案功能-现在怎么样了？"><a href="#4-2-我最喜欢的提案功能-现在怎么样了？" class="headerlink" title="4.2 [我最喜欢的提案功能] 现在怎么样了？"></a>4.2 [我最喜欢的提案功能] 现在怎么样了？</h3><p>如果你想查看不同的提案功能现在处于什么阶段，请查阅 <a target="_blank" rel="noopener" href="https://github.com/tc39/ecma262/blob/master/README.md"> ECMA-262 GitHub 仓库的 README 文件</a>。</p>
+<h3 id="4-3-有官方的-ECMAScript-功能列表吗？"><a href="#4-3-有官方的-ECMAScript-功能列表吗？" class="headerlink" title="4.3 有官方的 ECMAScript 功能列表吗？"></a>4.3 有官方的 ECMAScript 功能列表吗？</h3><p>当然，TC39 仓库列出了 <a target="_blank" rel="noopener" href="https://github.com/tc39/proposals/blob/master/finished-proposals.md">已完成提案</a> 以及它们是在哪个 ECMAScript 版本被引入的说明。</p>
+<h2 id="5、ES2021-的免费书籍"><a href="#5、ES2021-的免费书籍" class="headerlink" title="5、ES2021 的免费书籍"></a>5、ES2021 的免费书籍</h2><p>以下书籍包括了到 ECMAScript 2021 的 JavaScript，并且可以免费在线阅读：</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="https://exploringjs.com/impatient-js/">“JavaScript for impatient programmers”</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://exploringjs.com/deep-js/">“Deep JavaScript”</a></li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>[译]ECMAScript 2021: 最终功能集确定</p><p><a href="https://ivocin.github.io/2021/03/13/ECMAScript-2021-the-final-feature-set/">https://ivocin.github.io/2021/03/13/ECMAScript-2021-the-final-feature-set/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>清秋</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2021-03-13</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-03-13</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/JavaScript/">JavaScript</a><a class="link-muted mr-2" rel="tag" href="/tags/Translation/">Translation</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/images/wechat.jpeg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/03/13/javascript-what-is-the-meaning-of-this/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">[译]JavaScript: 带你彻底搞懂 this</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/03/13/build-hexo-cyberpunk-blog/"><span class="level-item">轻松搭建赛博朋克风格个人博客 —— Hexo 篇</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+            id: 'b8ab1048a7873435b3f260456e746cf7',
+            repo: 'BlogComment',
+            owner: 'Ivocin',
+            oauth: {
+                client_id: 'clinet',
+                client_secret: '64bc865f757ffec352d5288ad500b6f4707cd8a7',
+            },
+            perPage: 20,
+            maxCommentHeight: 250
+        })
+        gitment.render('comment-container')</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#1、ECMAScript-2021-的编辑"><span class="level-left"><span class="level-item">1</span><span class="level-item">1、ECMAScript 2021 的编辑</span></span></a></li><li><a class="level is-mobile" href="#2、关于-ECMAScript-的版本说明"><span class="level-left"><span class="level-item">2</span><span class="level-item">2、关于 ECMAScript 的版本说明</span></span></a></li><li><a class="level is-mobile" href="#3、ES2021-功能（第-4-阶段提案）"><span class="level-left"><span class="level-item">3</span><span class="level-item">3、ES2021 功能（第 4 阶段提案）</span></span></a></li><li><a class="level is-mobile" href="#4、常见问题"><span class="level-left"><span class="level-item">4</span><span class="level-item">4、常见问题</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#4-1-阶段的含义是什么？"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">4.1 阶段的含义是什么？</span></span></a></li><li><a class="level is-mobile" href="#4-2-我最喜欢的提案功能-现在怎么样了？"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">4.2 [我最喜欢的提案功能] 现在怎么样了？</span></span></a></li><li><a class="level is-mobile" href="#4-3-有官方的-ECMAScript-功能列表吗？"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">4.3 有官方的 ECMAScript 功能列表吗？</span></span></a></li></ul></li><li><a class="level is-mobile" href="#5、ES2021-的免费书籍"><span class="level-left"><span class="level-item">5</span><span class="level-item">5、ES2021 的免费书籍</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/mylogo.png" alt="清秋的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 清秋</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
