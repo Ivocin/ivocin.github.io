@@ -1,253 +1,86 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-<title>DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用 - 清秋的博客</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用 - 清秋的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="清秋的博客"><meta name="msapplication-TileImage" content="/images/mylogo.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="清秋的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="前言最近一个月来使用 dva 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 umi 终于迎来了 2.0 版本，具体介绍可以查看 发布 umi 2.0，可插拔的企业级 react 应用框架。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看漂亮的实力派  Ant Design P"><meta property="og:type" content="blog"><meta property="og:title" content="DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用"><meta property="og:url" content="https://ivocin.github.io/2018/09/08/dva_learning2/"><meta property="og:site_name" content="清秋的博客"><meta property="og:description" content="前言最近一个月来使用 dva 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 umi 终于迎来了 2.0 版本，具体介绍可以查看 发布 umi 2.0，可插拔的企业级 react 应用框架。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看漂亮的实力派  Ant Design P"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cea2db76?w=878&amp;h=243&amp;f=png&amp;s=35224"><meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290ceb3d030?w=747&amp;h=460&amp;f=png&amp;s=88436"><meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf81b702?w=588&amp;h=775&amp;f=png&amp;s=130519"><meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5eaec66d?w=1232&amp;h=1088&amp;f=png&amp;s=191503"><meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf987dd3?w=1232&amp;h=688&amp;f=png&amp;s=89446"><meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5a551995?w=1272&amp;h=784&amp;f=png&amp;s=165496"><meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf771e9c?w=1486&amp;h=754&amp;f=png&amp;s=108587"><meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba530e9eea?w=1842&amp;h=650&amp;f=png&amp;s=99868"><meta property="article:published_time" content="2018-09-08T02:46:25.000Z"><meta property="article:modified_time" content="2021-03-13T15:21:02.892Z"><meta property="article:author" content="清秋"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="React"><meta property="article:tag" content="Dva"><meta property="article:tag" content="Umi"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cea2db76?w=878&amp;h=243&amp;f=png&amp;s=35224"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ivocin.github.io/2018/09/08/dva_learning2/"},"headline":"DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用","image":[],"datePublished":"2018-09-08T02:46:25.000Z","dateModified":"2021-03-13T15:21:02.892Z","author":{"@type":"Person","name":"清秋"},"description":"前言最近一个月来使用 dva 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 umi 终于迎来了 2.0 版本，具体介绍可以查看 发布 umi 2.0，可插拔的企业级 react 应用框架。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看漂亮的实力派  Ant Design P"}</script><link rel="canonical" href="https://ivocin.github.io/2018/09/08/dva_learning2/"><link rel="icon" href="/images/mylogo.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e84c7e175906c3ea9fb7d904d291b461";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/mylogo.png" alt="清秋的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">文章</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="http://github.com/ivocin"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-09-08T02:46:25.000Z" title="2018/9/8上午10:46:25">2018-09-08</time>发表</span><span class="level-item"><time dateTime="2021-03-13T15:21:02.892Z" title="2021/3/13下午11:21:02">2021-03-13</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Front-End/">Front-End</a><span> / </span><a class="link-muted" href="/categories/Front-End/React/">React</a></span><span class="level-item">19 分钟读完 (大约2817个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用</h1><div class="content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一个月来使用 <a target="_blank" rel="noopener" href="https://dvajs.com/">dva</a> 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 <a target="_blank" rel="noopener" href="https://umijs.org/zh/">umi</a> 终于迎来了 2.0 版本，具体介绍可以查看 <a target="_blank" rel="noopener" href="https://github.com/sorrycc/blog/issues/74">发布 umi 2.0，可插拔的企业级 react 应用框架</a>。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看<a target="_blank" rel="noopener" href="https://www.yuque.com/ant-design/ant-design-pro/ant_design_pro_2.0_is_out">漂亮的实力派  Ant Design Pro 2.0 正式发布</a>。今天终于有时间体验了 umi@2 ，想起我的 dva 学习之路的第一篇<a target="_blank" rel="noopener" href="https://juejin.im/post/5b67fed36fb9a04f8856f817">学习记录</a>是使用 <a href="mailto:&#x75;&#x6d;&#105;&#x40;&#49;&#x2e;&#88;">&#x75;&#x6d;&#105;&#x40;&#49;&#x2e;&#88;</a> 构建的，刚好可以使用 umi 2.0 重新构建一下。本文是 dva 作者 <a target="_blank" rel="noopener" href="https://github.com/sorrycc">@sorrycc</a> 的 <a target="_blank" rel="noopener" href="https://github.com/umijs/umi-dva-user-dashboard">umi-dva-user-dashboard</a> 的 umi@2 版本实现，是 <a target="_blank" rel="noopener" href="https://github.com/sorrycc/blog/issues/62">《umi + dva，完成用户管理的 CURD 应用》</a> 文章的 umi@2 版本改写。代码仓库： <a target="_blank" rel="noopener" href="https://github.com/Ivocin/umi2-dva-user-dashboard">umi2-dva-user-dashboard</a>。演示地址：<a href="https://ivocin.github.io/userdashboard/">demo</a>。</p>
+<span id="more"></span>
 
+<h2 id="Step-1-使用-create-umi-脚手架初始化项目"><a href="#Step-1-使用-create-umi-脚手架初始化项目" class="headerlink" title="Step 1. 使用 create-umi 脚手架初始化项目"></a>Step 1. 使用 create-umi 脚手架初始化项目</h2><p>详见 <a target="_blank" rel="noopener" href="https://umijs.org/zh/guide/create-umi-app.html">umi官网#通过脚手架创建项目</a></p>
+<p>使用 <a target="_blank" rel="noopener" href="https://yarnpkg.com/en/docs/cli/create"><code>yarn create</code></a> 命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir umi2-dva-user-dashboard &amp;&amp; cd umi2-dva-user-dashboard</span><br><span class="line">$ yarn create umi</span><br></pre></td></tr></table></figure>
 
-
-    <meta name="description" content="前言最近一个月来使用 dva 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 umi 终于迎来了 2.0 版本，具体介绍可以查看 发布 umi 2.0，可插拔的企业级 react 应用框架。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看漂亮的实力派  Ant Design P">
-<meta name="keywords" content="JavaScript,React,Dva,Umi">
-<meta property="og:type" content="article">
-<meta property="og:title" content="DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用">
-<meta property="og:url" content="https://ivocin.github.io/2018/09/08/dva_learning2/index.html">
-<meta property="og:site_name" content="清秋的博客">
-<meta property="og:description" content="前言最近一个月来使用 dva 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 umi 终于迎来了 2.0 版本，具体介绍可以查看 发布 umi 2.0，可插拔的企业级 react 应用框架。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看漂亮的实力派  Ant Design P">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cea2db76?w=878&h=243&f=png&s=35224">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290ceb3d030?w=747&h=460&f=png&s=88436">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf81b702?w=588&h=775&f=png&s=130519">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5eaec66d?w=1232&h=1088&f=png&s=191503">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf987dd3?w=1232&h=688&f=png&s=89446">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5a551995?w=1272&h=784&f=png&s=165496">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf771e9c?w=1486&h=754&f=png&s=108587">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba530e9eea?w=1842&h=650&f=png&s=99868">
-<meta property="og:updated_time" content="2021-03-12T08:29:28.651Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用">
-<meta name="twitter:description" content="前言最近一个月来使用 dva 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 umi 终于迎来了 2.0 版本，具体介绍可以查看 发布 umi 2.0，可插拔的企业级 react 应用框架。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看漂亮的实力派  Ant Design P">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cea2db76?w=878&h=243&f=png&s=35224">
-
-
-
-
-
-<link rel="icon" href="/images/mylogo.png">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
-    
-    
-    
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-    
-
-    
-    
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-    
-
-    
-    
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-
-    
-    
-    
-    
-
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-
-    
-    
-
-    
-    
-<script>
-var _hmt = _hmt || [];
-(function() {
-    var hm = document.createElement("script");
-    hm.src = "//hm.baidu.com/hm.js?e84c7e175906c3ea9fb7d904d291b461";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-    
-    
-
-    
-    
-<link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-    
-    
-    
-
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
-</head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/mylogo.png" alt="DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item" href="/">主页</a>
-                
-                <a class="navbar-item" href="/archives">文章</a>
-                
-                <a class="navbar-item" href="/categories">分类</a>
-                
-                <a class="navbar-item" href="/tags">标签</a>
-                
-                <a class="navbar-item" href="/about">关于</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ivocin">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
-    </div>
-</nav>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-09-08T02:46:25.000Z">2018-09-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/React/">React</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    19 分钟 读完 (大约 2817 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用
-            
-        </h1>
-        <div class="content">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一个月来使用 <a href="https://dvajs.com/" target="_blank" rel="noopener">dva</a> 对公司存量项目进行重构，比较少时间写文章了。随着9月开学季节的到来，最近在使用的几个开源项目都迎来了重大更新。首先就是 <a href="https://umijs.org/zh/" target="_blank" rel="noopener">umi</a> 终于迎来了 2.0 版本，具体介绍可以查看 <a href="https://github.com/sorrycc/blog/issues/74" target="_blank" rel="noopener">发布 umi 2.0，可插拔的企业级 react 应用框架</a>。随之而来的是使用 umi@2 构建的 ant design pro 2.0 版本，具体介绍可以查看<a href="https://www.yuque.com/ant-design/ant-design-pro/ant_design_pro_2.0_is_out" target="_blank" rel="noopener">漂亮的实力派  Ant Design Pro 2.0 正式发布</a>。今天终于有时间体验了 umi@2 ，想起我的 dva 学习之路的第一篇<a href="https://juejin.im/post/5b67fed36fb9a04f8856f817" target="_blank" rel="noopener">学习记录</a>是使用 <a href="mailto:umi@1.X" target="_blank" rel="noopener">umi@1.X</a> 构建的，刚好可以使用 umi 2.0 重新构建一下。本文是 dva 作者 <a href="https://github.com/sorrycc" target="_blank" rel="noopener">@sorrycc</a> 的 <a href="https://github.com/umijs/umi-dva-user-dashboard" target="_blank" rel="noopener">umi-dva-user-dashboard</a> 的 umi@2 版本实现，是 <a href="https://github.com/sorrycc/blog/issues/62" target="_blank" rel="noopener">《umi + dva，完成用户管理的 CURD 应用》</a> 文章的 umi@2 版本改写。代码仓库： <a href="https://github.com/Ivocin/umi2-dva-user-dashboard" target="_blank" rel="noopener">umi2-dva-user-dashboard</a>。演示地址：<a href="https://ivocin.github.io/userdashboard/">demo</a>。</p>
-<a id="more"></a>
-<h2 id="Step-1-使用-create-umi-脚手架初始化项目"><a href="#Step-1-使用-create-umi-脚手架初始化项目" class="headerlink" title="Step 1. 使用 create-umi 脚手架初始化项目"></a>Step 1. 使用 create-umi 脚手架初始化项目</h2><p>详见 <a href="https://umijs.org/zh/guide/create-umi-app.html" target="_blank" rel="noopener">umi官网#通过脚手架创建项目</a></p>
-<p>使用 <a href="https://yarnpkg.com/en/docs/cli/create" target="_blank" rel="noopener"><code>yarn create</code></a> 命令：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir umi2-dva-user-dashboard &amp;&amp; cd umi2-dva-user-dashboard</span><br><span class="line">$ yarn create umi</span><br></pre></td></tr></table></figure></p>
 <p>看到社区有小伙伴问到如何使用 npm 创建 umi 项目，首先使用 npm 安装 create-umi :</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -g create-umi</span><br></pre></td></tr></table></figure>
-<p>安装好之后，进入项目，然后执行 <code>create-umi</code><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd umi2-dva-user-dashboard</span><br><span class="line">$ create-umi</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -g create-umi</span><br></pre></td></tr></table></figure>
+<p>安装好之后，进入项目，然后执行 <code>create-umi</code> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd umi2-dva-user-dashboard</span><br><span class="line">$ create-umi</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意官方推荐使用 <code>yarn create</code> 命令，因为能确保每次使用最新的脚手架。如果你和我一样，公司是内网开发环境只有 npm 私服，可以尝试使用 npm 命令。</p>
 </blockquote>
 <p>完成上述操作后，进入 create-umi 交互式命令行，选择功能，这里选择 antd、dva 和 hard source</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cea2db76?w=878&amp;h=243&amp;f=png&amp;s=35224" alt="image"></p>
-<p>确定后，会根据你的选择自动创建好目录和文件：<br><img src="https://user-gold-cdn.xitu.io/2018/9/8/165b9290ceb3d030?w=747&amp;h=460&amp;f=png&amp;s=88436" alt="image"></p>
-<p>然后手动安装依赖：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn</span><br></pre></td></tr></table></figure></p>
-<p>或<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install</span><br></pre></td></tr></table></figure></p>
-<p>安装好依赖后启动项目：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn start</span><br></pre></td></tr></table></figure></p>
-<p>或<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm start</span><br></pre></td></tr></table></figure></p>
-<p>如果顺利，在浏览器打开 <a href="http://localhost:8000" target="_blank" rel="noopener">http://localhost:8000</a> 可看到以下界面:</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf81b702?w=588&amp;h=775&amp;f=png&amp;s=130519" alt="image"></p>
-<h2 id="Step-2-配置代理，能通过-RESTFul-的方式访问-http-localhost-8000-api-users"><a href="#Step-2-配置代理，能通过-RESTFul-的方式访问-http-localhost-8000-api-users" class="headerlink" title="Step 2. 配置代理，能通过 RESTFul 的方式访问 http://localhost:8000/api/users"></a>Step 2. 配置代理，能通过 RESTFul 的方式访问 <a href="http://localhost:8000/api/users" target="_blank" rel="noopener">http://localhost:8000/api/users</a></h2><p>修改 <code>.umirc.js</code> ，加上 “proxy” 配置：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy: &#123;</span><br><span class="line">  &quot;/api&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: &quot;http://jsonplaceholder.typicode.com/&quot;,</span><br><span class="line">    &quot;changeOrigin&quot;: true,</span><br><span class="line">    &quot;pathRewrite&quot;: &#123; &quot;^/api&quot; : &quot;&quot; &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cea2db76?w=878&h=243&f=png&s=35224" alt="image"></p>
+<p>确定后，会根据你的选择自动创建好目录和文件：<br><img src="https://user-gold-cdn.xitu.io/2018/9/8/165b9290ceb3d030?w=747&h=460&f=png&s=88436" alt="image"></p>
+<p>然后手动安装依赖：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install</span><br></pre></td></tr></table></figure>
+<p>安装好依赖后启动项目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn start</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm start</span><br></pre></td></tr></table></figure>
+<p>如果顺利，在浏览器打开 <a target="_blank" rel="noopener" href="http://localhost:8000/">http://localhost:8000</a> 可看到以下界面:</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf81b702?w=588&h=775&f=png&s=130519" alt="image"></p>
+<h2 id="Step-2-配置代理，能通过-RESTFul-的方式访问-http-localhost-8000-api-users"><a href="#Step-2-配置代理，能通过-RESTFul-的方式访问-http-localhost-8000-api-users" class="headerlink" title="Step 2. 配置代理，能通过 RESTFul 的方式访问 http://localhost:8000/api/users"></a>Step 2. 配置代理，能通过 RESTFul 的方式访问 <a target="_blank" rel="noopener" href="http://localhost:8000/api/users">http://localhost:8000/api/users</a></h2><p>修改 <code>.umirc.js</code> ，加上 “proxy” 配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">proxy: &#123;</span><br><span class="line">  &quot;&#x2F;api&quot;: &#123;</span><br><span class="line">    &quot;target&quot;: &quot;http:&#x2F;&#x2F;jsonplaceholder.typicode.com&#x2F;&quot;,</span><br><span class="line">    &quot;changeOrigin&quot;: true,</span><br><span class="line">    &quot;pathRewrite&quot;: &#123; &quot;^&#x2F;api&quot; : &quot;&quot; &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p>注意，代理配置与 umi@1 的配置相同。</p>
-<p>访问 <a href="http://localhost:8000/api/users" target="_blank" rel="noopener">http://localhost:8000/api/users</a> ，就能访问到 <a href="http://jsonplaceholder.typicode.com/users" target="_blank" rel="noopener">http://jsonplaceholder.typicode.com/users</a> 的数据。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5eaec66d?w=1232&amp;h=1088&amp;f=png&amp;s=191503" alt="image"></p>
-<h2 id="Step-3-生成-users-路由"><a href="#Step-3-生成-users-路由" class="headerlink" title="Step 3. 生成 users 路由"></a>Step 3. 生成 users 路由</h2><p>umi 中文件即路由，所以我们要新增路由，新建文件即可，这里使用约定式路由。详见 <a href="https://umijs.org/zh/guide/router.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E7%94%B1" target="_blank" rel="noopener">https://umijs.org/zh/guide/router.html</a> 。</p>
+<p>访问 <a target="_blank" rel="noopener" href="http://localhost:8000/api/users">http://localhost:8000/api/users</a> ，就能访问到 <a target="_blank" rel="noopener" href="http://jsonplaceholder.typicode.com/users">http://jsonplaceholder.typicode.com/users</a> 的数据。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5eaec66d?w=1232&h=1088&f=png&s=191503" alt="image"></p>
+<h2 id="Step-3-生成-users-路由"><a href="#Step-3-生成-users-路由" class="headerlink" title="Step 3. 生成 users 路由"></a>Step 3. 生成 users 路由</h2><p>umi 中文件即路由，所以我们要新增路由，新建文件即可，这里使用约定式路由。详见 <a target="_blank" rel="noopener" href="https://umijs.org/zh/guide/router.html#%E5%9F%BA%E7%A1%80%E8%B7%AF%E7%94%B1">https://umijs.org/zh/guide/router.html</a> 。</p>
 <p>新建 <code>src/pages/users.js</code>，内容如下：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export default () =&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      Users Page</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后访问 <a href="http://localhost:8000/users" target="_blank" rel="noopener">http://localhost:8000/users</a> ，你会看到 <code>Users Page</code> 的输出:<br><img src="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf987dd3?w=1232&amp;h=688&amp;f=png&amp;s=89446" alt="image"></p>
-<p>这里看到页面多出了一个头部，原来是 create-umi 脚手架生成的项目会<strong>默认生成</strong>一个全局 layout 文件 <code>src/layouts/index.js</code>, <a href="mailto:umi@1.X" target="_blank" rel="noopener">umi@1.X</a> 版本就具有这个特性，详见官方文档<a href="https://umijs.org/zh/guide/router.html#%E5%85%A8%E5%B1%80-layout" target="_blank" rel="noopener">全局layout</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export default () &#x3D;&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      Users Page</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后访问 <a target="_blank" rel="noopener" href="http://localhost:8000/users">http://localhost:8000/users</a> ，你会看到 <code>Users Page</code> 的输出:<br><img src="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf987dd3?w=1232&h=688&f=png&s=89446" alt="image"></p>
+<p>这里看到页面多出了一个头部，原来是 create-umi 脚手架生成的项目会<strong>默认生成</strong>一个全局 layout 文件 <code>src/layouts/index.js</code>, <a href="mailto:&#117;&#109;&#105;&#x40;&#49;&#46;&#88;">&#117;&#109;&#105;&#x40;&#49;&#46;&#88;</a> 版本就具有这个特性，详见官方文档<a target="_blank" rel="noopener" href="https://umijs.org/zh/guide/router.html#%E5%85%A8%E5%B1%80-layout">全局layout</a></p>
 <h2 id="Step-4-构造-users-model-和-service"><a href="#Step-4-构造-users-model-和-service" class="headerlink" title="Step 4. 构造 users model 和 service"></a>Step 4. 构造 users model 和 service</h2><p>注意刚才建立的 <code>src/pages/users.js</code> 是简单的页面情况，目前需要和 model 与 service 组织到一起， 新建 <code>src/pages/users/index.js</code> 文件，将 <code>src/pages/users.js</code> 内容复制到 <code>src/pages/users/index.js</code> 文件中，然后删除 <code>src/pages/users.js</code> 文件。</p>
 <p>create-umi 脚手架没有生成 request.js, 新建 <code>src/utils/request.js</code>：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">import fetch from &apos;dva/fetch&apos;;</span><br><span class="line"></span><br><span class="line">function checkStatus(response) &#123;</span><br><span class="line">  if (response.status &gt;= 200 &amp;&amp; response.status &lt; 300) &#123;</span><br><span class="line">    return response;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  const error = new Error(response.statusText);</span><br><span class="line">  error.response = response;</span><br><span class="line">  throw error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Requests a URL, returning a promise.</span><br><span class="line"> *</span><br><span class="line"> * @param  &#123;string&#125; url       The URL we want to request</span><br><span class="line"> * @param  &#123;object&#125; [options] The options we want to pass to &quot;fetch&quot;</span><br><span class="line"> * @return &#123;object&#125;           An object containing either &quot;data&quot; or &quot;err&quot;</span><br><span class="line"> */</span><br><span class="line">export default async function request(url, options) &#123;</span><br><span class="line">  const response = await fetch(url, options);</span><br><span class="line"></span><br><span class="line">  checkStatus(response);</span><br><span class="line"></span><br><span class="line">  const data = await response.json();</span><br><span class="line"></span><br><span class="line">  const ret = &#123;</span><br><span class="line">    data,</span><br><span class="line">    headers: &#123;&#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  if (response.headers.get(&apos;x-total-count&apos;)) &#123;</span><br><span class="line">    ret.headers[&apos;x-total-count&apos;] = response.headers.get(&apos;x-total-count&apos;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">import fetch from &#39;dva&#x2F;fetch&#39;;</span><br><span class="line"></span><br><span class="line">function checkStatus(response) &#123;</span><br><span class="line">  if (response.status &gt;&#x3D; 200 &amp;&amp; response.status &lt; 300) &#123;</span><br><span class="line">    return response;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  const error &#x3D; new Error(response.statusText);</span><br><span class="line">  error.response &#x3D; response;</span><br><span class="line">  throw error;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;**</span><br><span class="line"> * Requests a URL, returning a promise.</span><br><span class="line"> *</span><br><span class="line"> * @param  &#123;string&#125; url       The URL we want to request</span><br><span class="line"> * @param  &#123;object&#125; [options] The options we want to pass to &quot;fetch&quot;</span><br><span class="line"> * @return &#123;object&#125;           An object containing either &quot;data&quot; or &quot;err&quot;</span><br><span class="line"> *&#x2F;</span><br><span class="line">export default async function request(url, options) &#123;</span><br><span class="line">  const response &#x3D; await fetch(url, options);</span><br><span class="line"></span><br><span class="line">  checkStatus(response);</span><br><span class="line"></span><br><span class="line">  const data &#x3D; await response.json();</span><br><span class="line"></span><br><span class="line">  const ret &#x3D; &#123;</span><br><span class="line">    data,</span><br><span class="line">    headers: &#123;&#125;,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  if (response.headers.get(&#39;x-total-count&#39;)) &#123;</span><br><span class="line">    ret.headers[&#39;x-total-count&#39;] &#x3D; response.headers.get(&#39;x-total-count&#39;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>新增 service: <code>src/pages/users/services/users.js</code>，注意 umi@2 添加了 webpack alias @，指向 src 目录：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import request from &apos;@/utils/request&apos;;</span><br><span class="line"></span><br><span class="line">export function fetch(&#123; page = 1 &#125;) &#123;</span><br><span class="line">  return request(`/api/users?_page=$&#123;page&#125;&amp;_limit=5`);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import request from &#39;@&#x2F;utils&#x2F;request&#39;;</span><br><span class="line"></span><br><span class="line">export function fetch(&#123; page &#x3D; 1 &#125;) &#123;</span><br><span class="line">  return request(&#96;&#x2F;api&#x2F;users?_page&#x3D;$&#123;page&#125;&amp;_limit&#x3D;5&#96;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意这里的 <code>page</code> 参数默认为 <code>1</code>，<code>limit</code> 参数设置为 <code>5</code></p>
 </blockquote>
 <p>新增 model: <code>src/pages/users/models/users.js</code>，内容如下：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import * as usersService from &apos;../services/users&apos;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  namespace: &apos;users&apos;,</span><br><span class="line">  state: &#123;</span><br><span class="line">    list: [],</span><br><span class="line">    total: null,</span><br><span class="line">  &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    save(state, &#123; payload: &#123; data: list, total &#125; &#125;) &#123;</span><br><span class="line">      return &#123; ...state, list, total &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  effects: &#123;</span><br><span class="line">    *fetch(&#123; payload: &#123; page &#125; &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">      const &#123; data, headers &#125; = yield call(usersService.fetch, &#123; page &#125;);</span><br><span class="line">      yield put(&#123; type: &apos;save&apos;, payload: &#123; data, total: headers[&apos;x-total-count&apos;] &#125; &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  subscriptions: &#123;</span><br><span class="line">    setup(&#123; dispatch, history &#125;) &#123;</span><br><span class="line">      return history.listen((&#123; pathname, query &#125;) =&gt; &#123;</span><br><span class="line">        if (pathname === &apos;/users&apos;) &#123;</span><br><span class="line">          dispatch(&#123; type: &apos;fetch&apos;, payload: query &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import * as usersService from &#39;..&#x2F;services&#x2F;users&#39;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  namespace: &#39;users&#39;,</span><br><span class="line">  state: &#123;</span><br><span class="line">    list: [],</span><br><span class="line">    total: null,</span><br><span class="line">  &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    save(state, &#123; payload: &#123; data: list, total &#125; &#125;) &#123;</span><br><span class="line">      return &#123; ...state, list, total &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  effects: &#123;</span><br><span class="line">    *fetch(&#123; payload: &#123; page &#125; &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">      const &#123; data, headers &#125; &#x3D; yield call(usersService.fetch, &#123; page &#125;);</span><br><span class="line">      yield put(&#123; type: &#39;save&#39;, payload: &#123; data, total: headers[&#39;x-total-count&#39;] &#125; &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  subscriptions: &#123;</span><br><span class="line">    setup(&#123; dispatch, history &#125;) &#123;</span><br><span class="line">      return history.listen((&#123; pathname, query &#125;) &#x3D;&gt; &#123;</span><br><span class="line">        if (pathname &#x3D;&#x3D;&#x3D; &#39;&#x2F;users&#39;) &#123;</span><br><span class="line">          dispatch(&#123; type: &#39;fetch&#39;, payload: query &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <p>切换到浏览器（会自动刷新），应该没任何变化，因为数据虽然好了，但并没有视图与之关联。但是打开 Redux 开发者工具，应该可以看到 <code>users/fetch</code> 和 <code>users/save</code> 的 action 以及相关的 state 。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5a551995?w=1272&amp;h=784&amp;f=png&amp;s=165496" alt="image"></p>
-<h2 id="Step-5-添加界面，让用户列表展现出来（与umi-1相同）"><a href="#Step-5-添加界面，让用户列表展现出来（与umi-1相同）" class="headerlink" title="Step 5. 添加界面，让用户列表展现出来（与umi@1相同）"></a>Step 5. 添加界面，让用户列表展现出来（与umi@1相同）</h2><p>我们把组件存在 <code>src/pages/users/components</code> 里，所以在这里新建 <code>Users.js</code> 和 <code>Users.css</code>。具体参考这个 <a href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/76969265245dc5b4d6bf88d01d2d0e879e07b035" target="_blank" rel="noopener">Commit</a>。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba5a551995?w=1272&h=784&f=png&s=165496" alt="image"></p>
+<h2 id="Step-5-添加界面，让用户列表展现出来（与umi-1相同）"><a href="#Step-5-添加界面，让用户列表展现出来（与umi-1相同）" class="headerlink" title="Step 5. 添加界面，让用户列表展现出来（与umi@1相同）"></a>Step 5. 添加界面，让用户列表展现出来（与umi@1相同）</h2><p>我们把组件存在 <code>src/pages/users/components</code> 里，所以在这里新建 <code>Users.js</code> 和 <code>Users.css</code>。具体参考这个 <a target="_blank" rel="noopener" href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/76969265245dc5b4d6bf88d01d2d0e879e07b035">Commit</a>。</p>
 <p>需留意两件事：</p>
 <ol>
 <li>对 model 进行了微调，加入了 page 表示当前页</li>
 <li>由于 components 和 services 中都用到了 pageSize，所以提取到 <code>src/constants.js</code></li>
 </ol>
 <p>改完后，切换到浏览器，应该能看到带分页的用户列表。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf771e9c?w=1486&amp;h=754&amp;f=png&amp;s=108587" alt="image"></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/9/8/165b9290cf771e9c?w=1486&h=754&f=png&s=108587" alt="image"></p>
 <blockquote>
 <p>有几点需要注意：</p>
 <ul>
-<li>Users.js 里面将 model 和组件连接了起来，注意 <code>const { list, total, page } = state.users;</code> 里面的 <code>users</code> 为 <code>model</code> 里面的 <code>namespace</code> 名称。</li>
-<li>我们没有手动注册 model，umi 帮我们进行了这一步操作， 详见 <code>src/pages/.umi/DvaContainer.js</code> 文件，该文件会自动更新。相关规则详见 <a href="https://umijs.org/guide/with-dva.html#model-注册" target="_blank" rel="noopener">umi官网#model注册</a> 一节。</li>
+<li>Users.js 里面将 model 和组件连接了起来，注意 <code>const &#123; list, total, page &#125; = state.users;</code> 里面的 <code>users</code> 为 <code>model</code> 里面的 <code>namespace</code> 名称。</li>
+<li>我们没有手动注册 model，umi 帮我们进行了这一步操作， 详见 <code>src/pages/.umi/DvaContainer.js</code> 文件，该文件会自动更新。相关规则详见 <a target="_blank" rel="noopener" href="https://umijs.org/guide/with-dva.html#model-%E6%B3%A8%E5%86%8C">umi官网#model注册</a> 一节。</li>
 <li>可以直接使用 css module</li>
 </ul>
 </blockquote>
 <h2 id="Step-6-添加-Header-Menu"><a href="#Step-6-添加-Header-Menu" class="headerlink" title="Step 6. 添加 Header Menu"></a>Step 6. 添加 Header Menu</h2><p>添加头部菜单组件，使得我们可以在首页和用户列表页之间来回切换。</p>
-<p>参考这个 <a href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/d700852d0688444db2a3ca6bfc14e8104a4479ea" target="_blank" rel="noopener">Commit</a>。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba530e9eea?w=1842&amp;h=650&amp;f=png&amp;s=99868" alt="image"></p>
+<p>参考这个 <a target="_blank" rel="noopener" href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/d700852d0688444db2a3ca6bfc14e8104a4479ea">Commit</a>。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/8/6/1650e3ba530e9eea?w=1842&h=650&f=png&s=99868" alt="image"></p>
 <h2 id="Step-7-处理-loading-状态（与umi-1相同）"><a href="#Step-7-处理-loading-状态（与umi-1相同）" class="headerlink" title="Step 7. 处理 loading 状态（与umi@1相同）"></a>Step 7. 处理 loading 状态（与umi@1相同）</h2><p>dva 有一个管理 effects 执行的 hook，并基于此封装了 dva-loading 插件。通过这个插件，我们可以不必一遍遍地写 showLoading 和 hideLoading，当发起请求时，插件会自动设置数据里的 loading 状态为 true 或 false 。然后我们在渲染 components 时绑定并根据这个数据进行渲染。</p>
 <p>umi-plugin-dva 默认内置了 dva-loading 插件。</p>
-<p>然后在 <code>src/components/Users/Users.js</code> 里绑定 loading 数据：<br><figure class="highlight diff hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-addition">+ loading: state.loading.models.users,</span></span><br></pre></td></tr></table></figure></p>
+<p>然后在 <code>src/components/Users/Users.js</code> 里绑定 loading 数据：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+ loading: state.loading.models.users,</span></span><br></pre></td></tr></table></figure>
 <p>注意这里的 <code>users</code> 为 <code>model</code> 的 <code>namespace</code>, 所以 dva-loading 的 loading 状态是对于 model 整体的。</p>
-<p>具体参考这个 <a href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/132109cb7e081ff7c129adfd1293ff3f8c4f0421" target="_blank" rel="noopener">Commit</a> 。</p>
+<p>具体参考这个 <a target="_blank" rel="noopener" href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/132109cb7e081ff7c129adfd1293ff3f8c4f0421">Commit</a> 。</p>
 <p>刷新浏览器，你的用户列表有 loading 了没?</p>
 <h2 id="Step-8-处理分页（与umi-1相同）"><a href="#Step-8-处理分页（与umi-1相同）" class="headerlink" title="Step 8. 处理分页（与umi@1相同）"></a>Step 8. 处理分页（与umi@1相同）</h2><p>只改一个文件 <code>src/pages/users/components/Users.js</code> 就好。</p>
 <p>处理分页有两个思路：</p>
@@ -256,34 +89,33 @@ var _hmt = _hmt || [];
 <li>切换路由 (由于之前监听了路由变化，所以后续的事情会自动处理)</li>
 </ol>
 <p>我们用的是思路 2 的方式，好处是用户可以直接访问到 page 2 或其他页面。</p>
-<p>quan参考这个 <a href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/4fe40d47e61db842db1557bb8e8f5eab70c6977a" target="_blank" rel="noopener">Commit</a> 。</p>
+<p>quan参考这个 <a target="_blank" rel="noopener" href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/4fe40d47e61db842db1557bb8e8f5eab70c6977a">Commit</a> 。</p>
 <h2 id="Step-9-处理用户删除（与umi-1相同）"><a href="#Step-9-处理用户删除（与umi-1相同）" class="headerlink" title="Step 9. 处理用户删除（与umi@1相同）"></a>Step 9. 处理用户删除（与umi@1相同）</h2><p>经过前面的 8 步，应用的整体脉络已经清晰，相信大家已经对整体流程也有了一定了解。</p>
 <p>后面的功能调整基本都可以按照以下三步进行：</p>
 <ol>
-<li>service</li>
-<li>model</li>
+<li><p>service</p>
+</li>
+<li><p>model</p>
+</li>
 <li><p>component<br>我们现在开始增加用户删除功能。</p>
 </li>
 <li><p>service, 修改 <code>src/pages/users/services/users.js</code>：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export function remove(id) &#123;</span><br><span class="line">  return request(`/api/users/$&#123;id&#125;`, &#123;</span><br><span class="line">    method: &apos;DELETE&apos;,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export function remove(id) &#123;</span><br><span class="line">  return request(&#96;&#x2F;api&#x2F;users&#x2F;$&#123;id&#125;&#96;, &#123;</span><br><span class="line">    method: &#39;DELETE&#39;,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>model, 修改 <code>src/pages/users/model.js</code>：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*remove(&#123; payload: id &#125;, &#123; call, put, select &#125;) &#123;</span><br><span class="line">  yield call(usersService.remove, id);</span><br><span class="line">  const page = yield select(state =&gt; state.users.page);</span><br><span class="line">  yield put(&#123; type: &apos;fetch&apos;, payload: &#123; page &#125; &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*remove(&#123; payload: id &#125;, &#123; call, put, select &#125;) &#123;</span><br><span class="line">  yield call(usersService.remove, id);</span><br><span class="line">  const page &#x3D; yield select(state &#x3D;&gt; state.users.page);</span><br><span class="line">  yield put(&#123; type: &#39;fetch&#39;, payload: &#123; page &#125; &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
 <li><p>component, 修改 <code>src/pages/users/components/Users.js</code>，替换 <code>deleteHandler</code> 内容：</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dispatch(&#123;</span><br><span class="line">  type: &apos;users/remove&apos;,</span><br><span class="line">  payload: id,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dispatch(&#123;</span><br><span class="line">  type: &#39;users&#x2F;remove&#39;,</span><br><span class="line">  payload: id,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>注意由于使用第三方api网站，数据并不会真的删除，只是删除api返回成功，选择删除后重新获取数据，仍然是原来的数据。</p>
 </li>
 </ol>
-<p>注意由于使用第三方api网站，数据并不会真的删除，只是删除api返回成功，选择删除后重新获取数据，仍然是原来的数据。</p>
 <h2 id="Step-10-处理用户编辑（与umi-1相同）"><a href="#Step-10-处理用户编辑（与umi-1相同）" class="headerlink" title="Step 10. 处理用户编辑（与umi@1相同）"></a>Step 10. 处理用户编辑（与umi@1相同）</h2><p>处理用户编辑和前面的一样，遵循三步走：</p>
 <ol>
 <li>service</li>
 <li>model</li>
-<li>component<br>先是 service，修改 <code>src/pages/users/services/users.js</code>：<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export function patch(id, values) &#123;</span><br><span class="line">  return request(`/api/users/$&#123;id&#125;`, &#123;</span><br><span class="line">    method: &apos;PATCH&apos;,</span><br><span class="line">    body: JSON.stringify(values),</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>component<br>先是 service，修改 <code>src/pages/users/services/users.js</code>：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export function patch(id, values) &#123;</span><br><span class="line">  return request(&#96;&#x2F;api&#x2F;users&#x2F;$&#123;id&#125;&#96;, &#123;</span><br><span class="line">    method: &#39;PATCH&#39;,</span><br><span class="line">    body: JSON.stringify(values),</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+再是 model，修改 <code>src/pages/users/model.js</code>：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*patch(&#123; payload: &#123; id, values &#125; &#125;, &#123; call, put, select &#125;) &#123;</span><br><span class="line">  yield call(usersService.patch, id, values);</span><br><span class="line">  const page &#x3D; yield select(state &#x3D;&gt; state.users.page);</span><br><span class="line">  yield put(&#123; type: &#39;fetch&#39;, payload: &#123; page &#125; &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+最后是 component，详见 <a target="_blank" rel="noopener" href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/1355b7d3e79d443a75eb569456e537f41705ca8c">Commit</a>。</li>
 </ol>
-<p>再是 model，修改 <code>src/pages/users/model.js</code>：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*patch(&#123; payload: &#123; id, values &#125; &#125;, &#123; call, put, select &#125;) &#123;</span><br><span class="line">  yield call(usersService.patch, id, values);</span><br><span class="line">  const page = yield select(state =&gt; state.users.page);</span><br><span class="line">  yield put(&#123; type: &apos;fetch&apos;, payload: &#123; page &#125; &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
-<p>最后是 component，详见 <a href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/1355b7d3e79d443a75eb569456e537f41705ca8c" target="_blank" rel="noopener">Commit</a>。</p>
 <p>需要注意的一点是，我们在这里如何处理 Modal 的 visible 状态，有几种选择：</p>
 <ol>
 <li>存 dva 的 model state 里</li>
@@ -295,594 +127,68 @@ var _hmt = _hmt || [];
 <li>几个 user 几个 visible<br>此教程选的方案是 2-2，即存 component state，并且 visible 按 user 存。另外为了使用的简便，封装了一个 <code>UserModal</code> 的组件。</li>
 </ol>
 <p>完成后，切换到浏览器，应该就能对用户进行编辑了。</p>
-<h2 id="Step-11-处理用户创建（与umi-1相同）"><a href="#Step-11-处理用户创建（与umi-1相同）" class="headerlink" title="Step 11. 处理用户创建（与umi@1相同）"></a>Step 11. 处理用户创建（与umi@1相同）</h2><p>相比用户编辑，用户创建更简单些，因为可以共用 <code>UserModal</code> 组件。和 Step 10 比较类似，就不累述了，详见 <a href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/6871e25231f81e87039ae3ad09ce91b33f918714" target="_blank" rel="noopener">Commit</a> 。</p>
+<h2 id="Step-11-处理用户创建（与umi-1相同）"><a href="#Step-11-处理用户创建（与umi-1相同）" class="headerlink" title="Step 11. 处理用户创建（与umi@1相同）"></a>Step 11. 处理用户创建（与umi@1相同）</h2><p>相比用户编辑，用户创建更简单些，因为可以共用 <code>UserModal</code> 组件。和 Step 10 比较类似，就不累述了，详见 <a target="_blank" rel="noopener" href="https://github.com/Ivocin/umi2-dva-user-dashboard/commit/6871e25231f81e87039ae3ad09ce91b33f918714">Commit</a> 。</p>
 <hr>
 <p>到这里，我们已经完成了一个完整的 CURD 应用。如果感兴趣，可以进一步看下 dva 和 umi 的资料：</p>
 <ul>
-<li><a href="https://github.com/dvajs/dva" target="_blank" rel="noopener">dva 官网</a></li>
-<li><a href="https://umijs.org/" target="_blank" rel="noopener">umi 官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dvajs/dva">dva 官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://umijs.org/">umi 官网</a></li>
 </ul>
 <p>（完）</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文主要使用umi@2来完成 <a href="https://github.com/umijs/umi-dva-user-dashboard" target="_blank" rel="noopener">umi-dva-user-dashboard</a> 项目。可以看到在业务代码上，和umi@1的写法基本一致，迁移成本比较低。目前手头的项目正在使用dva进行重构，暂时还没有使用 umi@2 的计划，不过会持续关注 umi 的成长的。</p>
-
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Dva/">Dva</a>, <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>, <a class="has-link-grey -link" href="/tags/React/">React</a>, <a class="has-link-grey -link" href="/tags/Umi/">Umi</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/wechat.jpeg" alt="微信"></div>
-</a>
-
-                
-        </div>
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/10/23/scrolling_and_attention/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">[译] 从 2010 到 2018，你不知道的关于网页滚动和用户注意力的变化</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/08/06/dva_learning1/">
-                <span class="level-item">DvaJS 的学习之路 1 - dva+umi 官网例子学习</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-	var gitment = new Gitment({
-		id: 'Sat Sep 08 2018 10:46:25 GMT+0800',
-		owner: 'Ivocin',
-		repo: 'BlogComment',
-		oauth: {
-			client_id: 'clinet',
-			client_secret: '64bc865f757ffec352d5288ad500b6f4707cd8a7',
-		},
-	})
-	gitment.render('comment-container')
-</script>
-
-    </div>
-</div>
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered">
-                <div>
-                    <img class="image is-128x128 has-mb-6" src="/images/avatar.jpg" alt="清秋">
-                    
-                    <p class="is-size-4 is-block">
-                        清秋
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        SDE @ CMBC
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Beijing, China</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        文章
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        20
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        分类
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        9
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        标签
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        23
-                    </p>
-                </div>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="http://github.com/ivocin">
-                关注我</a>
-        </div>
-        
-        
-    </div>
-</div>
-    
-        
-
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://juejin.im/user/58855de9128fe100683a3339/posts" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">掘金专栏</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">juejin.im</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Designs-Arts/">
-            <span class="level-start">
-                <span class="level-item">Designs & Arts</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Designs-Arts/UX/">
-            <span class="level-start">
-                <span class="level-item">UX</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/">
-            <span class="level-start">
-                <span class="level-item">Front-End</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">18</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Front-End/CSS/">
-            <span class="level-start">
-                <span class="level-item">CSS</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/Performance/">
-            <span class="level-start">
-                <span class="level-item">Performance</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">8</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/Tools/">
-            <span class="level-start">
-                <span class="level-item">Tools</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/Vue/">
-            <span class="level-start">
-                <span class="level-item">Vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li></ul></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Ant-Design/" style="font-size: 10px;">Ant Design</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Create-React-App/" style="font-size: 12px;">Create React App</a> <a href="/tags/Design/" style="font-size: 12px;">Design</a> <a href="/tags/Dva/" style="font-size: 12px;">Dva</a> <a href="/tags/Frontend/" style="font-size: 12px;">Frontend</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hooks/" style="font-size: 10px;">Hooks</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/React-Conf-2018/" style="font-size: 12px;">React Conf 2018</a> <a href="/tags/React-Hooks/" style="font-size: 14px;">React Hooks</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Translation/" style="font-size: 18px;">Translation</a> <a href="/tags/UX/" style="font-size: 12px;">UX</a> <a href="/tags/Umi/" style="font-size: 12px;">Umi</a> <a href="/tags/VS-Code/" style="font-size: 12px;">VS Code</a> <a href="/tags/Vite/" style="font-size: 12px;">Vite</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a>
-    </div>
-</div>
-
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
-        
-            
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#前言">
-        <span class="has-mr-6">1</span>
-        <span>前言</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-1-使用-create-umi-脚手架初始化项目">
-        <span class="has-mr-6">2</span>
-        <span>Step 1. 使用 create-umi 脚手架初始化项目</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-2-配置代理，能通过-RESTFul-的方式访问-http-localhost-8000-api-users">
-        <span class="has-mr-6">3</span>
-        <span>Step 2. 配置代理，能通过 RESTFul 的方式访问 http://localhost:8000/api/users</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-3-生成-users-路由">
-        <span class="has-mr-6">4</span>
-        <span>Step 3. 生成 users 路由</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-4-构造-users-model-和-service">
-        <span class="has-mr-6">5</span>
-        <span>Step 4. 构造 users model 和 service</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-5-添加界面，让用户列表展现出来（与umi-1相同）">
-        <span class="has-mr-6">6</span>
-        <span>Step 5. 添加界面，让用户列表展现出来（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-6-添加-Header-Menu">
-        <span class="has-mr-6">7</span>
-        <span>Step 6. 添加 Header Menu</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-7-处理-loading-状态（与umi-1相同）">
-        <span class="has-mr-6">8</span>
-        <span>Step 7. 处理 loading 状态（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-8-处理分页（与umi-1相同）">
-        <span class="has-mr-6">9</span>
-        <span>Step 8. 处理分页（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-9-处理用户删除（与umi-1相同）">
-        <span class="has-mr-6">10</span>
-        <span>Step 9. 处理用户删除（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-10-处理用户编辑（与umi-1相同）">
-        <span class="has-mr-6">11</span>
-        <span>Step 10. 处理用户编辑（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-11-处理用户创建（与umi-1相同）">
-        <span class="has-mr-6">12</span>
-        <span>Step 11. 处理用户创建（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#总结">
-        <span class="has-mr-6">13</span>
-        <span>总结</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
-
-        
-            
-        
-            
-        
-            
-        
-        </div>
-    
-</div>
-
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
-    
-        
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#前言">
-        <span class="has-mr-6">1</span>
-        <span>前言</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-1-使用-create-umi-脚手架初始化项目">
-        <span class="has-mr-6">2</span>
-        <span>Step 1. 使用 create-umi 脚手架初始化项目</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-2-配置代理，能通过-RESTFul-的方式访问-http-localhost-8000-api-users">
-        <span class="has-mr-6">3</span>
-        <span>Step 2. 配置代理，能通过 RESTFul 的方式访问 http://localhost:8000/api/users</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-3-生成-users-路由">
-        <span class="has-mr-6">4</span>
-        <span>Step 3. 生成 users 路由</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-4-构造-users-model-和-service">
-        <span class="has-mr-6">5</span>
-        <span>Step 4. 构造 users model 和 service</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-5-添加界面，让用户列表展现出来（与umi-1相同）">
-        <span class="has-mr-6">6</span>
-        <span>Step 5. 添加界面，让用户列表展现出来（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-6-添加-Header-Menu">
-        <span class="has-mr-6">7</span>
-        <span>Step 6. 添加 Header Menu</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-7-处理-loading-状态（与umi-1相同）">
-        <span class="has-mr-6">8</span>
-        <span>Step 7. 处理 loading 状态（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-8-处理分页（与umi-1相同）">
-        <span class="has-mr-6">9</span>
-        <span>Step 8. 处理分页（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-9-处理用户删除（与umi-1相同）">
-        <span class="has-mr-6">10</span>
-        <span>Step 9. 处理用户删除（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-10-处理用户编辑（与umi-1相同）">
-        <span class="has-mr-6">11</span>
-        <span>Step 10. 处理用户编辑（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#Step-11-处理用户创建（与umi-1相同）">
-        <span class="has-mr-6">12</span>
-        <span>Step 11. 处理用户创建（与umi@1相同）</span>
-        </a></li><li>
-        <a class="is-flex" href="#总结">
-        <span class="has-mr-6">13</span>
-        <span>总结</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
-
-    
-        
-    
-        
-    
-        
-    
-    
-</div>
-
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div style="text-align: center">
-
-            MIT Licensed | Copyright &copy; 2021 清秋&nbsp;
-        </div>
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
-
-
-    
-    
-    
-    <script src="/js/animation.js"></script>
-    
-
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-    <script src="/js/gallery.js" defer></script>
-    
-
-    
-    
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
-
-
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {matchFontHeight: false},
-        SVG: {matchFontHeight: false},
-        CommonHTML: {matchFontHeight: false}
-    });
-});
-</script>
-
-    
-    
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-    <script src="/js/clipboard.js" defer></script>
-    
-
-    
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文主要使用umi@2来完成 <a target="_blank" rel="noopener" href="https://github.com/umijs/umi-dva-user-dashboard">umi-dva-user-dashboard</a> 项目。可以看到在业务代码上，和umi@1的写法基本一致，迁移成本比较低。目前手头的项目正在使用dva进行重构，暂时还没有使用 umi@2 的计划，不过会持续关注 umi 的成长的。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>DvaJS 的学习之路 2 - umi@2 + dva，完成用户管理的 CURD 应用</p><p><a href="https://ivocin.github.io/2018/09/08/dva_learning2/">https://ivocin.github.io/2018/09/08/dva_learning2/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>清秋</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2018-09-08</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-03-13</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/JavaScript/">JavaScript</a><a class="link-muted mr-2" rel="tag" href="/tags/React/">React</a><a class="link-muted mr-2" rel="tag" href="/tags/Dva/">Dva</a><a class="link-muted mr-2" rel="tag" href="/tags/Umi/">Umi</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/images/wechat.jpeg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2018/10/23/scrolling_and_attention/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">[译] 从 2010 到 2018，你不知道的关于网页滚动和用户注意力的变化</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2018/08/06/dva_learning1/"><span class="level-item">DvaJS 的学习之路 1 - dva+umi 官网例子学习</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+            id: 'f0abfa4169beed4061326c2049cdc8ab',
+            repo: 'BlogComment',
+            owner: 'Ivocin',
+            oauth: {
+                client_id: 'clinet',
+                client_secret: '64bc865f757ffec352d5288ad500b6f4707cd8a7',
             },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
-</body>
-</html>
+            perPage: 20,
+            maxCommentHeight: 250
+        })
+        gitment.render('comment-container')</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#前言"><span class="level-left"><span class="level-item">1</span><span class="level-item">前言</span></span></a></li><li><a class="level is-mobile" href="#Step-1-使用-create-umi-脚手架初始化项目"><span class="level-left"><span class="level-item">2</span><span class="level-item">Step 1. 使用 create-umi 脚手架初始化项目</span></span></a></li><li><a class="level is-mobile" href="#Step-2-配置代理，能通过-RESTFul-的方式访问-http-localhost-8000-api-users"><span class="level-left"><span class="level-item">3</span><span class="level-item">Step 2. 配置代理，能通过 RESTFul 的方式访问 http://localhost:8000/api/users</span></span></a></li><li><a class="level is-mobile" href="#Step-3-生成-users-路由"><span class="level-left"><span class="level-item">4</span><span class="level-item">Step 3. 生成 users 路由</span></span></a></li><li><a class="level is-mobile" href="#Step-4-构造-users-model-和-service"><span class="level-left"><span class="level-item">5</span><span class="level-item">Step 4. 构造 users model 和 service</span></span></a></li><li><a class="level is-mobile" href="#Step-5-添加界面，让用户列表展现出来（与umi-1相同）"><span class="level-left"><span class="level-item">6</span><span class="level-item">Step 5. 添加界面，让用户列表展现出来（与umi@1相同）</span></span></a></li><li><a class="level is-mobile" href="#Step-6-添加-Header-Menu"><span class="level-left"><span class="level-item">7</span><span class="level-item">Step 6. 添加 Header Menu</span></span></a></li><li><a class="level is-mobile" href="#Step-7-处理-loading-状态（与umi-1相同）"><span class="level-left"><span class="level-item">8</span><span class="level-item">Step 7. 处理 loading 状态（与umi@1相同）</span></span></a></li><li><a class="level is-mobile" href="#Step-8-处理分页（与umi-1相同）"><span class="level-left"><span class="level-item">9</span><span class="level-item">Step 8. 处理分页（与umi@1相同）</span></span></a></li><li><a class="level is-mobile" href="#Step-9-处理用户删除（与umi-1相同）"><span class="level-left"><span class="level-item">10</span><span class="level-item">Step 9. 处理用户删除（与umi@1相同）</span></span></a></li><li><a class="level is-mobile" href="#Step-10-处理用户编辑（与umi-1相同）"><span class="level-left"><span class="level-item">11</span><span class="level-item">Step 10. 处理用户编辑（与umi@1相同）</span></span></a></li><li><a class="level is-mobile" href="#Step-11-处理用户创建（与umi-1相同）"><span class="level-left"><span class="level-item">12</span><span class="level-item">Step 11. 处理用户创建（与umi@1相同）</span></span></a></li><li><a class="level is-mobile" href="#总结"><span class="level-left"><span class="level-item">13</span><span class="level-item">总结</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/mylogo.png" alt="清秋的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 清秋</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

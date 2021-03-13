@@ -1,832 +1,148 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-<title>[译] 5 款工具助力 React 快速开发 - 清秋的博客</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-
-
-    <meta name="description" content="原文地址：5 Tools for Faster Development in React 原文作者：Jonathan Saring 译文出自：掘金翻译计划 本文永久链接：https://github.com/xitu/gold-miner/blob/master/TODO1/5-tools-for-faster-development-in-react.md 译者：Ivocin 校对者：Hao">
-<meta name="keywords" content="JavaScript,React,Tools,Translation">
-<meta property="og:type" content="article">
-<meta property="og:title" content="[译] 5 款工具助力 React 快速开发">
-<meta property="og:url" content="https://ivocin.github.io/2018/12/27/5_Tools_for_Faster_Development_in_React/index.html">
-<meta property="og:site_name" content="清秋的博客">
-<meta property="og:description" content="原文地址：5 Tools for Faster Development in React 原文作者：Jonathan Saring 译文出自：掘金翻译计划 本文永久链接：https://github.com/xitu/gold-miner/blob/master/TODO1/5-tools-for-faster-development-in-react.md 译者：Ivocin 校对者：Hao">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/27/167ed5479f543bba?w=1000&h=529&f=png&s=247341">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/27/167ed5479edc4a15?w=800&h=517&f=gif&s=2764377">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/27/167ed5479f6c2f69?w=800&h=459&f=gif&s=930840">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/27/167ed547a01b4b36?w=667&h=523&f=gif&s=917235">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/27/167ed547a0f9d7b2?w=714&h=287&f=gif&s=550042">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/27/167ed547a4fedf7f?w=767&h=564&f=gif&s=597134">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/12/27/167ed548543c76b8?w=800&h=439&f=gif&s=2061965">
-<meta property="og:updated_time" content="2019-01-02T02:48:12.502Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[译] 5 款工具助力 React 快速开发">
-<meta name="twitter:description" content="原文地址：5 Tools for Faster Development in React 原文作者：Jonathan Saring 译文出自：掘金翻译计划 本文永久链接：https://github.com/xitu/gold-miner/blob/master/TODO1/5-tools-for-faster-development-in-react.md 译者：Ivocin 校对者：Hao">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/12/27/167ed5479f543bba?w=1000&h=529&f=png&s=247341">
-
-
-
-
-
-<link rel="icon" href="/images/mylogo.png">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
-    
-    
-    
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-    
-
-    
-    
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-    
-
-    
-    
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-
-    
-    
-    
-    
-
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-
-    
-    
-
-    
-    
-<script>
-var _hmt = _hmt || [];
-(function() {
-    var hm = document.createElement("script");
-    hm.src = "//hm.baidu.com/hm.js?e84c7e175906c3ea9fb7d904d291b461";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-    
-    
-
-    
-    
-<link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-    
-    
-    
-
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
-</head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/mylogo.png" alt="[译] 5 款工具助力 React 快速开发" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item" href="/">主页</a>
-                
-                <a class="navbar-item" href="/archives">文章</a>
-                
-                <a class="navbar-item" href="/categories">分类</a>
-                
-                <a class="navbar-item" href="/tags">标签</a>
-                
-                <a class="navbar-item" href="/about">关于</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ivocin">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
-    </div>
-</nav>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-image">
-        <span class="image is-7by1">
-            <img class="thumbnail" src="/images/ReactLogo.png" alt="[译] 5 款工具助力 React 快速开发">
-        </span>
-    </div>
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-27T02:46:25.000Z">2018-12-27</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/JavaScript/">JavaScript</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    19 分钟 读完 (大约 2807 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                [译] 5 款工具助力 React 快速开发
-            
-        </h1>
-        <div class="content">
-            <blockquote>
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>[译] 5 款工具助力 React 快速开发 - 清秋的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="清秋的博客"><meta name="msapplication-TileImage" content="/images/mylogo.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="清秋的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="原文地址：5 Tools for Faster Development in React 原文作者：Jonathan Saring 译文出自：掘金翻译计划 本文永久链接：https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;xitu&amp;#x2F;gold-miner&amp;#x2F;blob&amp;#x2F;master&amp;#x2F;TODO1&amp;#x2F;5-tools-for-faster-development-in-react.md 译者：Ivocin 校对者：Hao"><meta property="og:type" content="blog"><meta property="og:title" content="[译] 5 款工具助力 React 快速开发"><meta property="og:url" content="https://ivocin.github.io/2018/12/27/5_Tools_for_Faster_Development_in_React/"><meta property="og:site_name" content="清秋的博客"><meta property="og:description" content="原文地址：5 Tools for Faster Development in React 原文作者：Jonathan Saring 译文出自：掘金翻译计划 本文永久链接：https:&amp;#x2F;&amp;#x2F;github.com&amp;#x2F;xitu&amp;#x2F;gold-miner&amp;#x2F;blob&amp;#x2F;master&amp;#x2F;TODO1&amp;#x2F;5-tools-for-faster-development-in-react.md 译者：Ivocin 校对者：Hao"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://ivocin.github.io/images/ReactLogo.png"><meta property="article:published_time" content="2018-12-27T02:46:25.000Z"><meta property="article:modified_time" content="2021-03-13T15:28:53.417Z"><meta property="article:author" content="清秋"><meta property="article:tag" content="JavaScript"><meta property="article:tag" content="React"><meta property="article:tag" content="Tools"><meta property="article:tag" content="Translation"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/images/ReactLogo.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ivocin.github.io/2018/12/27/5_Tools_for_Faster_Development_in_React/"},"headline":"[译] 5 款工具助力 React 快速开发","image":["https://ivocin.github.io/images/ReactLogo.png"],"datePublished":"2018-12-27T02:46:25.000Z","dateModified":"2021-03-13T15:28:53.417Z","author":{"@type":"Person","name":"清秋"},"description":"原文地址：5 Tools for Faster Development in React 原文作者：Jonathan Saring 译文出自：掘金翻译计划 本文永久链接：https:&#x2F;&#x2F;github.com&#x2F;xitu&#x2F;gold-miner&#x2F;blob&#x2F;master&#x2F;TODO1&#x2F;5-tools-for-faster-development-in-react.md 译者：Ivocin 校对者：Hao"}</script><link rel="canonical" href="https://ivocin.github.io/2018/12/27/5_Tools_for_Faster_Development_in_React/"><link rel="icon" href="/images/mylogo.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e84c7e175906c3ea9fb7d904d291b461";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/mylogo.png" alt="清秋的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">文章</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="http://github.com/ivocin"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/images/ReactLogo.png" alt="[译] 5 款工具助力 React 快速开发"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-12-27T02:46:25.000Z" title="2018/12/27上午10:46:25">2018-12-27</time>发表</span><span class="level-item"><time dateTime="2021-03-13T15:28:53.417Z" title="2021/3/13下午11:28:53">2021-03-13</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Front-End/">Front-End</a><span> / </span><a class="link-muted" href="/categories/Front-End/JavaScript/">JavaScript</a></span><span class="level-item">19 分钟读完 (大约2807个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">[译] 5 款工具助力 React 快速开发</h1><div class="content"><blockquote>
 <ul>
-<li>原文地址：<a href="https://blog.bitsrc.io/5-tools-for-faster-development-in-react-676f134050f2" target="_blank" rel="noopener">5 Tools for Faster Development in React</a></li>
-<li>原文作者：<a href="https://blog.bitsrc.io/@JonathanSaring?source=post_header_lockup" target="_blank" rel="noopener">Jonathan Saring</a></li>
-<li>译文出自：<a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a></li>
-<li>本文永久链接：<a href="https://github.com/xitu/gold-miner/blob/master/TODO1/5-tools-for-faster-development-in-react.md" target="_blank" rel="noopener">https://github.com/xitu/gold-miner/blob/master/TODO1/5-tools-for-faster-development-in-react.md</a></li>
-<li>译者：<a href="https://github.com/Ivocin" target="_blank" rel="noopener">Ivocin</a></li>
-<li>校对者：<a href="https://github.com/ElizurHz" target="_blank" rel="noopener">Haoze Xu</a>, <a href="https://github.com/Moonliujk" target="_blank" rel="noopener">Junkai Liu</a></li>
-<li>本文掘金地址：<a href="https://juejin.im/post/5c242e3f51882573d90678ad" target="_blank" rel="noopener">[译] 5 款工具助力 React 快速开发</a></li>
+<li>原文地址：<a target="_blank" rel="noopener" href="https://blog.bitsrc.io/5-tools-for-faster-development-in-react-676f134050f2">5 Tools for Faster Development in React</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://blog.bitsrc.io/@JonathanSaring?source=post_header_lockup">Jonathan Saring</a></li>
+<li>译文出自：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner">掘金翻译计划</a></li>
+<li>本文永久链接：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/5-tools-for-faster-development-in-react.md">https://github.com/xitu/gold-miner/blob/master/TODO1/5-tools-for-faster-development-in-react.md</a></li>
+<li>译者：<a target="_blank" rel="noopener" href="https://github.com/Ivocin">Ivocin</a></li>
+<li>校对者：<a target="_blank" rel="noopener" href="https://github.com/ElizurHz">Haoze Xu</a>, <a target="_blank" rel="noopener" href="https://github.com/Moonliujk">Junkai Liu</a></li>
+<li>本文掘金地址：<a target="_blank" rel="noopener" href="https://juejin.im/post/5c242e3f51882573d90678ad">[译] 5 款工具助力 React 快速开发</a></li>
 </ul>
 </blockquote>
 <p><strong>本文将会介绍 5 款工具，可加速 React UI 组件和应用程序的开发工作。</strong></p>
-<a id="more"></a>
+<span id="more"></span>
+
 <p>React 非常适合快速开发具有出色的交互式 UI 的应用程序。React 组件是创建用于开发不同应用的隔离的、可复用的模块的很棒的方法。。</p>
-<p>虽然一些<a href="https://blog.bitsrc.io/how-to-write-better-code-in-react-best-practices-b8ca87d462b0" target="_blank" rel="noopener">最佳实践</a>有助于开发更好的应用程序，但正确的工具可以使开发过程更快。以下是 5（+）个实用的工具，可以帮助我们加速组件和应用程序的开发。</p>
+<p>虽然一些<a target="_blank" rel="noopener" href="https://blog.bitsrc.io/how-to-write-better-code-in-react-best-practices-b8ca87d462b0">最佳实践</a>有助于开发更好的应用程序，但正确的工具可以使开发过程更快。以下是 5（+）个实用的工具，可以帮助我们加速组件和应用程序的开发。</p>
 <p>欢迎你发表评论并提出建议。</p>
-<h3 id="1-Bit"><a href="#1-Bit" class="headerlink" title="1. Bit"></a>1. <a href="https://bitsrc.io" target="_blank" rel="noopener">Bit</a></h3><ul>
-<li><a href="https://bitsrc.io" title="https://bitsrc.io" target="_blank" rel="noopener"><strong>Bit — 分享和构建组件代码</strong>：Bit 帮助你在不同的项目和应用程序中共享、发现和使用代码组件，以构建新功能和…</a></li>
+<h3 id="1-Bit"><a href="#1-Bit" class="headerlink" title="1. Bit"></a>1. <a target="_blank" rel="noopener" href="https://bitsrc.io/">Bit</a></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://bitsrc.io/" title="https://bitsrc.io"><strong>Bit — 分享和构建组件代码</strong>：Bit 帮助你在不同的项目和应用程序中共享、发现和使用代码组件，以构建新功能和…</a></li>
 </ul>
-<p><a href="https://bitsrc.io" target="_blank" rel="noopener">Bit</a> 是一个开源平台，用于使用组件构建应用程序。</p>
+<p><a target="_blank" rel="noopener" href="https://bitsrc.io/">Bit</a> 是一个开源平台，用于使用组件构建应用程序。</p>
 <p>使用 Bit，你可以组织来自不同应用程序和项目的组件（无需任何重构），并使其可以在构建新功能和应用程序时被发现、使用、开发和协作。</p>
 <ul>
-<li>YouTube 视频链接：<a href="https://youtu.be/P4Mk_hqR8dU" target="_blank" rel="noopener">https://youtu.be/P4Mk_hqR8dU</a></li>
+<li>YouTube 视频链接：<a target="_blank" rel="noopener" href="https://youtu.be/P4Mk_hqR8dU">https://youtu.be/P4Mk_hqR8dU</a></li>
 </ul>
 <p>Bit 上共享的组件可自动地通过 NPM/Yarn 安装，或与 Bit 本身一起使用。后者使你能够同时开发来自不同项目的组件，并轻松更新（并合并）它们之间的更改。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed5479f543bba?w=1000&amp;h=529&amp;f=png&amp;s=247341" alt=""></p>
-<p>为了使组件更容易被发现，Bit 为组件提供了<a href="https://blog.bitsrc.io/introducing-the-live-react-component-playground-d8c281352ee7" target="_blank" rel="noopener">可视化渲染</a>，测试结果（Bit 独立运行组件的单元测试）和从源代码本身解析的文档。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed5479f543bba?w=1000&h=529&f=png&s=247341"></p>
+<p>为了使组件更容易被发现，Bit 为组件提供了<a target="_blank" rel="noopener" href="https://blog.bitsrc.io/introducing-the-live-react-component-playground-d8c281352ee7">可视化渲染</a>，测试结果（Bit 独立运行组件的单元测试）和从源代码本身解析的文档。</p>
 <p>使用 Bit，你可以更快地开发多个应用程序和进行团队协作，并将你的组件用作新功能和项目的构建块。</p>
-<h3 id="2-StoryBook-Styleguidist"><a href="#2-StoryBook-Styleguidist" class="headerlink" title="2. StoryBook / Styleguidist"></a>2. <a href="https://storybook.js.org/" target="_blank" rel="noopener">StoryBook</a> / <a href="https://react-styleguidist.js.org/" target="_blank" rel="noopener">Styleguidist</a></h3><p>Storybook 和 Styleguidist 是在 React 中快速开发 UI 的环境。两者都是加速 React 应用程序开发的绝佳工具。 </p>
+<h3 id="2-StoryBook-Styleguidist"><a href="#2-StoryBook-Styleguidist" class="headerlink" title="2. StoryBook / Styleguidist"></a>2. <a target="_blank" rel="noopener" href="https://storybook.js.org/">StoryBook</a> / <a target="_blank" rel="noopener" href="https://react-styleguidist.js.org/">Styleguidist</a></h3><p>Storybook 和 Styleguidist 是在 React 中快速开发 UI 的环境。两者都是加速 React 应用程序开发的绝佳工具。 </p>
 <p>两者之间存在一些重要的差异，这些差异也可以组合在一起以完成你的组件开发系统。</p>
 <p>使用 Storybook，你可以在 JavaScript 文件中编写 <strong>stories</strong>。使用 Styleguidist，你可以在 Markdown 文件中编写<strong>示例</strong>。Storybook 一次显示一个组件的变化，而 Styleguidist 可以显示不同组件的多种变化。Storybook 非常适合显示组件的状态，而 Styleguidist 对于不同组件的文档和演示非常有用。</p>
 <p>下面是一个简短的纲要。</p>
-<h4 id="StoryBook"><a href="#StoryBook" class="headerlink" title="StoryBook"></a><a href="https://storybook.js.org/" target="_blank" rel="noopener">StoryBook</a></h4><ul>
-<li><a href="https://github.com/storybooks/storybook" title="https://github.com/storybooks/storybook" target="_blank" rel="noopener"><strong>storybooks/storybook</strong>: storybook — Interactive UI component dev &amp; test: React, React Native, Vue, Angular.</a></li>
+<h4 id="StoryBook"><a href="#StoryBook" class="headerlink" title="StoryBook"></a><a target="_blank" rel="noopener" href="https://storybook.js.org/">StoryBook</a></h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/storybooks/storybook" title="https://github.com/storybooks/storybook"><strong>storybooks/storybook</strong>: storybook — Interactive UI component dev &amp; test: React, React Native, Vue, Angular.</a></li>
 </ul>
-<p><a href="https://github.com/storybooks/storybook" target="_blank" rel="noopener">Storybook</a> 是 UI 组件的快速开发环境。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/storybooks/storybook">Storybook</a> 是 UI 组件的快速开发环境。</p>
 <p>它允许你浏览组件库，查看每个组件的不同状态，以及交互式开发和测试组件。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed5479edc4a15?w=800&amp;h=517&amp;f=gif&amp;s=2764377" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed5479edc4a15?w=800&h=517&f=gif&s=2764377"></p>
 <p>StoryBook 可帮助你独立于应用程序开发组件，这也有助于提高组件的可重用性和可测试性。</p>
-<p>你可以浏览库中的组件，修改其属性，并通过热加载在网页上获得组件的即时效果。可以在这里找到一些流行的<a href="https://storybook.js.org/examples/" target="_blank" rel="noopener">例子</a>。</p>
-<p>不同的插件可以帮助你更快地开发，从而缩短代码调整到视觉输出之间的周期。StoryBook 还支持 <a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener">React Native</a> 和 <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue.js</a>。</p>
-<h4 id="Styleguidist"><a href="#Styleguidist" class="headerlink" title="Styleguidist"></a><a href="https://react-styleguidist.js.org/" target="_blank" rel="noopener">Styleguidist</a></h4><ul>
-<li><a href="https://react-styleguidist.js.org/" title="https://react-styleguidist.js.org/" target="_blank" rel="noopener"><strong>React Styleguidist：具有在线样式指南的独立的 React 组件开发环境</strong>：具有在线样式指南的独立的 React 组件开发环境。</a></li>
+<p>你可以浏览库中的组件，修改其属性，并通过热加载在网页上获得组件的即时效果。可以在这里找到一些流行的<a target="_blank" rel="noopener" href="https://storybook.js.org/examples/">例子</a>。</p>
+<p>不同的插件可以帮助你更快地开发，从而缩短代码调整到视觉输出之间的周期。StoryBook 还支持 <a target="_blank" rel="noopener" href="https://facebook.github.io/react-native/">React Native</a> 和 <a target="_blank" rel="noopener" href="https://vuejs.org/">Vue.js</a>。</p>
+<h4 id="Styleguidist"><a href="#Styleguidist" class="headerlink" title="Styleguidist"></a><a target="_blank" rel="noopener" href="https://react-styleguidist.js.org/">Styleguidist</a></h4><ul>
+<li><a target="_blank" rel="noopener" href="https://react-styleguidist.js.org/" title="https://react-styleguidist.js.org/"><strong>React Styleguidist：具有在线样式指南的独立的 React 组件开发环境</strong>：具有在线样式指南的独立的 React 组件开发环境。</a></li>
 </ul>
-<p>React <a href="https://github.com/styleguidist/react-styleguidist" target="_blank" rel="noopener">Styleguidist</a> 是一个组件开发环境，它具有热重载的开发服务器和在线样式指南，列出组件的 <code>propTypes</code> 并显示基于 .md 文件的可编辑的用法示例。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed5479f6c2f69?w=800&amp;h=459&amp;f=gif&amp;s=930840" alt=""></p>
+<p>React <a target="_blank" rel="noopener" href="https://github.com/styleguidist/react-styleguidist">Styleguidist</a> 是一个组件开发环境，它具有热重载的开发服务器和在线样式指南，列出组件的 <code>propTypes</code> 并显示基于 .md 文件的可编辑的用法示例。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed5479f6c2f69?w=800&h=459&f=gif&s=930840"></p>
 <p>它支持ES6，Flow 和 TypeScript，并且可以使用开箱即用的 Create React App。自动生成的使用文档可以让 Styleguidist 充当团队不同组件的文档门户。</p>
 <ul>
-<li>另请查看由 Formidable Labs 提供的 <a href="https://github.com/FormidableLabs/react-live" target="_blank" rel="noopener"><strong>React Live</strong></a>。这个组件渲染环境也用在了 <a href="https://bitsrc.io/bit/movie-app/components/hero" target="_blank" rel="noopener">Bit 的实时组件 playground</a> 上。</li>
+<li>另请查看由 Formidable Labs 提供的 <a target="_blank" rel="noopener" href="https://github.com/FormidableLabs/react-live"><strong>React Live</strong></a>。这个组件渲染环境也用在了 <a target="_blank" rel="noopener" href="https://bitsrc.io/bit/movie-app/components/hero">Bit 的实时组件 playground</a> 上。</li>
 </ul>
-<h3 id="3-React-devTools"><a href="#3-React-devTools" class="headerlink" title="3. React devTools"></a>3. <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en" target="_blank" rel="noopener">React devTools</a></h3><p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed547a01b4b36?w=667&amp;h=523&amp;f=gif&amp;s=917235" alt=""></p>
-<p>这个官方的 React Chrome devTools <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en" target="_blank" rel="noopener">扩展程序</a>可以让你在 Chrome 开发者工具里查看 React 组件的层次结构。它也可以作为 <a href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/" target="_blank" rel="noopener">FireFox 附加组件</a>使用。</p>
+<h3 id="3-React-devTools"><a href="#3-React-devTools" class="headerlink" title="3. React devTools"></a>3. <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">React devTools</a></h3><p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed547a01b4b36?w=667&h=523&f=gif&s=917235"></p>
+<p>这个官方的 React Chrome devTools <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en">扩展程序</a>可以让你在 Chrome 开发者工具里查看 React 组件的层次结构。它也可以作为 <a target="_blank" rel="noopener" href="https://addons.mozilla.org/en-US/firefox/addon/react-devtools/">FireFox 附加组件</a>使用。</p>
 <p>使用 React devTools，你可以在操作组件树时查看并编辑组件的 props 和 state。此功能可以让你了解组件更改如何影响其他组件，以帮助你使用正确的组件结构和分离方式来设计 UI。</p>
 <p>这个扩展程序的搜索栏可让你快速查找和检查所需的组件，从而节省宝贵的开发时间。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed547a0f9d7b2?w=714&amp;h=287&amp;f=gif&amp;s=550042" alt=""></p>
-<p>查看适用于 Safari，IE 和 React Native 的<a href="https://github.com/facebook/react-devtools/tree/master/packages/react-devtools" target="_blank" rel="noopener">独立应用程序</a>。</p>
-<h3 id="4-Redux-devTools"><a href="#4-Redux-devTools" class="headerlink" title="4. Redux devTools"></a>4. <a href="http://extension.remotedev.io/" target="_blank" rel="noopener">Redux devTools</a></h3><p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed547a4fedf7f?w=767&amp;h=564&amp;f=gif&amp;s=597134" alt=""></p>
-<p>此 <a href="https://github.com/zalmoxisus/redux-devtools-extension" target="_blank" rel="noopener">Chrome 扩展程序</a>（和 <a href="https://addons.mozilla.org/en-US/firefox/addon/remotedev/" target="_blank" rel="noopener">FireFox 附加组件</a>）是一个开发时间程序包，是 Redux 开发工作流程的利器。它允许你检查每个 state 和 action payload，重新计算“分阶段”的 actions。</p>
-<p>你可以将 <a href="https://github.com/zalmoxisus/redux-devtools-extension" target="_blank" rel="noopener">Redux DevTools 扩展程序 </a>与任何处理状态的体系结构集成。每个 React 组件的本地状态可以有多个存储或不同的实例。你甚至可以通过“时间旅行”来取消 actions（可以观看 <a href="https://medium.com/@dan_abramov" target="_blank" rel="noopener">Dan Abramov 的</a> <a href="https://www.youtube.com/watch?v=xsSnOQynTHs" target="_blank" rel="noopener">视频</a>）。日志记录 UI 本身甚至可以自定义为 React 组件。</p>
-<h3 id="5-Boilerplates-amp-Kick-Starters"><a href="#5-Boilerplates-amp-Kick-Starters" class="headerlink" title="5. Boilerplates &amp; Kick-Starters"></a>5. Boilerplates &amp; Kick-Starters</h3><p>虽然这些并不完全是开发者工具，但它们有助于快速创建 React 应用程序，同时节省构建和其他配置的时间。虽然 React 有许多<a href="https://reactjs.org/community/starter-kits.html" target="_blank" rel="noopener">入门套件</a>，但这里有一些最好的。</p>
-<p>当与预制组件（在 <a href="https://bitsrc.io" target="_blank" rel="noopener">Bit</a> 或其他来源上）结合使用时，你可以快速创建应用程序结构并将组件组合到其中。</p>
-<h4 id="Create-React-App-50k-stars"><a href="#Create-React-App-50k-stars" class="headerlink" title="Create React App (50k stars)"></a><a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">Create React App</a> (50k stars)</h4><p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed548543c76b8?w=800&amp;h=439&amp;f=gif&amp;s=2061965" alt=""></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed547a0f9d7b2?w=714&h=287&f=gif&s=550042"></p>
+<p>查看适用于 Safari，IE 和 React Native 的<a target="_blank" rel="noopener" href="https://github.com/facebook/react-devtools/tree/master/packages/react-devtools">独立应用程序</a>。</p>
+<h3 id="4-Redux-devTools"><a href="#4-Redux-devTools" class="headerlink" title="4. Redux devTools"></a>4. <a target="_blank" rel="noopener" href="http://extension.remotedev.io/">Redux devTools</a></h3><p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed547a4fedf7f?w=767&h=564&f=gif&s=597134"></p>
+<p>此 <a target="_blank" rel="noopener" href="https://github.com/zalmoxisus/redux-devtools-extension">Chrome 扩展程序</a>（和 <a target="_blank" rel="noopener" href="https://addons.mozilla.org/en-US/firefox/addon/remotedev/">FireFox 附加组件</a>）是一个开发时间程序包，是 Redux 开发工作流程的利器。它允许你检查每个 state 和 action payload，重新计算“分阶段”的 actions。</p>
+<p>你可以将 <a target="_blank" rel="noopener" href="https://github.com/zalmoxisus/redux-devtools-extension">Redux DevTools 扩展程序 </a>与任何处理状态的体系结构集成。每个 React 组件的本地状态可以有多个存储或不同的实例。你甚至可以通过“时间旅行”来取消 actions（可以观看 <a target="_blank" rel="noopener" href="https://medium.com/@dan_abramov">Dan Abramov 的</a> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=xsSnOQynTHs">视频</a>）。日志记录 UI 本身甚至可以自定义为 React 组件。</p>
+<h3 id="5-Boilerplates-amp-Kick-Starters"><a href="#5-Boilerplates-amp-Kick-Starters" class="headerlink" title="5. Boilerplates &amp; Kick-Starters"></a>5. Boilerplates &amp; Kick-Starters</h3><p>虽然这些并不完全是开发者工具，但它们有助于快速创建 React 应用程序，同时节省构建和其他配置的时间。虽然 React 有许多<a target="_blank" rel="noopener" href="https://reactjs.org/community/starter-kits.html">入门套件</a>，但这里有一些最好的。</p>
+<p>当与预制组件（在 <a target="_blank" rel="noopener" href="https://bitsrc.io/">Bit</a> 或其他来源上）结合使用时，你可以快速创建应用程序结构并将组件组合到其中。</p>
+<h4 id="Create-React-App-50k-stars"><a href="#Create-React-App-50k-stars" class="headerlink" title="Create React App (50k stars)"></a><a target="_blank" rel="noopener" href="https://github.com/facebook/create-react-app">Create React App</a> (50k stars)</h4><p><img src="https://user-gold-cdn.xitu.io/2018/12/27/167ed548543c76b8?w=800&h=439&f=gif&s=2061965"></p>
 <p>这个广泛使用且受欢迎的项目可能是快速创建新 React 应用程序并从头开始运行的最有效方法。</p>
 <p>此软件包封装了新 React 应用程序所需的复杂配置（Babel，Webpack等），因此你可以节省新建应用程序所需的这段时间。</p>
 <p>要创建新应用程序，只需运行一个命令即可。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app my-app</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app my-app</span><br></pre></td></tr></table></figure>
+
 <p>此命令在当前文件夹中创建名为 <code>my-app</code> 的目录。<br>在目录中，它将生成初始项目结构并安装传递依赖项，然后你就可以简单地开始编码了。</p>
-<h4 id="React-Boilerplate-18k-stars"><a href="#React-Boilerplate-18k-stars" class="headerlink" title="React Boilerplate (18k stars)"></a><a href="https://github.com/react-boilerplate/react-boilerplate" target="_blank" rel="noopener">React Boilerplate</a> (18k stars)</h4><p><a href="https://medium.com/@mxstbr" target="_blank" rel="noopener">Max Stoiber</a> 的这个 React 样板文件模板为你的 React 应用程序提供了一个启动模板，该模板专注于离线开发，并在考虑到了可扩展性和性能。</p>
+<h4 id="React-Boilerplate-18k-stars"><a href="#React-Boilerplate-18k-stars" class="headerlink" title="React Boilerplate (18k stars)"></a><a target="_blank" rel="noopener" href="https://github.com/react-boilerplate/react-boilerplate">React Boilerplate</a> (18k stars)</h4><p><a target="_blank" rel="noopener" href="https://medium.com/@mxstbr">Max Stoiber</a> 的这个 React 样板文件模板为你的 React 应用程序提供了一个启动模板，该模板专注于离线开发，并在考虑到了可扩展性和性能。</p>
 <p>它的快速脚手架有助于直接从 CLI 创建组件、容器、路由、选择器和 sagas —— 以及它们的测试，而 CSS 和 JS 的更改可以立即反映出来。</p>
 <p>与 create-react-app 不同，这个样板文件不是为初学者设计的，而是为经验丰富的开发人员提供的。使用它可以管理性能、异步、样式等等，从而构建产品级的应用程序。</p>
-<h4 id="React-Slingshot-8-5k-stars"><a href="#React-Slingshot-8-5k-stars" class="headerlink" title="React Slingshot (8.5k stars)"></a><a href="https://github.com/coryhouse/react-slingshot" target="_blank" rel="noopener">React Slingshot</a> (8.5k stars)</h4><p><a href="https://medium.com/@housecor" target="_blank" rel="noopener">Cory House</a> 的这个极好的项目是 React + Redux 入门套件/样板，带有Babel、热重载、测试和 linting 等等。</p>
+<h4 id="React-Slingshot-8-5k-stars"><a href="#React-Slingshot-8-5k-stars" class="headerlink" title="React Slingshot (8.5k stars)"></a><a target="_blank" rel="noopener" href="https://github.com/coryhouse/react-slingshot">React Slingshot</a> (8.5k stars)</h4><p><a target="_blank" rel="noopener" href="https://medium.com/@housecor">Cory House</a> 的这个极好的项目是 React + Redux 入门套件/样板，带有Babel、热重载、测试和 linting 等等。</p>
 <p>与 React Boilerplate 非常相似，这个入门套件专注于快速开发的开发人员体验。每次点击“保存”时，更改都会热重载，并且会运行自动化测试。</p>
 <p>该项目甚至包括一个示例应用，因此你无需阅读太多文档即可开始工作。</p>
 <ul>
-<li>另外也可以了解一下 <a href="https://github.com/Kornil/simple-react-app" target="_blank" rel="noopener"><strong>simple-react-app</strong></a>，<a href="https://medium.com/@francesco.agnoletto/i-didnt-like-create-react-app-so-i-created-my-own-boilerplate-190a7dd5d74" target="_blank" rel="noopener">这篇文章</a>对此工具进行了解释。</li>
+<li>另外也可以了解一下 <a target="_blank" rel="noopener" href="https://github.com/Kornil/simple-react-app"><strong>simple-react-app</strong></a>，<a target="_blank" rel="noopener" href="https://medium.com/@francesco.agnoletto/i-didnt-like-create-react-app-so-i-created-my-own-boilerplate-190a7dd5d74">这篇文章</a>对此工具进行了解释。</li>
 </ul>
 <blockquote>
-<p>如果发现译文存在错误或其他需要改进的地方，欢迎到 <a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a> 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 <strong>本文永久链接</strong> 即为本文在 GitHub 上的 MarkDown 链接。</p>
+<p>如果发现译文存在错误或其他需要改进的地方，欢迎到 <a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner">掘金翻译计划</a> 对译文进行修改并 PR，也可获得相应奖励积分。文章开头的 <strong>本文永久链接</strong> 即为本文在 GitHub 上的 MarkDown 链接。</p>
 </blockquote>
 <hr>
 <blockquote>
-<p><a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a> 是一个翻译优质互联网技术文章的社区，文章来源为 <a href="https://juejin.im" target="_blank" rel="noopener">掘金</a> 上的英文分享文章。内容覆盖 <a href="https://github.com/xitu/gold-miner#android" target="_blank" rel="noopener">Android</a>、<a href="https://github.com/xitu/gold-miner#ios" target="_blank" rel="noopener">iOS</a>、<a href="https://github.com/xitu/gold-miner#前端" target="_blank" rel="noopener">前端</a>、<a href="https://github.com/xitu/gold-miner#后端" target="_blank" rel="noopener">后端</a>、<a href="https://github.com/xitu/gold-miner#区块链" target="_blank" rel="noopener">区块链</a>、<a href="https://github.com/xitu/gold-miner#产品" target="_blank" rel="noopener">产品</a>、<a href="https://github.com/xitu/gold-miner#设计" target="_blank" rel="noopener">设计</a>、<a href="https://github.com/xitu/gold-miner#人工智能" target="_blank" rel="noopener">人工智能</a>等领域，想要查看更多优质译文请持续关注 <a href="https://github.com/xitu/gold-miner" target="_blank" rel="noopener">掘金翻译计划</a>、<a href="http://weibo.com/juejinfanyi" target="_blank" rel="noopener">官方微博</a>、<a href="https://zhuanlan.zhihu.com/juejinfanyi" target="_blank" rel="noopener">知乎专栏</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner">掘金翻译计划</a> 是一个翻译优质互联网技术文章的社区，文章来源为 <a target="_blank" rel="noopener" href="https://juejin.im/">掘金</a> 上的英文分享文章。内容覆盖 <a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner#android">Android</a>、<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner#ios">iOS</a>、<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner#%E5%89%8D%E7%AB%AF">前端</a>、<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner#%E5%90%8E%E7%AB%AF">后端</a>、<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner#%E5%8C%BA%E5%9D%97%E9%93%BE">区块链</a>、<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner#%E4%BA%A7%E5%93%81">产品</a>、<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner#%E8%AE%BE%E8%AE%A1">设计</a>、<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner#%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD">人工智能</a>等领域，想要查看更多优质译文请持续关注 <a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner">掘金翻译计划</a>、<a target="_blank" rel="noopener" href="http://weibo.com/juejinfanyi">官方微博</a>、<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/juejinfanyi">知乎专栏</a>。</p>
 </blockquote>
-
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>, <a class="has-link-grey -link" href="/tags/React/">React</a>, <a class="has-link-grey -link" href="/tags/Tools/">Tools</a>, <a class="has-link-grey -link" href="/tags/Translation/">Translation</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/wechat.jpeg" alt="微信"></div>
-</a>
-
-                
-        </div>
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/08/ux-design-practices-how-to-make-web-interface-scannable/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">[译] UX 设计实践：如何设计可扫描的 Web 界面</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/28/React_today_and_tomorrow2/">
-                <span class="level-item">[译] React 的今天和明天（图文版） —— 第二部分</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-	var gitment = new Gitment({
-		id: 'Thu Dec 27 2018 10:46:25 GMT+0800',
-		owner: 'Ivocin',
-		repo: 'BlogComment',
-		oauth: {
-			client_id: 'clinet',
-			client_secret: '64bc865f757ffec352d5288ad500b6f4707cd8a7',
-		},
-	})
-	gitment.render('comment-container')
-</script>
-
-    </div>
-</div>
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered">
-                <div>
-                    <img class="image is-128x128 has-mb-6" src="/images/avatar.jpg" alt="清秋">
-                    
-                    <p class="is-size-4 is-block">
-                        清秋
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        SDE @ CMBC
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Beijing, China</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        文章
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        20
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        分类
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        9
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        标签
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        23
-                    </p>
-                </div>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="http://github.com/ivocin">
-                关注我</a>
-        </div>
-        
-        
-    </div>
-</div>
-    
-        
-
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://juejin.im/user/58855de9128fe100683a3339/posts" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">掘金专栏</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">juejin.im</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Designs-Arts/">
-            <span class="level-start">
-                <span class="level-item">Designs & Arts</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Designs-Arts/UX/">
-            <span class="level-start">
-                <span class="level-item">UX</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/">
-            <span class="level-start">
-                <span class="level-item">Front-End</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">18</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Front-End/CSS/">
-            <span class="level-start">
-                <span class="level-item">CSS</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/Performance/">
-            <span class="level-start">
-                <span class="level-item">Performance</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">8</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/Tools/">
-            <span class="level-start">
-                <span class="level-item">Tools</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/Vue/">
-            <span class="level-start">
-                <span class="level-item">Vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li></ul></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Ant-Design/" style="font-size: 10px;">Ant Design</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Create-React-App/" style="font-size: 12px;">Create React App</a> <a href="/tags/Design/" style="font-size: 12px;">Design</a> <a href="/tags/Dva/" style="font-size: 12px;">Dva</a> <a href="/tags/Frontend/" style="font-size: 12px;">Frontend</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hooks/" style="font-size: 10px;">Hooks</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/React-Conf-2018/" style="font-size: 12px;">React Conf 2018</a> <a href="/tags/React-Hooks/" style="font-size: 14px;">React Hooks</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Translation/" style="font-size: 18px;">Translation</a> <a href="/tags/UX/" style="font-size: 12px;">UX</a> <a href="/tags/Umi/" style="font-size: 12px;">Umi</a> <a href="/tags/VS-Code/" style="font-size: 12px;">VS Code</a> <a href="/tags/Vite/" style="font-size: 12px;">Vite</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a>
-    </div>
-</div>
-
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
-        
-            
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#1-Bit">
-        <span class="has-mr-6">1</span>
-        <span>1. Bit</span>
-        </a></li><li>
-        <a class="is-flex" href="#2-StoryBook-Styleguidist">
-        <span class="has-mr-6">2</span>
-        <span>2. StoryBook / Styleguidist</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#StoryBook">
-        <span class="has-mr-6">2.1</span>
-        <span>StoryBook</span>
-        </a></li><li>
-        <a class="is-flex" href="#Styleguidist">
-        <span class="has-mr-6">2.2</span>
-        <span>Styleguidist</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#3-React-devTools">
-        <span class="has-mr-6">3</span>
-        <span>3. React devTools</span>
-        </a></li><li>
-        <a class="is-flex" href="#4-Redux-devTools">
-        <span class="has-mr-6">4</span>
-        <span>4. Redux devTools</span>
-        </a></li><li>
-        <a class="is-flex" href="#5-Boilerplates-amp-Kick-Starters">
-        <span class="has-mr-6">5</span>
-        <span>5. Boilerplates &amp; Kick-Starters</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Create-React-App-50k-stars">
-        <span class="has-mr-6">5.1</span>
-        <span>Create React App (50k stars)</span>
-        </a></li><li>
-        <a class="is-flex" href="#React-Boilerplate-18k-stars">
-        <span class="has-mr-6">5.2</span>
-        <span>React Boilerplate (18k stars)</span>
-        </a></li><li>
-        <a class="is-flex" href="#React-Slingshot-8-5k-stars">
-        <span class="has-mr-6">5.3</span>
-        <span>React Slingshot (8.5k stars)</span>
-        </a></li></ul></li></ul>
-        </div>
-    </div>
-</div>
-
-        
-            
-        
-            
-        
-            
-        
-        </div>
-    
-</div>
-
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
-    
-        
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#1-Bit">
-        <span class="has-mr-6">1</span>
-        <span>1. Bit</span>
-        </a></li><li>
-        <a class="is-flex" href="#2-StoryBook-Styleguidist">
-        <span class="has-mr-6">2</span>
-        <span>2. StoryBook / Styleguidist</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#StoryBook">
-        <span class="has-mr-6">2.1</span>
-        <span>StoryBook</span>
-        </a></li><li>
-        <a class="is-flex" href="#Styleguidist">
-        <span class="has-mr-6">2.2</span>
-        <span>Styleguidist</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#3-React-devTools">
-        <span class="has-mr-6">3</span>
-        <span>3. React devTools</span>
-        </a></li><li>
-        <a class="is-flex" href="#4-Redux-devTools">
-        <span class="has-mr-6">4</span>
-        <span>4. Redux devTools</span>
-        </a></li><li>
-        <a class="is-flex" href="#5-Boilerplates-amp-Kick-Starters">
-        <span class="has-mr-6">5</span>
-        <span>5. Boilerplates &amp; Kick-Starters</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#Create-React-App-50k-stars">
-        <span class="has-mr-6">5.1</span>
-        <span>Create React App (50k stars)</span>
-        </a></li><li>
-        <a class="is-flex" href="#React-Boilerplate-18k-stars">
-        <span class="has-mr-6">5.2</span>
-        <span>React Boilerplate (18k stars)</span>
-        </a></li><li>
-        <a class="is-flex" href="#React-Slingshot-8-5k-stars">
-        <span class="has-mr-6">5.3</span>
-        <span>React Slingshot (8.5k stars)</span>
-        </a></li></ul></li></ul>
-        </div>
-    </div>
-</div>
-
-    
-        
-    
-        
-    
-        
-    
-    
-</div>
-
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div style="text-align: center">
-
-            MIT Licensed | Copyright &copy; 2021 清秋&nbsp;
-        </div>
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
-
-
-    
-    
-    
-    <script src="/js/animation.js"></script>
-    
-
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-    <script src="/js/gallery.js" defer></script>
-    
-
-    
-    
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
-
-
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {matchFontHeight: false},
-        SVG: {matchFontHeight: false},
-        CommonHTML: {matchFontHeight: false}
-    });
-});
-</script>
-
-    
-    
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-    <script src="/js/clipboard.js" defer></script>
-    
-
-    
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+</div><div class="article-licensing box"><div class="licensing-title"><p>[译] 5 款工具助力 React 快速开发</p><p><a href="https://ivocin.github.io/2018/12/27/5_Tools_for_Faster_Development_in_React/">https://ivocin.github.io/2018/12/27/5_Tools_for_Faster_Development_in_React/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>清秋</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2018-12-27</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-03-13</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/JavaScript/">JavaScript</a><a class="link-muted mr-2" rel="tag" href="/tags/React/">React</a><a class="link-muted mr-2" rel="tag" href="/tags/Tools/">Tools</a><a class="link-muted mr-2" rel="tag" href="/tags/Translation/">Translation</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/images/wechat.jpeg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2019/01/08/ux-design-practices-how-to-make-web-interface-scannable/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">[译] UX 设计实践：如何设计可扫描的 Web 界面</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2018/11/28/React_today_and_tomorrow2/"><span class="level-item">[译] React 的今天和明天（图文版） —— 第二部分</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+            id: '63c847b8e22d5f625827a37d93fd95df',
+            repo: 'BlogComment',
+            owner: 'Ivocin',
+            oauth: {
+                client_id: 'clinet',
+                client_secret: '64bc865f757ffec352d5288ad500b6f4707cd8a7',
             },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
-</body>
-</html>
+            perPage: 20,
+            maxCommentHeight: 250
+        })
+        gitment.render('comment-container')</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#1-Bit"><span class="level-left"><span class="level-item">1</span><span class="level-item">1. Bit</span></span></a></li><li><a class="level is-mobile" href="#2-StoryBook-Styleguidist"><span class="level-left"><span class="level-item">2</span><span class="level-item">2. StoryBook / Styleguidist</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#StoryBook"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">StoryBook</span></span></a></li><li><a class="level is-mobile" href="#Styleguidist"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">Styleguidist</span></span></a></li></ul></li><li><a class="level is-mobile" href="#3-React-devTools"><span class="level-left"><span class="level-item">3</span><span class="level-item">3. React devTools</span></span></a></li><li><a class="level is-mobile" href="#4-Redux-devTools"><span class="level-left"><span class="level-item">4</span><span class="level-item">4. Redux devTools</span></span></a></li><li><a class="level is-mobile" href="#5-Boilerplates-amp-Kick-Starters"><span class="level-left"><span class="level-item">5</span><span class="level-item">5. Boilerplates &amp; Kick-Starters</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Create-React-App-50k-stars"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">Create React App (50k stars)</span></span></a></li><li><a class="level is-mobile" href="#React-Boilerplate-18k-stars"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">React Boilerplate (18k stars)</span></span></a></li><li><a class="level is-mobile" href="#React-Slingshot-8-5k-stars"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">React Slingshot (8.5k stars)</span></span></a></li></ul></li></ul></div></div><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/mylogo.png" alt="清秋的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 清秋</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

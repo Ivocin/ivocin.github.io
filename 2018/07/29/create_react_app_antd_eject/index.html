@@ -1,699 +1,101 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-<title>使用 Eject 方式在 create-react-app 中使用 Ant Design of React - 清秋的博客</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-
-
-    <meta name="description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索">
-<meta name="keywords" content="React,Create React App,Webpack,Ant Design">
-<meta property="og:type" content="article">
-<meta property="og:title" content="使用 Eject 方式在 create-react-app 中使用 Ant Design of React">
-<meta property="og:url" content="https://ivocin.github.io/2018/07/29/create_react_app_antd_eject/index.html">
-<meta property="og:site_name" content="清秋的博客">
-<meta property="og:description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/27/164daedc8a220b7e?w=1326&h=84&f=png&s=37081">
-<meta property="og:updated_time" content="2019-01-02T02:49:04.188Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用 Eject 方式在 create-react-app 中使用 Ant Design of React">
-<meta name="twitter:description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/7/27/164daedc8a220b7e?w=1326&h=84&f=png&s=37081">
-
-
-
-
-
-<link rel="icon" href="/images/mylogo.png">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
-    
-    
-    
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-    
-
-    
-    
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-    
-
-    
-    
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-
-    
-    
-    
-    
-
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-
-    
-    
-
-    
-    
-<script>
-var _hmt = _hmt || [];
-(function() {
-    var hm = document.createElement("script");
-    hm.src = "//hm.baidu.com/hm.js?e84c7e175906c3ea9fb7d904d291b461";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-    
-    
-
-    
-    
-<link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-    
-    
-    
-
-    
-
-
-<link rel="stylesheet" href="/css/style.css">
-</head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/mylogo.png" alt="使用 Eject 方式在 create-react-app 中使用 Ant Design of React" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item" href="/">主页</a>
-                
-                <a class="navbar-item" href="/archives">文章</a>
-                
-                <a class="navbar-item" href="/categories">分类</a>
-                
-                <a class="navbar-item" href="/tags">标签</a>
-                
-                <a class="navbar-item" href="/about">关于</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ivocin">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
-    </div>
-</nav>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-07-29T02:46:25.000Z">2018-07-29</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Front-End/">Front-End</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Front-End/React/">React</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 634 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                使用 Eject 方式在 create-react-app 中使用 Ant Design of React
-            
-        </h1>
-        <div class="content">
-            <p>Ant Design 官网对 如何 <a href="https://github.com/timarney/react-app-rewired" target="_blank" rel="noopener">react-app-rewired</a> 的方式进行按需加载进行了说明，详见 <a href="http://ant-design.gitee.io/docs/react/use-with-create-react-app-cn" target="_blank" rel="noopener">在 create-react-app 中使用</a> 一文，文中有这样一段话 </p>
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>使用 Eject 方式在 create-react-app 中使用 Ant Design of React - 清秋的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="清秋的博客"><meta name="msapplication-TileImage" content="/images/mylogo.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="清秋的博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索"><meta property="og:type" content="blog"><meta property="og:title" content="使用 Eject 方式在 create-react-app 中使用 Ant Design of React"><meta property="og:url" content="https://ivocin.github.io/2018/07/29/create_react_app_antd_eject/"><meta property="og:site_name" content="清秋的博客"><meta property="og:description" content="Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/27/164daedc8a220b7e?w=1326&amp;h=84&amp;f=png&amp;s=37081"><meta property="article:published_time" content="2018-07-29T02:46:25.000Z"><meta property="article:modified_time" content="2021-03-13T15:20:47.137Z"><meta property="article:author" content="清秋"><meta property="article:tag" content="React"><meta property="article:tag" content="Create React App"><meta property="article:tag" content="Webpack"><meta property="article:tag" content="Ant Design"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://user-gold-cdn.xitu.io/2018/7/27/164daedc8a220b7e?w=1326&amp;h=84&amp;f=png&amp;s=37081"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://ivocin.github.io/2018/07/29/create_react_app_antd_eject/"},"headline":"使用 Eject 方式在 create-react-app 中使用 Ant Design of React","image":[],"datePublished":"2018-07-29T02:46:25.000Z","dateModified":"2021-03-13T15:20:47.137Z","author":{"@type":"Person","name":"清秋"},"description":"Ant Design 官网对 如何 react-app-rewired 的方式进行按需加载进行了说明，详见 在 create-react-app 中使用 一文，文中有这样一段话   你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。  本文主要就Eject方式进行探索"}</script><link rel="canonical" href="https://ivocin.github.io/2018/07/29/create_react_app_antd_eject/"><link rel="icon" href="/images/mylogo.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?e84c7e175906c3ea9fb7d904d291b461";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/images/mylogo.png" alt="清秋的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">文章</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="http://github.com/ivocin"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2018-07-29T02:46:25.000Z" title="2018/7/29上午10:46:25">2018-07-29</time>发表</span><span class="level-item"><time dateTime="2021-03-13T15:20:47.137Z" title="2021/3/13下午11:20:47">2021-03-13</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Front-End/">Front-End</a><span> / </span><a class="link-muted" href="/categories/Front-End/React/">React</a></span><span class="level-item">4 分钟读完 (大约634个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">使用 Eject 方式在 create-react-app 中使用 Ant Design of React</h1><div class="content"><p>Ant Design 官网对 如何 <a target="_blank" rel="noopener" href="https://github.com/timarney/react-app-rewired">react-app-rewired</a> 的方式进行按需加载进行了说明，详见 <a target="_blank" rel="noopener" href="http://ant-design.gitee.io/docs/react/use-with-create-react-app-cn">在 create-react-app 中使用</a> 一文，文中有这样一段话 </p>
 <blockquote>
 <p>你也可以使用 create-react-app 提供的 yarn run eject 命令将所有内建的配置暴露出来。不过这种配置方式需要你自行探索，不在本文讨论范围内。</p>
 </blockquote>
 <p>本文主要就Eject方式进行探索</p>
-<a id="more"></a>
+<span id="more"></span>
+
 <h2 id="使用create-react-app创建项目"><a href="#使用create-react-app创建项目" class="headerlink" title="使用create-react-app创建项目"></a>使用create-react-app创建项目</h2><blockquote>
-<p>参考：<a href="https://zhaozhiming.github.io/blog/2018/01/08/create-react-app-override-webpack-config/" target="_blank" rel="noopener">如何扩展 Create React App 的 Webpack 配置</a> 的Eject方式</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhaozhiming.github.io/blog/2018/01/08/create-react-app-override-webpack-config/">如何扩展 Create React App 的 Webpack 配置</a> 的Eject方式</p>
 </blockquote>
-<p>首先使用create-react-app创建一个项目<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">$</span> create-react-app antd-test</span><br></pre></td></tr></table></figure></p>
+<p>首先使用create-react-app创建一个项目</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> create-react-app antd-test</span></span><br></pre></td></tr></table></figure>
 <p>创建完项目后，进入项目目录，执行 yarn run eject 或 npm run eject</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run eject</span><br></pre></td></tr></table></figure>
-<p>执行后会出现提示，该操作不可逆，选择y继续<br><img src="https://user-gold-cdn.xitu.io/2018/7/27/164daedc8a220b7e?w=1326&amp;h=84&amp;f=png&amp;s=37081" alt=""></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run eject</span><br></pre></td></tr></table></figure>
+<p>执行后会出现提示，该操作不可逆，选择y继续<br><img src="https://user-gold-cdn.xitu.io/2018/7/27/164daedc8a220b7e?w=1326&h=84&f=png&s=37081"></p>
 <p>成功eject后会暴露webpack的配置,package.json增加了很多的依赖</p>
-<h2 id="安装antd"><a href="#安装antd" class="headerlink" title="安装antd"></a>安装antd</h2><p>使用 cnpm 安装 antd<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install antd</span><br></pre></td></tr></table></figure></p>
-<p>修改<figure class="highlight plain hljs"><figcaption><span>，引入 antd 的按钮组件。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">import React, &#123; Component &#125; from &apos;react&apos;;</span><br><span class="line">import Button from &apos;antd/lib/button&apos;;</span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">class App extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">        &lt;Button type=&quot;primary&quot;&gt;Button&lt;/Button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装antd"><a href="#安装antd" class="headerlink" title="安装antd"></a>安装antd</h2><p>使用 cnpm 安装 antd</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install antd</span><br></pre></td></tr></table></figure>
+<p>修改<code>src/App.js</code> ，引入 antd 的按钮组件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> Button <span class="keyword">from</span> <span class="string">&#x27;antd/lib/button&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./App.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">&quot;App&quot;</span>&gt;</span><br><span class="line">        &lt;Button type=<span class="string">&quot;primary&quot;</span>&gt;Button&lt;/Button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
 <p>执行npm install 安装依赖，并启动项目</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install</span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install</span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure>
+
 <p>启动之后发现button并没有样式，需要引入antd的css文件</p>
-<p>修改 <figure class="highlight plain hljs"><figcaption><span>```antd/dist/antd.css```。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">@import &apos;~antd/dist/antd.css&apos;;</span><br><span class="line"></span><br><span class="line">.App &#123;</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<h2 id="使用-babel-plugin-import-按需引入-antd-样式"><a href="#使用-babel-plugin-import-按需引入-antd-样式" class="headerlink" title="使用 babel-plugin-import 按需引入 antd 样式"></a>使用 babel-plugin-import 按需引入 antd 样式</h2><p>在文件顶部引入 <figure class="highlight plain hljs"><figcaption><span>antd 组件的样式（对前端性能是个隐患）。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 是一个用于按需加载组件代码和样式的 babel 插件（[原理](http://ant-design.gitee.io/docs/react/getting-started-cn#%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD)）</span><br><span class="line">```bash</span><br><span class="line">$ cnpm install babel-plugin-import --save-dev</span><br></pre></td></tr></table></figure></p>
-<p>修改<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```diff</span><br><span class="line">...</span><br><span class="line">- import Button from &apos;antd/lib/button&apos;;</span><br><span class="line">+ import &#123; Button &#125; from &apos;antd&apos;;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<p>然后移除前面在 <figure class="highlight plain hljs"><figcaption><span>里全量添加的 ```@import '~antd/dist/antd.css';``` </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">此时发现按钮样式不生效了，最简单的方式是修改```package.json```文件里的babel配置, 增加babel-plugin-import的配置</span><br><span class="line"></span><br><span class="line">```diff</span><br><span class="line">...</span><br><span class="line">  &quot;babel&quot;: &#123;</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">      &quot;react-app&quot;</span><br><span class="line">-    ]</span><br><span class="line">+    ],</span><br><span class="line">+   &quot;plugins&quot;: [</span><br><span class="line">+      [&quot;import&quot;, &#123; &quot;libraryName&quot;: &quot;antd&quot;, &quot;libraryDirectory&quot;: &quot;es&quot;, &quot;style&quot;: &quot;css&quot; &#125;]</span><br><span class="line">+    ]</span><br><span class="line">  &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>修改 <code>src/App.css</code>，在文件顶部引入 <code>antd/dist/antd.css</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">&#x27;~antd/dist/antd.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line">.App &#123;</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-babel-plugin-import-按需引入-antd-样式"><a href="#使用-babel-plugin-import-按需引入-antd-样式" class="headerlink" title="使用 babel-plugin-import 按需引入 antd 样式"></a>使用 babel-plugin-import 按需引入 antd 样式</h2><p>在文件顶部引入 <code>antd/dist/antd.css</code>实际上加载了全部的 antd 组件的样式（对前端性能是个隐患）。<br><a target="_blank" rel="noopener" href="https://github.com/ant-design/babel-plugin-import">babel-plugin-import</a> 是一个用于按需加载组件代码和样式的 babel 插件（<a target="_blank" rel="noopener" href="http://ant-design.gitee.io/docs/react/getting-started-cn#%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD">原理</a>）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install babel-plugin-import --save-dev</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>src/App.js</code></p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="deletion">- import Button from &#x27;antd/lib/button&#x27;;</span></span><br><span class="line"><span class="addition">+ import &#123; Button &#125; from &#x27;antd&#x27;;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>然后移除前面在 <code>src/App.css</code> 里全量添加的 <code>@import &#39;~antd/dist/antd.css&#39;;</code> </p>
+<p>此时发现按钮样式不生效了，最简单的方式是修改<code>package.json</code>文件里的babel配置, 增加babel-plugin-import的配置</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">  &quot;babel&quot;: &#123;</span><br><span class="line">    &quot;presets&quot;: [</span><br><span class="line">      &quot;react-app&quot;</span><br><span class="line"><span class="deletion">-    ]</span></span><br><span class="line"><span class="addition">+    ],</span></span><br><span class="line"><span class="addition">+   &quot;plugins&quot;: [</span></span><br><span class="line"><span class="addition">+      [&quot;import&quot;, &#123; &quot;libraryName&quot;: &quot;antd&quot;, &quot;libraryDirectory&quot;: &quot;es&quot;, &quot;style&quot;: &quot;css&quot; &#125;]</span></span><br><span class="line"><span class="addition">+    ]</span></span><br><span class="line">  &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
 <p>重新执行<code>npm start</code>，样式重新生效</p>
 <p>至此使用Eject方式按需引入antd的方式已经探索完毕。</p>
-
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Ant-Design/">Ant Design</a>, <a class="has-link-grey -link" href="/tags/Create-React-App/">Create React App</a>, <a class="has-link-grey -link" href="/tags/React/">React</a>, <a class="has-link-grey -link" href="/tags/Webpack/">Webpack</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/wechat.jpeg" alt="微信"></div>
-</a>
-
-                
-        </div>
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/07/30/create_react_app_less_issues/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">create-react-app 创建项目有关 less 的若干问题</span>
-            </a>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
-<script>
-	var gitment = new Gitment({
-		id: 'Sun Jul 29 2018 10:46:25 GMT+0800',
-		owner: 'Ivocin',
-		repo: 'BlogComment',
-		oauth: {
-			client_id: 'clinet',
-			client_secret: '64bc865f757ffec352d5288ad500b6f4707cd8a7',
-		},
-	})
-	gitment.render('comment-container')
-</script>
-
-    </div>
-</div>
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered">
-                <div>
-                    <img class="image is-128x128 has-mb-6" src="/images/avatar.jpg" alt="清秋">
-                    
-                    <p class="is-size-4 is-block">
-                        清秋
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        SDE @ CMBC
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Beijing, China</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        文章
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        20
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        分类
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        9
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        标签
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        23
-                    </p>
-                </div>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="http://github.com/ivocin">
-                关注我</a>
-        </div>
-        
-        
-    </div>
-</div>
-    
-        
-
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://juejin.im/user/58855de9128fe100683a3339/posts" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">掘金专栏</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">juejin.im</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Designs-Arts/">
-            <span class="level-start">
-                <span class="level-item">Designs & Arts</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Designs-Arts/UX/">
-            <span class="level-start">
-                <span class="level-item">UX</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li></ul></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/">
-            <span class="level-start">
-                <span class="level-item">Front-End</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">18</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/Front-End/CSS/">
-            <span class="level-start">
-                <span class="level-item">CSS</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/Performance/">
-            <span class="level-start">
-                <span class="level-item">Performance</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/React/">
-            <span class="level-start">
-                <span class="level-item">React</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">8</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/Tools/">
-            <span class="level-start">
-                <span class="level-item">Tools</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/Front-End/Vue/">
-            <span class="level-start">
-                <span class="level-item">Vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li></ul></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/Ant-Design/" style="font-size: 10px;">Ant Design</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Create-React-App/" style="font-size: 12px;">Create React App</a> <a href="/tags/Design/" style="font-size: 12px;">Design</a> <a href="/tags/Dva/" style="font-size: 12px;">Dva</a> <a href="/tags/Frontend/" style="font-size: 12px;">Frontend</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hooks/" style="font-size: 10px;">Hooks</a> <a href="/tags/JavaScript/" style="font-size: 16px;">JavaScript</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/React-Conf-2018/" style="font-size: 12px;">React Conf 2018</a> <a href="/tags/React-Hooks/" style="font-size: 14px;">React Hooks</a> <a href="/tags/Tools/" style="font-size: 14px;">Tools</a> <a href="/tags/Translation/" style="font-size: 18px;">Translation</a> <a href="/tags/UX/" style="font-size: 12px;">UX</a> <a href="/tags/Umi/" style="font-size: 12px;">Umi</a> <a href="/tags/VS-Code/" style="font-size: 12px;">VS Code</a> <a href="/tags/Vite/" style="font-size: 12px;">Vite</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Web/" style="font-size: 12px;">Web</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a>
-    </div>
-</div>
-
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen is-sticky">
-        
-            
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#使用create-react-app创建项目">
-        <span class="has-mr-6">1</span>
-        <span>使用create-react-app创建项目</span>
-        </a></li><li>
-        <a class="is-flex" href="#安装antd">
-        <span class="has-mr-6">2</span>
-        <span>安装antd</span>
-        </a></li><li>
-        <a class="is-flex" href="#使用-babel-plugin-import-按需引入-antd-样式">
-        <span class="has-mr-6">3</span>
-        <span>使用 babel-plugin-import 按需引入 antd 样式</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
-
-        
-            
-        
-            
-        
-            
-        
-        </div>
-    
-</div>
-
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right is-sticky">
-    
-        
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                目录
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#使用create-react-app创建项目">
-        <span class="has-mr-6">1</span>
-        <span>使用create-react-app创建项目</span>
-        </a></li><li>
-        <a class="is-flex" href="#安装antd">
-        <span class="has-mr-6">2</span>
-        <span>安装antd</span>
-        </a></li><li>
-        <a class="is-flex" href="#使用-babel-plugin-import-按需引入-antd-样式">
-        <span class="has-mr-6">3</span>
-        <span>使用 babel-plugin-import 按需引入 antd 样式</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
-
-    
-        
-    
-        
-    
-        
-    
-    
-</div>
-
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div style="text-align: center">
-
-            MIT Licensed | Copyright &copy; 2021 清秋&nbsp;
-        </div>
-    </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
-
-
-    
-    
-    
-    <script src="/js/animation.js"></script>
-    
-
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-    <script src="/js/gallery.js" defer></script>
-    
-
-    
-    
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
-
-
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {matchFontHeight: false},
-        SVG: {matchFontHeight: false},
-        CommonHTML: {matchFontHeight: false}
-    });
-});
-</script>
-
-    
-    
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-    <script src="/js/clipboard.js" defer></script>
-    
-
-    
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
+</div><div class="article-licensing box"><div class="licensing-title"><p>使用 Eject 方式在 create-react-app 中使用 Ant Design of React</p><p><a href="https://ivocin.github.io/2018/07/29/create_react_app_antd_eject/">https://ivocin.github.io/2018/07/29/create_react_app_antd_eject/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>清秋</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2018-07-29</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-03-13</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/React/">React</a><a class="link-muted mr-2" rel="tag" href="/tags/Create-React-App/">Create React App</a><a class="link-muted mr-2" rel="tag" href="/tags/Webpack/">Webpack</a><a class="link-muted mr-2" rel="tag" href="/tags/Ant-Design/">Ant Design</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/images/alipay.jpeg" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/images/wechat.jpeg" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2018/07/30/create_react_app_less_issues/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">create-react-app 创建项目有关 less 的若干问题</span></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css"><script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script><script>var gitment = new Gitment({
+            id: '7ab817cb5eaa520e45369bcb4516f78e',
+            repo: 'BlogComment',
+            owner: 'Ivocin',
+            oauth: {
+                client_id: 'clinet',
+                client_secret: '64bc865f757ffec352d5288ad500b6f4707cd8a7',
             },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
-</body>
-</html>
+            perPage: 20,
+            maxCommentHeight: 250
+        })
+        gitment.render('comment-container')</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#使用create-react-app创建项目"><span class="level-left"><span class="level-item">1</span><span class="level-item">使用create-react-app创建项目</span></span></a></li><li><a class="level is-mobile" href="#安装antd"><span class="level-left"><span class="level-item">2</span><span class="level-item">安装antd</span></span></a></li><li><a class="level is-mobile" href="#使用-babel-plugin-import-按需引入-antd-样式"><span class="level-left"><span class="level-item">3</span><span class="level-item">使用 babel-plugin-import 按需引入 antd 样式</span></span></a></li></ul></div></div><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/images/mylogo.png" alt="清秋的博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 清秋</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
